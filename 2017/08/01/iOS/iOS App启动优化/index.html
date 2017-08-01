@@ -99,7 +99,7 @@
 <meta property="og:image" content="http://oqleb1k16.bkt.clouddn.com/17-8-1/11834328.jpg">
 <meta property="og:image" content="http://oqleb1k16.bkt.clouddn.com/17-8-1/98374100.jpg">
 <meta property="og:image" content="http://oqleb1k16.bkt.clouddn.com/17-8-1/45743236.jpg">
-<meta property="og:updated_time" content="2017-08-01T06:42:30.000Z">
+<meta property="og:updated_time" content="2017-08-01T06:50:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS App启动优化">
 <meta name="twitter:description" content="T（App总启动时间）= T1（Main()之前的加载时间）+ T2（Main()之后的加载时间） T1 = 系统dylib（动态链接库）和自身App可执行文件的加载 T2 = Main()方法执行之后到AppDelegat类中的- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDic">
@@ -359,15 +359,13 @@
 <li>减少C++虚函数数量</li>
 <li>转而使用swift struct（其实本质上就是减少符号的数量）</li>
 </ol>
-<p>######ObjC setup</p>
-<p>这一步的主要工作是：</p>
+<h6 id="ObjC-setup"><a href="#ObjC-setup" class="headerlink" title="ObjC setup"></a>ObjC setup</h6><p>这一步的主要工作是：</p>
 <ol>
 <li>注册ObjC类</li>
 <li>把category的定义插入方法列表</li>
 <li>保证每一个selector唯一</li>
 </ol>
-<p>######initializers</p>
-<p>以上三步属于静态调整，都是在修改 __DATA segment中的内容，而这里开始动态调整，开始在堆和堆栈中写入内容。在这里的工作有：</p>
+<h6 id="initializers"><a href="#initializers" class="headerlink" title="initializers"></a>initializers</h6><p>以上三步属于静态调整，都是在修改 __DATA segment中的内容，而这里开始动态调整，开始在堆和堆栈中写入内容。在这里的工作有：</p>
 <ol>
 <li>ObjC的<code>+load()</code>函数</li>
 <li>C++的构造函数属性函数</li>
@@ -580,7 +578,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#T1优化"><span class="nav-number">1.</span> <span class="nav-text">T1优化</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#dylib-loading"><span class="nav-number">1.0.1.</span> <span class="nav-text">dylib loading</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#rebase-binding"><span class="nav-number">1.0.2.</span> <span class="nav-text">rebase/binding</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#T2优化"><span class="nav-number">2.</span> <span class="nav-text">T2优化</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#T1优化"><span class="nav-number">1.</span> <span class="nav-text">T1优化</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#dylib-loading"><span class="nav-number">1.0.1.</span> <span class="nav-text">dylib loading</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#rebase-binding"><span class="nav-number">1.0.2.</span> <span class="nav-text">rebase/binding</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ObjC-setup"><span class="nav-number">1.0.3.</span> <span class="nav-text">ObjC setup</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#initializers"><span class="nav-number">1.0.4.</span> <span class="nav-text">initializers</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#T2优化"><span class="nav-number">2.</span> <span class="nav-text">T2优化</span></a></li></ol></div>
             
 
           </div>

@@ -360,15 +360,13 @@
 <li>减少C++虚函数数量</li>
 <li>转而使用swift struct（其实本质上就是减少符号的数量）</li>
 </ol>
-<p>######ObjC setup</p>
-<p>这一步的主要工作是：</p>
+<h6 id="ObjC-setup"><a href="#ObjC-setup" class="headerlink" title="ObjC setup"></a>ObjC setup</h6><p>这一步的主要工作是：</p>
 <ol>
 <li>注册ObjC类</li>
 <li>把category的定义插入方法列表</li>
 <li>保证每一个selector唯一</li>
 </ol>
-<p>######initializers</p>
-<p>以上三步属于静态调整，都是在修改 __DATA segment中的内容，而这里开始动态调整，开始在堆和堆栈中写入内容。在这里的工作有：</p>
+<h6 id="initializers"><a href="#initializers" class="headerlink" title="initializers"></a>initializers</h6><p>以上三步属于静态调整，都是在修改 __DATA segment中的内容，而这里开始动态调整，开始在堆和堆栈中写入内容。在这里的工作有：</p>
 <ol>
 <li>ObjC的<code>+load()</code>函数</li>
 <li>C++的构造函数属性函数</li>
