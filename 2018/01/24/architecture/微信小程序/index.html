@@ -1,0 +1,781 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="小程序推广方式 关联公众号：同一主体可关联10个小程序，不同主体可关联3个小程序，小程序可关联500个公众号 非关联公众号：二维码（数量10万、永久有效）、小程序码（数量无限制、永久有效）  小程序进入场景（五十）  1001: 发现栏小程序主入口 1005: 顶部搜索框的搜索结果页 1006: 发现栏小程序入口搜索框的搜索结果页 1007: 单人聊天会话中的小程序消息卡片 1008: 群聊会话中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序">
+<meta property="og:url" content="http://begodya.com/2018/01/24/architecture/微信小程序/index.html">
+<meta property="og:site_name" content="Begodya">
+<meta property="og:description" content="小程序推广方式 关联公众号：同一主体可关联10个小程序，不同主体可关联3个小程序，小程序可关联500个公众号 非关联公众号：二维码（数量10万、永久有效）、小程序码（数量无限制、永久有效）  小程序进入场景（五十）  1001: 发现栏小程序主入口 1005: 顶部搜索框的搜索结果页 1006: 发现栏小程序入口搜索框的搜索结果页 1007: 单人聊天会话中的小程序消息卡片 1008: 群聊会话中">
+<meta property="og:image" content="http://img.mp.itc.cn/upload/20170726/7eeeb27b5ab64cb0b2da399d006556e6.jpg">
+<meta property="og:image" content="http://oqleb1k16.bkt.clouddn.com/18-1-27/63671553.jpg">
+<meta property="og:image" content="https://mp.weixin.qq.com/debug/wxadoc/dev/image/launch-app.png?t=2018125">
+<meta property="og:updated_time" content="2018-01-27T07:36:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微信小程序">
+<meta name="twitter:description" content="小程序推广方式 关联公众号：同一主体可关联10个小程序，不同主体可关联3个小程序，小程序可关联500个公众号 非关联公众号：二维码（数量10万、永久有效）、小程序码（数量无限制、永久有效）  小程序进入场景（五十）  1001: 发现栏小程序主入口 1005: 顶部搜索框的搜索结果页 1006: 发现栏小程序入口搜索框的搜索结果页 1007: 单人聊天会话中的小程序消息卡片 1008: 群聊会话中">
+<meta name="twitter:image" content="http://img.mp.itc.cn/upload/20170726/7eeeb27b5ab64cb0b2da399d006556e6.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://begodya.com/2018/01/24/architecture/微信小程序/"/>
+
+
+
+
+
+  <title>微信小程序 | Begodya</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Begodya</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://begodya.com/2018/01/24/architecture/微信小程序/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bei Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/4849945?v=3&u=2fc94e38699ed5ca25f46fe2c62682991c8faa21&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Begodya">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">微信小程序</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-24T11:49:26+08:00">
+                2018-01-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="小程序推广方式"><a href="#小程序推广方式" class="headerlink" title="小程序推广方式"></a>小程序推广方式</h3><ol>
+<li>关联公众号：同一主体可关联10个小程序，不同主体可关联3个小程序，小程序可关联500个公众号</li>
+<li>非关联公众号：二维码（数量10万、永久有效）、小程序码（数量无限制、永久有效）</li>
+</ol>
+<h3 id="小程序进入场景（五十）"><a href="#小程序进入场景（五十）" class="headerlink" title="小程序进入场景（五十）"></a>小程序进入场景（五十）</h3><blockquote>
+<ul>
+<li>1001: 发现栏小程序主入口</li>
+<li>1005: 顶部搜索框的搜索结果页</li>
+<li>1006: 发现栏小程序入口搜索框的搜索结果页</li>
+<li>1007: 单人聊天会话中的小程序消息卡片</li>
+<li>1008: 群聊会话中的小程序消息卡片</li>
+<li>1011: 扫描二维码</li>
+<li>1012: 长按图片识别二维码</li>
+<li>1013: 手机相册选取二维码</li>
+<li>1014: 小程序模版消息</li>
+<li>1017: 前往体验版的入口页</li>
+<li>1019: 微信钱包</li>
+<li>1020: 公众号profile页相关小程序列表</li>
+<li>1022: 聊天顶部置顶小程序入口</li>
+<li>1023: 安卓系统桌面图标</li>
+<li>1024: 小程序profile页</li>
+<li>1025: 扫描一维码</li>
+<li>1026: 附近小程序列表</li>
+<li>1027: 顶部搜索框搜索结果页“使用过的小程序”列表</li>
+<li>1028: 我的卡包</li>
+<li>1029: 卡券详情页</li>
+<li>1031: 长按图片识别一维码</li>
+<li>1032: 手机相册选取一维码</li>
+<li>1034: 微信支付完成页</li>
+<li>1035: 公众号自定义菜单</li>
+<li>1036: App分享消息卡片</li>
+<li>1037: 从小程序进入</li>
+<li>1038: 从小程序返回</li>
+<li>1039: 摇电视</li>
+<li>1042: 添加好友搜索框的搜索结果页</li>
+<li>1043: 公众号模板消息</li>
+<li>1044: 带shareTicket的小程序消息卡片</li>
+<li>1047: 扫描小程序码</li>
+<li>1048: 长按图片识别小程序码</li>
+<li>1049: 手机相册选取小程序码</li>
+<li>1052: 卡券的适用门店列表</li>
+<li>1053: 搜一搜的结果页</li>
+<li>1054: 顶部搜索框小程序快捷入口</li>
+<li>1056: 音乐播放器菜单</li>
+<li>1058: 公众号文章</li>
+<li>1059: 体验版小程序绑定邀请页</li>
+<li>1064: 微信连Wifi状态栏</li>
+<li>1067: 公众号文章广告</li>
+<li>1068: 附近小程序列表广告</li>
+<li>1072: 二维码收款页面</li>
+<li>1073: 客服消息列表下发的小程序消息卡片</li>
+<li>1074: 公众号会话下发的小程序消息卡片</li>
+<li>1078: 连wifi成功页</li>
+<li>1089: 微信聊天主界面下拉</li>
+<li>1090: 长按小程序右上角菜单唤出最近使用历史</li>
+<li>1092: 城市服务入口</li>
+</ul>
+</blockquote>
+<h3 id="小程序消息推送"><a href="#小程序消息推送" class="headerlink" title="小程序消息推送"></a>小程序消息推送</h3><blockquote>
+<p>下发条件说明</p>
+</blockquote>
+<pre><code>支付
+
+当用户在小程序内完成过支付行为，可允许开发者向用户在7天内推送有限条数的模板消息（1次支付可下发3条，多次支付下发条数独立，互相不影响）
+
+提交表单
+
+当用户在小程序内发生过提交表单行为且该表单声明为要发模板消息的，开发者需要向用户提供服务时，可允许开发者向用户在7天内推送有限条数的模板消息（1次提交表单可下发1条，多次提交下发条数独立，相互不影响）
+</code></pre><p>突破小程序推送限制做法：</p>
+<p><img src="http://img.mp.itc.cn/upload/20170726/7eeeb27b5ab64cb0b2da399d006556e6.jpg" alt=""></p>
+<h3 id="小程序与公众号、APP之跳转"><a href="#小程序与公众号、APP之跳转" class="headerlink" title="小程序与公众号、APP之跳转"></a>小程序与公众号、APP之跳转</h3><p><img src="http://oqleb1k16.bkt.clouddn.com/18-1-27/63671553.jpg" alt=""></p>
+<ul>
+<li>官方支持公众号关联小程序进行跳转：</li>
+</ul>
+<ol>
+<li>公众号介绍页：相关小程序</li>
+<li>公众号自定义菜单：可设置一级菜单或二级菜单</li>
+<li>公众号模板消息：    关联时下发</li>
+<li>公众号图文消息：小程序卡片、文字链接、图片链接</li>
+</ol>
+<ul>
+<li>官方暂不支持小程序跳转公众号操作，可通过小程序内客服进行自动推送公众号推文，文内有公众号二维码信息，可引导用户长按扫描后，即可跳转到对应公众号进行关注操作；但目前因小程序页面路径控制（限制五层），iOS在第二层页面之后进行跳转客服引导关注，会导致下次从小程序快捷入口进来后，当前页面会冻结，无法进行交互。</li>
+</ul>
+<p><img src="https://mp.weixin.qq.com/debug/wxadoc/dev/image/launch-app.png?t=2018125" alt=""></p>
+<ul>
+<li><p>APP可通过分享方式，在微信内打开小程序。</p>
+</li>
+<li><p>小程序在从APP分享至微信的小程序页面，用户访问时支持打开来源应用。在一个小程序的生命周期内，只有在特定条件下，才具有打开 APP 的能力。<code>打开 APP 的能力</code>可以理解为由小程序框架在内部管理的一个状态，为 true 则可以打开 APP，为 false 则不可以打开 APP。 </p>
+</li>
+</ul>
+<blockquote>
+<pre><code> 在小程序的生命周期内，这个状态的初始值为 false，之后会随着小程序的每次打开（无论是启动还是切到前台）而改变：  
+
+当小程序从 1036（App 分享消息卡片） 打开时，该状态置为 true。
+当小程序从 1089（微信聊天主界面下拉）或 1090（长按小程序右上角菜单唤出最近使用历史）的场景打开时，该状态不变，即保持上一次打开小程序时该状态的值。
+当小程序从非 1036/1089/1090 的场景打开，该状态置为 false。
+</code></pre></blockquote>
+<h3 id="手机操作系统、APP、小程序、H5之关系"><a href="#手机操作系统、APP、小程序、H5之关系" class="headerlink" title="手机操作系统、APP、小程序、H5之关系"></a>手机操作系统、APP、小程序、H5之关系</h3><p>手机操作系统 = S座</p>
+<p>APP = 公司</p>
+<p>小程序 = 小e微店</p>
+<p>H5 = 海报</p>
+<p>手机操作系统就相当于S座楼，楼内的每家公司就相当于各个APP，善诊公司相当于微信APP，公司内的小e微店就相当于小程序，零食区所拥有的空间相当于小程序的2M空间，后面又扩展出咖啡售卖区就相当于小程序分包机制，可扩展到4M；H5相当于海报，理论上可张贴于公司的各个位置。</p>
+<p>目前，小程序所属于微信，未来大一统的形态，可能是小程序形成SDK，各家APP均可按需嵌入自己需要关联的小程序，形成更大的关系网。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/09/world/川渝行/" rel="next" title="世界迷雾之十一川渝行">
+                <i class="fa fa-chevron-left"></i> 世界迷雾之十一川渝行
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars3.githubusercontent.com/u/4849945?v=3&u=2fc94e38699ed5ca25f46fe2c62682991c8faa21&s=400"
+               alt="Bei Wang" />
+          <p class="site-author-name" itemprop="name">Bei Wang</p>
+           
+              <p class="site-description motion-element" itemprop="description">『修身养性，寻找灵感』</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/begodya" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/begodya" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3096695943/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#小程序推广方式"><span class="nav-number">1.</span> <span class="nav-text">小程序推广方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小程序进入场景（五十）"><span class="nav-number">2.</span> <span class="nav-text">小程序进入场景（五十）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小程序消息推送"><span class="nav-number">3.</span> <span class="nav-text">小程序消息推送</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小程序与公众号、APP之跳转"><span class="nav-number">4.</span> <span class="nav-text">小程序与公众号、APP之跳转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#手机操作系统、APP、小程序、H5之关系"><span class="nav-number">5.</span> <span class="nav-text">手机操作系统、APP、小程序、H5之关系</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bei Wang</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
