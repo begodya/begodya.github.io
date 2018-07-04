@@ -90,18 +90,22 @@
 
 
 
-<meta name="description" content="《枪炮、病菌与钢铁》是一部获得普利策奖的史学巨著，是由贾雷德·戴蒙德完成著作。不过这本历史书虽然起了这么一个名字，但它其实不是讲枪炮的历史，不是讲病菌的历史，也不是讲钢铁的历史，而是讲整个人类历史的前世今生。 在进入主题前，先讲一个小故事，1492年一个叫哥伦布的探险家从美国出发，经过漫长的海上航行，终于在欧洲西海岸登陆，开始了对欧洲人的疯狂屠杀和殖民，这就是史上著名的哥伦布发现欧洲新大陆的故事">
+<meta name="description" content="开发环境和项目结构 编译步骤  12345678910111213# 安装 cmake 和 ninjabrew install cmake ninja    mkdir swift-sourcecd swift-source# 将 Swift 主项目 clone 到本地git clone https://github.com/apple/swift.git# 使用 update-checkout">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《枪炮、病菌与钢铁》">
-<meta property="og:url" content="http://begodya.com/2017/05/25/books/guns-germs-and-steel/index.html">
+<meta property="og:title" content="Swift标准库源码阅读（一）">
+<meta property="og:url" content="http://begodya.com/2018/03/28/iOS/Swift标准库源码阅读（一）/index.html">
 <meta property="og:site_name" content="Begodya">
-<meta property="og:description" content="《枪炮、病菌与钢铁》是一部获得普利策奖的史学巨著，是由贾雷德·戴蒙德完成著作。不过这本历史书虽然起了这么一个名字，但它其实不是讲枪炮的历史，不是讲病菌的历史，也不是讲钢铁的历史，而是讲整个人类历史的前世今生。 在进入主题前，先讲一个小故事，1492年一个叫哥伦布的探险家从美国出发，经过漫长的海上航行，终于在欧洲西海岸登陆，开始了对欧洲人的疯狂屠杀和殖民，这就是史上著名的哥伦布发现欧洲新大陆的故事">
-<meta property="og:image" content="http://i1.piimg.com/588926/4127de6e002089fd.jpg">
-<meta property="og:updated_time" content="2017-05-25T11:35:14.000Z">
+<meta property="og:description" content="开发环境和项目结构 编译步骤  12345678910111213# 安装 cmake 和 ninjabrew install cmake ninja    mkdir swift-sourcecd swift-source# 将 Swift 主项目 clone 到本地git clone https://github.com/apple/swift.git# 使用 update-checkout">
+<meta property="og:image" content="http://oqleb1k16.bkt.clouddn.com/18-3-28/53284569.jpg">
+<meta property="og:image" content="http://oqleb1k16.bkt.clouddn.com/18-3-28/26935950.jpg">
+<meta property="og:image" content="http://oqleb1k16.bkt.clouddn.com/18-3-28/37463335.jpg">
+<meta property="og:image" content="http://oqleb1k16.bkt.clouddn.com/18-3-28/25339637.jpg">
+<meta property="og:image" content="http://oqleb1k16.bkt.clouddn.com/18-3-29/7578028.jpg">
+<meta property="og:updated_time" content="2018-07-04T07:52:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《枪炮、病菌与钢铁》">
-<meta name="twitter:description" content="《枪炮、病菌与钢铁》是一部获得普利策奖的史学巨著，是由贾雷德·戴蒙德完成著作。不过这本历史书虽然起了这么一个名字，但它其实不是讲枪炮的历史，不是讲病菌的历史，也不是讲钢铁的历史，而是讲整个人类历史的前世今生。 在进入主题前，先讲一个小故事，1492年一个叫哥伦布的探险家从美国出发，经过漫长的海上航行，终于在欧洲西海岸登陆，开始了对欧洲人的疯狂屠杀和殖民，这就是史上著名的哥伦布发现欧洲新大陆的故事">
-<meta name="twitter:image" content="http://i1.piimg.com/588926/4127de6e002089fd.jpg">
+<meta name="twitter:title" content="Swift标准库源码阅读（一）">
+<meta name="twitter:description" content="开发环境和项目结构 编译步骤  12345678910111213# 安装 cmake 和 ninjabrew install cmake ninja    mkdir swift-sourcecd swift-source# 将 Swift 主项目 clone 到本地git clone https://github.com/apple/swift.git# 使用 update-checkout">
+<meta name="twitter:image" content="http://oqleb1k16.bkt.clouddn.com/18-3-28/53284569.jpg">
 
 
 
@@ -129,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://begodya.com/2017/05/25/books/guns-germs-and-steel/"/>
+  <link rel="canonical" href="http://begodya.com/2018/03/28/iOS/Swift标准库源码阅读（一）/"/>
 
 
 
 
 
-  <title>《枪炮、病菌与钢铁》 | Begodya</title>
+  <title>Swift标准库源码阅读（一） | Begodya</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -255,7 +259,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://begodya.com/2017/05/25/books/guns-germs-and-steel/">
+    <link itemprop="mainEntityOfPage" href="http://begodya.com/2018/03/28/iOS/Swift标准库源码阅读（一）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bei Wang">
@@ -272,7 +276,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">《枪炮、病菌与钢铁》</h1>
+          <h1 class="post-title" itemprop="name headline">Swift标准库源码阅读（一）</h1>
         
 
         <div class="post-meta">
@@ -284,8 +288,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-25T19:02:40+08:00">
-                2017-05-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-28T15:24:47+08:00">
+                2018-03-28
               </time>
             
 
@@ -319,16 +323,42 @@
       
 
       
-        <p><img src="http://i1.piimg.com/588926/4127de6e002089fd.jpg" alt=""></p>
-<p><strong>《枪炮、病菌与钢铁》</strong>是一部获得普利策奖的史学巨著，是由贾雷德·戴蒙德完成著作。不过这本历史书虽然起了这么一个名字，但它其实不是讲枪炮的历史，不是讲病菌的历史，也不是讲钢铁的历史，而是讲整个人类历史的前世今生。</p>
-<p>在进入主题前，先讲一个小故事，1492年一个叫哥伦布的探险家从美国出发，经过漫长的海上航行，终于在欧洲西海岸登陆，开始了对欧洲人的疯狂屠杀和殖民，这就是史上著名的哥伦布发现欧洲新大陆的故事。这是我瞎编的，真实的历史和这个故事恰恰相反。哥伦布从欧洲来到美洲，开始对美洲原住民的疯狂屠杀以及殖民，不仅如此，就算让时间倒流，再让欧洲人和美洲、澳大利亚、非洲的原始部落较量一次，他们的命运也不会改变，一定是欧洲人征服了美洲、澳大得亚和非洲的原住民。</p>
-<p><strong>那么为什么人类历史上，美洲人、澳大利亚人和非洲人不可能反过来去征服欧洲人？</strong></p>
-<p><strong>为什么世界上不同的民族会有现在这样截然不同的命运？</strong> </p>
-<p><strong>难道真是种族或者文化优劣造成的吗？</strong></p>
-<p>这本书会通过遗传学、分子生物学、流行病学等学科的研究方法，告诉我们人类为什么会发展成今天这个格局。关于不同民族发展水平的差距，以往的解释包括：社会制度、武器装备、航海技术、流行病、语言文字等等。但本书的作者戴蒙德认为，这些都不是最根本的原因，所有这些文明要素的产生，都有一个共同的先决条件，那就是采取粮食生产的生活方式，也就是农业文明，包括定居、有意识地驯化植物及驯养动物。具体来说，和此前狩猎采集的生活方式相比，定居和充足的食物，可以在单位面积的土地上养活更多的人口，从而形成更加复杂，更加便于组织生产和战争的社会制度，更多的人口生产出更多的粮食，从而可以养活专门的技术人才，比如军人、发明家、武器工匠、抄写员、神职人员等等，而不必人人都去搞生产，被驯化的动物不仅提供充足的蛋白质，而且战马直到一战前都是战争中重要的工具。除此以外，驯化动物的民族还发展出了对动物身上病菌的免疫力，而这些病菌的威力可比刀枪要厉害得多。大多数被征服的采猎民族，不是死于战争本身，而是死于征服者带来的流行病。总而言之，粮食生产决定了文明进步。</p>
-<p><strong>人类历史上，所有征服者对被征服者的胜利，本质上就是农业对采猎，以及农民对猎人的胜利。但问题是，为什么一些民族率先开始了农业文明，并且成为征服者，而另一些民族却始终没有，或者很晚才开始粮食生产呢？</strong></p>
-<p>作者认为，这绝不是种族优劣造成的。人种生物学研究证明，狩猎采集人群非常了解当地的物种，而且至少和工业文明中的族群一样聪明。这些采猎民族之所以逐渐落后于农业民族，是因为他们处于非常不利的自然环境中，比如在可驯化的植物方面，考古证据证明，最早出现粮食生产的新月沃地，本身就有很多极容易驯化的优质野生植物品种，而在气候、土壤都适合的农耕的美国东部，由于缺乏优质的野生植物品种，种地并不能比采集得到更多的食物，因此这里的文件繁荣比新月沃地晚了整整9000年，在可驯化的动物方面，20世经前被驯化的大型食草哺乳动物只有14种，而欧亚大陆非常幸运，天然就拥有这其中的13种动物，特别是其中的牛、马等动物，还可以帮人们耕地。相比之下，由于人类到来后，大规模的物种灭绝，南美大陆上可驯化的大型哺乳动物就只有羊驼这一种，而且还不能耕地、也不能打仗。非洲南部、北美和澳大利亚更惨，连一种也没有。此外，不同大陆的地理环境，也造成了粮食生产的不同传播速度。欧亚大陆横向延伸，气候、地形差异小，因此新月沃地驯化出的作物，仅仅用3000年的时间就横扫了西至西班牙，东至印度河流域的广阔地区，而美洲和非洲大陆都是纵向延伸，纬度差异、海拔差异以及沙漠地带，使撒哈拉南北以及墨西哥南北的民族长期隔绝。同样是3000年的时间，来自墨西哥的玉米才刚刚传播到了就在隔壁的美国东部，这种自然环境的差异，除了影响到粮食生产，也阻碍了社会制度、文字、冶金技术以及轮子等很多文明要素的传播，使不同民族的发展差距越来越大，也就是说，一个民族的命运，不是单靠自我奋斗就能决定的，他们所在的自然环境早就注定了他们在几千年后将会成为征服者还是被征服者。</p>
-<p>当然作者并不是说，粮食生产就一定优于狩猎采集，实际上农民比采集者的工作时间更长，平均寿命却更短，但一种无意间向全新生活方式的缓慢转弯，最终还是引发了各个层面的连锁效应，使一些民族创造出所谓的“文明”，而另一些民族被贴上了“野蛮”、“落后”的标签，这的确就是我们人类如何走到今天的故事。</p>
+        <h3 id="开发环境和项目结构"><a href="#开发环境和项目结构" class="headerlink" title="开发环境和项目结构"></a>开发环境和项目结构</h3><ul>
+<li>编译步骤</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"># 安装 cmake 和 ninja</div><div class="line">brew install cmake ninja</div><div class="line">    </div><div class="line">mkdir swift-source</div><div class="line">cd swift-source</div><div class="line"></div><div class="line"># 将 Swift 主项目 clone 到本地</div><div class="line">git clone https://github.com/apple/swift.git</div><div class="line"></div><div class="line"># 使用 update-checkout 脚本更新所有 repo</div><div class="line">./swift/utils/update-checkout --clone</div><div class="line"></div><div class="line">./swift/utils/build-script --release-debuginfo</div></pre></td></tr></table></figure>
+<ul>
+<li>编译Swift</li>
+</ul>
+<p><img src="http://oqleb1k16.bkt.clouddn.com/18-3-28/53284569.jpg" alt=""></p>
+<p><img src="http://oqleb1k16.bkt.clouddn.com/18-3-28/26935950.jpg" alt=""></p>
+<p><img src="http://oqleb1k16.bkt.clouddn.com/18-3-28/37463335.jpg" alt=""></p>
+<p>以上为机器配置，当前版本下整个全新编译的过程耗时为30分钟。</p>
+<ul>
+<li>编译模式</li>
+</ul>
+<p>编译脚本中的<code>--release-debuginfo</code>选项表示<code>RelWithDebInfo</code>模式来进行编译；</p>
+<p>其他如<code>--release</code>选项表示版本追求了最大的性能优化，抛弃了调试信息；</p>
+<p><code>--debug</code>选项表示版本保留了全部的调试信息，而放弃了速度的优化；</p>
+<p><code>--release-debuginfo</code>选项表示版本结合了两者的优点，为了迅速的执行，代码经过了优化，但同时在编译期间也生成了调试用的数据和部分调试行，这让 debugger 有机会 catch 到出问题的代码空间是哪个部分。</p>
+<p>不过，在实际开发中，这种有限的调试信息往往只能作为参考，如果确实需要寻找问题或加挂 debugger，还是需要使用 Debug 模式来编译。</p>
+<ul>
+<li>项目结构</li>
+</ul>
+<p><img src="http://oqleb1k16.bkt.clouddn.com/18-3-28/25339637.jpg" alt=""></p>
+<p>Swift 标准库的源码大部分存放在<code>swift/stdlib/public</code>中，其中<code>core</code>文件夹下包括标准库中如<code>String</code>，<code>Array</code>等主要类型；<code>SDK</code>文件夹下是针对对应平台的代码、框架相关代码如 UIKit 和 Foundation等。</p>
+<p>在macOS下，用ninja进行编译后的产品会被放在<code>build/Ninja-RelWithDebInfoAssert/swift-macosx-x86_64</code>下，如<br><img src="http://oqleb1k16.bkt.clouddn.com/18-3-29/7578028.jpg" alt=""></p>
+<ul>
+<li>更新项目</li>
+</ul>
+<p>再次使用<code>./swift/utils/update-checkout</code>就可以将包括Swift自身在内的所有项目更新到最新的 master。</p>
+<ul>
+<li>测试</li>
+</ul>
+<p>Swift项目的测试主要位于<code>swift/test</code>和<code>swift/validation-test</code>下，前者是一般性的测试，后者包含了功能验证和回归测试。</p>
+<p>可使用下面命令运行所有测试：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># -r 编译并运行 test</div><div class="line">./swift/utils/build-script -r -t</div><div class="line"></div><div class="line"># -r 编译并运行 validation test</div><div class="line">./swift/utils/build-script -r -T</div></pre></td></tr></table></figure>
+<p>只要运行一过一次测试，测试套件将会被生成并放在编译结果文件夹的对应<code>test</code>或<code>validation-test</code>文件夹下。我们可以通过<code>utils/lit</code>下的<code>lit.py</code>工具来指定只运行某一套或者某一个测试。</p>
 
       
     </div>
@@ -365,8 +395,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/25/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2018/03/27/android/Android的进程和线程/" rel="next" title="Android的进程和线程">
+                <i class="fa fa-chevron-left"></i> Android的进程和线程
               </a>
             
           </div>
@@ -375,8 +405,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/05/27/architecture/scrum/" rel="prev" title="基于Scrum的App迭代管理">
-                基于Scrum的App迭代管理 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/12/android/如何让Swift在Android上运行/" rel="prev" title="如何让Swift在Android上运行？">
+                如何让Swift在Android上运行？ <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -424,8 +454,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars3.githubusercontent.com/u/4849945?v=3&u=2fc94e38699ed5ca25f46fe2c62682991c8faa21&s=400"
@@ -498,6 +537,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#开发环境和项目结构"><span class="nav-number">1.</span> <span class="nav-text">开发环境和项目结构</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
