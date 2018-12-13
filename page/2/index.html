@@ -254,6 +254,138 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://begodya.com/2017/06/28/architecture/MVVM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bei Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/4849945?v=3&u=2fc94e38699ed5ca25f46fe2c62682991c8faa21&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Begodya">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/28/architecture/MVVM/" itemprop="url">MVVM简析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T16:19:53+08:00">
+                2017-06-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="MVVM结构图"><a href="#MVVM结构图" class="headerlink" title="* MVVM结构图"></a>* MVVM结构图</h5><p><img src="http://oqleb1k16.bkt.clouddn.com/17-6-28/58010754.jpg" alt=""></p>
+<p>MVVM除了由Model、View、View-Model组成外，还有一个非常重要的隐含组件Binder：</p>
+<ol>
+<li><p>Model：源数据（来自数据库、网络请求等）。</p>
+</li>
+<li><p>View：由View和Controller组成，负责UI展示，绑定ViewModel中的属性，触发View-Model中的命令以及呈现由ViewModel提供的数据。</p>
+</li>
+<li><p>View-Model：它的主要职责一是作为表现视图显示自身所需要的静态模型；二是收集、解释和转换这些数据。主要是从MVC的Controller中抽取出来的展示逻辑，负责从Model中获取View所需要的数据，转换成View可以展示的数据，并暴露公开的属性和命令供View进行绑定。</p>
+</li>
+<li><p>Binder：主要是实现View和ViewModel间的数据绑定。</p>
+</li>
+</ol>
+<h5 id="MVVM与MVC联系"><a href="#MVVM与MVC联系" class="headerlink" title="* MVVM与MVC联系"></a>* MVVM与MVC联系</h5><p>根据MVC和MVVM的职责划分，图解更清晰地反映出实际开发中组件间的关系方法，视图区块尺寸大致可以理解成它们对应负责的工作量，可以看出ViewController和View-Model间有大块工作上的重合，也可以看出ViewController在MVVM中有一部分是和View重合的。</p>
+<p><img src="http://oqleb1k16.bkt.clouddn.com/17-6-28/47436687.jpg" alt=""></p>
+<p>View-Model一词的确不能充分表达其职责，无法顾名思义。View Coordinator可能更好的表达View-Model的意图，View-Model从必要的资源（数据库、网络请求等）中获取原始数据，根据视图的展示逻辑，并处理成View(Controller)的展示数据。</p>
+<p>View-Model存在的目的在于抽离ViewController中展示的业务逻辑，也就是MVC中C和MVVM中VM的重合部分，而不是替代ViewController。</p>
+<p>MVVM动态变形：</p>
+<p><img src="http://oqleb1k16.bkt.clouddn.com/17-6-28/98200354.jpg" alt=""></p>
+<p>MVVM最终形态：</p>
+<p><img src="http://oqleb1k16.bkt.clouddn.com/17-6-28/83426722.jpg" alt=""></p>
+<h5 id="MVVM模块层级图"><a href="#MVVM模块层级图" class="headerlink" title="* MVVM模块层级图"></a>* MVVM模块层级图</h5><p><img src="http://oqleb1k16.bkt.clouddn.com/17-6-28/34399251.jpg" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://begodya.com/2017/06/01/world/嵊泗/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -789,7 +921,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
