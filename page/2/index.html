@@ -254,6 +254,190 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://begodya.com/2017/08/01/iOS/iOS App启动优化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bei Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/4849945?v=3&u=2fc94e38699ed5ca25f46fe2c62682991c8faa21&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Begodya">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/01/iOS/iOS App启动优化/" itemprop="url">iOS App启动优化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-01T10:58:40+08:00">
+                2017-08-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>T（App总启动时间）= T1（Main()之前的加载时间）+ T2（Main()之后的加载时间）</p>
+<p>T1 = 系统dylib（动态链接库）和自身App可执行文件的加载</p>
+<p>T2 = Main()方法执行之后到AppDelegat类中的<code>- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions</code>方法执行结束前的这段时间，主要是构建每一个页面，并完成渲染展示</p>
+<h4 id="T1优化"><a href="#T1优化" class="headerlink" title="T1优化"></a>T1优化</h4><p>如何统计T1的耗时呢？苹果官方提供了一种方法，在真机调试的时候勾选<code>DYLD_PRINT_STATISTICS</code>选项，如下图所示：<br><img src="http://oqleb1k16.bkt.clouddn.com/17-8-1/11834328.jpg" alt=""></p>
+<p>启动App后会得到如下形式的输出：<br><img src="http://oqleb1k16.bkt.clouddn.com/17-8-1/98374100.jpg" alt=""></p>
+<p>现在来看看动态链接库加载的具体流程，分为四步：</p>
+<ol>
+<li>dylib loading</li>
+<li>rebase/binding</li>
+<li>ObjC setup</li>
+<li>initializers</li>
+</ol>
+<h6 id="dylib-loading"><a href="#dylib-loading" class="headerlink" title="dylib loading"></a>dylib loading</h6><p>在每个动态库的加载过程中，dylib需要：</p>
+<ol>
+<li>分析所依赖的动态库</li>
+<li>找到动态库的mach-o文件</li>
+<li>打开文件</li>
+<li>验证文件</li>
+<li>在系统核心注册文件签名</li>
+<li>对动态库的每一个segment调用mmap()</li>
+</ol>
+<p>通常，一个App需要加载100到400个dylibs，其中的系统库被优化，可以很快加载。针对这一步骤优化项如下：</p>
+<ol>
+<li>减少非系统库的依赖</li>
+<li>合并非系统库</li>
+<li>使用静态资源，比如把代码加入主程序</li>
+</ol>
+<h6 id="rebase-binding"><a href="#rebase-binding" class="headerlink" title="rebase/binding"></a>rebase/binding</h6><p>由于ASLR(address space layout randomization)的存在，可执行文件和动态链接库在虚拟内存中加载地址每次启动都不固定，所以需要这两步来修复镜像中的资源指针，来指向正确的地址。rebase修复的是指向当前镜像内部的资源指针；binding指向的是镜像外部的资源指针。</p>
+<p>rebase步骤先进行，需要把镜像读入内存，并以page为单位加密验证，保证不会被篡改，所以这一步的瓶颈在IO。binding在其后进行，由于要查询符号表，来指向跨镜像的资源，加上在rebase阶段，镜像已经被读入和加密验证，所以这一步的瓶颈在于CPU计算。</p>
+<p>通过命令行可以查看相关的资源指针：</p>
+<p><code>xcrun dyldinfo -rebase -bind -lazy_bind /Users/BeiWang/Desktop/SZ/Production/iOS/ShanZhenV1.0.0\ 2016-08-03\ 16-12-15/ShanZhen/Payload/ShanZhen.app/ShanZhen</code></p>
+<p><img src="http://oqleb1k16.bkt.clouddn.com/17-8-1/45743236.jpg" alt=""></p>
+<p>优化该阶段的关键在于减少__DATA segment中的指针数量，可以优化的点有：</p>
+<ol>
+<li>减少ObjC类数量，减少selector数量</li>
+<li>减少C++虚函数数量</li>
+<li>转而使用swift struct（其实本质上就是减少符号的数量）</li>
+</ol>
+<h6 id="ObjC-setup"><a href="#ObjC-setup" class="headerlink" title="ObjC setup"></a>ObjC setup</h6><p>这一步的主要工作是：</p>
+<ol>
+<li>注册ObjC类</li>
+<li>把category的定义插入方法列表</li>
+<li>保证每一个selector唯一</li>
+</ol>
+<h6 id="initializers"><a href="#initializers" class="headerlink" title="initializers"></a>initializers</h6><p>以上三步属于静态调整，都是在修改 __DATA segment中的内容，而这里开始动态调整，开始在堆和堆栈中写入内容。在这里的工作有：</p>
+<ol>
+<li>ObjC的<code>+load()</code>函数</li>
+<li>C++的构造函数属性函数</li>
+<li>非基本类型的C++静态全局变量的创建（通常是类或结构体）</li>
+</ol>
+<p>总而言之，对于Main()调用之前的耗时可以优化的点如下：</p>
+<ol>
+<li>减少不必要的framework，因为动态链接比较耗时</li>
+<li>check framework应当设为optional和required，如果该framework在当前App支持的所有iOS系统版本都存在，那么就设为required，否则设为optional，因为optional会有额外的检查</li>
+<li>合并或删减一些OC类，可使用AppCode代码检查功能清理项目中没用到的类</li>
+<li>删减一些无用的静态变量</li>
+<li>删减没有被调用到或已经废弃的方法</li>
+<li>将不必须在<code>+load()</code>方法中做的事情延迟到<code>+initialize()</code>中进行</li>
+<li>尽量不要用C++虚函数（创建虚函数表有开销）</li>
+</ol>
+<h4 id="T2优化"><a href="#T2优化" class="headerlink" title="T2优化"></a>T2优化</h4><p>在Main()被调用之后，App的主要工作就是初始化必要的服务，显示首页内容等。App通常在AppDelegate类中的<code>- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions</code>方法中创建首页需要展示的View，然后在当前runloop的末尾，主要调用CA:Transaction:commit完成视图的渲染。而视图的渲染主要涉及四个阶段：</p>
+<ol>
+<li>准备阶段，主要是图片的解码</li>
+<li>布局阶段，首页所有UIView的<code>- (void)layoutSubViews()</code>运行</li>
+<li>绘制阶段，首页所有UIView的<code>- (void)drawRect:(CGRect)rect</code>运行</li>
+<li>启动之后，必要服务的启动、必要数据的创建和读取</li>
+</ol>
+<p>因此，对于Main()函数调用之后可以优化的点如下：</p>
+<ol>
+<li>不使用xib，直接使用代码加载首页视图</li>
+<li>每次用NSLog方式打印会隐式创建一个Calendar，因此需要删减启动时各业务方打的log，或仅仅针对内测版输出log</li>
+<li>梳理应用启动时发送的所有网络请求，是否可以统一在异步线程中请求</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://begodya.com/2017/06/28/architecture/MVVM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -921,7 +1105,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

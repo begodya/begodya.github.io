@@ -90,27 +90,20 @@
 
 
 
-<meta name="description" content="2017年5月29日，端午前夕，上海天气晴朗 路线从南浦大桥集散地，乘车约一个半小时至沈家湾码头，再乘船约一个小时至李柱山码头。 酒店李柱山码头位于嵊泗本岛的最北端，酒店在最南端，濒临南长途沙滩，两地相隔近十公里；吹着海风，看着海景也是相当宜人的。   山路小岛天气舒适，空气清新，海风阵阵，沿海山路干净整洁，植被繁茂。   基湖嵊泗本岛有两处沙滩，基湖沙滩周边商业开发齐全，周边旅馆、餐饮、交通比较">
+<meta name="description" content="mpvue 是美团基于 vue 开发的一个开发小程序框架，从而用 vue 的语法来开发小程序。在生命周期上，mpvue 同时支持 vue 和小程序的生命周期。  问题  从A跳转至B页面后，如何通知A当前B页面生命周期已经结束？  解决方案  通过本地Storage设置存储字段，来标志目标状态 通过在globalData中设置全局变量，来标志目标状态 通过绑定在wx.$isSucceeedCall">
 <meta property="og:type" content="article">
-<meta property="og:title" content="世界迷雾之嵊泗">
-<meta property="og:url" content="http://begodya.com/2017/06/01/world/嵊泗/index.html">
+<meta property="og:title" content="mpvue页面回调解决方案">
+<meta property="og:url" content="http://begodya.com/2018/12/19/hybrid/mpvue页面回调解决方案/index.html">
 <meta property="og:site_name" content="Begodya">
-<meta property="og:description" content="2017年5月29日，端午前夕，上海天气晴朗 路线从南浦大桥集散地，乘车约一个半小时至沈家湾码头，再乘船约一个小时至李柱山码头。 酒店李柱山码头位于嵊泗本岛的最北端，酒店在最南端，濒临南长途沙滩，两地相隔近十公里；吹着海风，看着海景也是相当宜人的。   山路小岛天气舒适，空气清新，海风阵阵，沿海山路干净整洁，植被繁茂。   基湖嵊泗本岛有两处沙滩，基湖沙滩周边商业开发齐全，周边旅馆、餐饮、交通比较">
-<meta property="og:image" content="http://oqleb1k16.bkt.clouddn.com/17-6-1/79761278.jpg">
-<meta property="og:image" content="http://oqleb1k16.bkt.clouddn.com/17-6-1/96750842.jpg">
-<meta property="og:image" content="http://oqleb1k16.bkt.clouddn.com/17-6-1/71163196.jpg">
-<meta property="og:image" content="http://oqleb1k16.bkt.clouddn.com/17-6-1/43059808.jpg">
-<meta property="og:image" content="http://oqleb1k16.bkt.clouddn.com/17-6-1/77928929.jpg">
-<meta property="og:image" content="http://oqleb1k16.bkt.clouddn.com/17-6-1/7213467.jpg">
-<meta property="og:image" content="http://oqleb1k16.bkt.clouddn.com/17-6-1/93196142.jpg">
-<meta property="og:image" content="http://oqleb1k16.bkt.clouddn.com/17-6-1/6634964.jpg">
-<meta property="og:image" content="http://oqleb1k16.bkt.clouddn.com/17-6-1/60566947.jpg">
-<meta property="og:image" content="http://oqleb1k16.bkt.clouddn.com/17-6-1/66856448.jpg">
-<meta property="og:updated_time" content="2017-06-01T07:20:48.000Z">
+<meta property="og:description" content="mpvue 是美团基于 vue 开发的一个开发小程序框架，从而用 vue 的语法来开发小程序。在生命周期上，mpvue 同时支持 vue 和小程序的生命周期。  问题  从A跳转至B页面后，如何通知A当前B页面生命周期已经结束？  解决方案  通过本地Storage设置存储字段，来标志目标状态 通过在globalData中设置全局变量，来标志目标状态 通过绑定在wx.$isSucceeedCall">
+<meta property="og:image" content="https://0d077ef9e74d8.cdn.sohucs.com/rcF4lM0_png">
+<meta property="og:image" content="https://0d077ef9e74d8.cdn.sohucs.com/rcF4lLO_png">
+<meta property="og:image" content="https://0d077ef9e74d8.cdn.sohucs.com/rcF4lM9_png">
+<meta property="og:updated_time" content="2018-12-19T09:10:30.065Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="世界迷雾之嵊泗">
-<meta name="twitter:description" content="2017年5月29日，端午前夕，上海天气晴朗 路线从南浦大桥集散地，乘车约一个半小时至沈家湾码头，再乘船约一个小时至李柱山码头。 酒店李柱山码头位于嵊泗本岛的最北端，酒店在最南端，濒临南长途沙滩，两地相隔近十公里；吹着海风，看着海景也是相当宜人的。   山路小岛天气舒适，空气清新，海风阵阵，沿海山路干净整洁，植被繁茂。   基湖嵊泗本岛有两处沙滩，基湖沙滩周边商业开发齐全，周边旅馆、餐饮、交通比较">
-<meta name="twitter:image" content="http://oqleb1k16.bkt.clouddn.com/17-6-1/79761278.jpg">
+<meta name="twitter:title" content="mpvue页面回调解决方案">
+<meta name="twitter:description" content="mpvue 是美团基于 vue 开发的一个开发小程序框架，从而用 vue 的语法来开发小程序。在生命周期上，mpvue 同时支持 vue 和小程序的生命周期。  问题  从A跳转至B页面后，如何通知A当前B页面生命周期已经结束？  解决方案  通过本地Storage设置存储字段，来标志目标状态 通过在globalData中设置全局变量，来标志目标状态 通过绑定在wx.$isSucceeedCall">
+<meta name="twitter:image" content="https://0d077ef9e74d8.cdn.sohucs.com/rcF4lM0_png">
 
 
 
@@ -138,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://begodya.com/2017/06/01/world/嵊泗/"/>
+  <link rel="canonical" href="http://begodya.com/2018/12/19/hybrid/mpvue页面回调解决方案/"/>
 
 
 
 
 
-  <title>世界迷雾之嵊泗 | Begodya</title>
+  <title>mpvue页面回调解决方案 | Begodya</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -264,7 +257,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://begodya.com/2017/06/01/world/嵊泗/">
+    <link itemprop="mainEntityOfPage" href="http://begodya.com/2018/12/19/hybrid/mpvue页面回调解决方案/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bei Wang">
@@ -281,7 +274,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">世界迷雾之嵊泗</h1>
+          <h1 class="post-title" itemprop="name headline">mpvue页面回调解决方案</h1>
         
 
         <div class="post-meta">
@@ -293,8 +286,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-01T14:24:56+08:00">
-                2017-06-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-19T11:48:30+08:00">
+                2018-12-19
               </time>
             
 
@@ -328,18 +321,39 @@
       
 
       
-        <p>2017年5月29日，端午前夕，上海天气晴朗</p>
-<h2 id="路线"><a href="#路线" class="headerlink" title="路线"></a>路线</h2><p>从南浦大桥集散地，乘车约一个半小时至沈家湾码头，再乘船约一个小时至李柱山码头。<br><img src="http://oqleb1k16.bkt.clouddn.com/17-6-1/79761278.jpg" alt=""></p>
-<h2 id="酒店"><a href="#酒店" class="headerlink" title="酒店"></a>酒店</h2><p>李柱山码头位于嵊泗本岛的最北端，酒店在最南端，濒临南长途沙滩，两地相隔近十公里；吹着海风，看着海景也是相当宜人的。<br><img src="http://oqleb1k16.bkt.clouddn.com/17-6-1/96750842.jpg" alt=""></p>
-<p><img src="http://oqleb1k16.bkt.clouddn.com/17-6-1/71163196.jpg" alt=""></p>
-<p><img src="http://oqleb1k16.bkt.clouddn.com/17-6-1/43059808.jpg" alt=""></p>
-<h2 id="山路"><a href="#山路" class="headerlink" title="山路"></a>山路</h2><p>小岛天气舒适，空气清新，海风阵阵，沿海山路干净整洁，植被繁茂。<br><img src="http://oqleb1k16.bkt.clouddn.com/17-6-1/77928929.jpg" alt=""></p>
-<p><img src="http://oqleb1k16.bkt.clouddn.com/17-6-1/7213467.jpg" alt=""></p>
-<p><img src="http://oqleb1k16.bkt.clouddn.com/17-6-1/93196142.jpg" alt=""></p>
-<h2 id="基湖"><a href="#基湖" class="headerlink" title="基湖"></a>基湖</h2><p>嵊泗本岛有两处沙滩，基湖沙滩周边商业开发齐全，周边旅馆、餐饮、交通比较便利；而另一处南长途沙滩，尚在开发中，游客较少，周边的航海广场也是门可罗雀；不过两处沙滩相距也仅三四公里，步行三四十分钟即可到达。<br><img src="http://oqleb1k16.bkt.clouddn.com/17-6-1/6634964.jpg" alt=""></p>
-<p><img src="http://oqleb1k16.bkt.clouddn.com/17-6-1/60566947.jpg" alt=""></p>
-<p><img src="http://oqleb1k16.bkt.clouddn.com/17-6-1/66856448.jpg" alt=""></p>
-<p>在嵊泗本岛环岛游两天，大多游客主要集中在菜园镇附近，是一个适合短期的休闲度假，放松心情的好去处~</p>
+        <p>mpvue 是美团基于 vue 开发的一个开发小程序框架，从而用 vue 的语法来开发小程序。在生命周期上，mpvue 同时支持 vue 和小程序的生命周期。</p>
+<ul>
+<li>问题</li>
+</ul>
+<p>从A跳转至B页面后，如何通知A当前B页面生命周期已经结束？</p>
+<ul>
+<li><p>解决方案</p>
+<ol>
+<li>通过本地Storage设置存储字段，来标志目标状态</li>
+<li>通过在globalData中设置全局变量，来标志目标状态</li>
+<li>通过绑定在<code>wx.$isSucceeedCallback</code>下</li>
+<li>在B页面内，通过获取小程序当前的页面栈结构[A, B]，取出A对象并更新A内相应的成员变量</li>
+</ol>
+</li>
+<li><p>问题引申</p>
+</li>
+</ul>
+<p>对于第四种解决方案，在小程序原生开发框架内，可正常修改标志</p>
+<p>A页面内标志变量定义，及B销毁后处理逻辑：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Page(&#123;</div><div class="line">  data: &#123;</div><div class="line">    isSucceeedCallback: false // B页面成功回调</div><div class="line">  &#125;,</div><div class="line">  onShow: function() &#123;</div><div class="line">	if (this.data.isSucceeedCallback) &#123;</div><div class="line">      this.setData(&#123;</div><div class="line">        isSucceeedCallback: false</div><div class="line">      &#125;)</div><div class="line">      this.toSomeLogic();</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"> &#125;)</div></pre></td></tr></table></figure>
+<p>B页面内，生命周期销毁前，更新标志即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// 回退到上一页面</div><div class="line">var pages = getCurrentPages();</div><div class="line">var prevPage = pages[pages.length - 2];</div><div class="line">prevPage.setData(&#123;</div><div class="line">  isSucceeedCallback: true</div><div class="line">&#125;)</div><div class="line"></div><div class="line">wx.navigateBack(&#123;</div><div class="line">  delta: 1</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>而在mpvue框架下，更新了页面内属性结构，导致出现如下情况：</p>
+<p><img src="https://0d077ef9e74d8.cdn.sohucs.com/rcF4lM0_png" alt=""></p>
+<p>在B页面内通过页面栈更改A内标志：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">let pages = getCurrentPages()</div><div class="line">let prevPage = pages[pages.length - 2]</div><div class="line"></div><div class="line">// 方法一：通过mpvue结构来更新</div><div class="line">prevPage.data.$root[&apos;0&apos;].isSucceeedCallback = true</div><div class="line"></div><div class="line">// 方法二：通过小程序setData来更新</div><div class="line">prevPage.setData(&#123; isSucceeedCallback: true &#125;)</div></pre></td></tr></table></figure>
+<p><img src="https://0d077ef9e74d8.cdn.sohucs.com/rcF4lLO_png" alt=""></p>
+<p>返回至A页面内，通过方案一发现A内的标志属性只是在B内被更新成功，A内成员属性并未发生改变；而通过二会在 data 里新增变量<code>isSucceeedCallback</code>，此标志属性更新成功。</p>
+<p><img src="https://0d077ef9e74d8.cdn.sohucs.com/rcF4lM9_png" alt=""></p>
+<ul>
+<li>总结</li>
+</ul>
+<p>在mpvue内，通过页面栈获取的对象，属于成员变量，只在当前页面内有效，无法达到页面回调效果。</p>
 
       
     </div>
@@ -376,8 +390,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/27/architecture/scrum/" rel="next" title="基于Scrum的App迭代管理">
-                <i class="fa fa-chevron-left"></i> 基于Scrum的App迭代管理
+              <a href="/2018/11/28/hybrid/客户端跨平台解决方案/" rel="next" title="客户端跨平台解决方案">
+                <i class="fa fa-chevron-left"></i> 客户端跨平台解决方案
               </a>
             
           </div>
@@ -385,10 +399,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/28/architecture/MVVM/" rel="prev" title="MVVM简析">
-                MVVM简析 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -435,17 +445,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars3.githubusercontent.com/u/4849945?v=3&u=2fc94e38699ed5ca25f46fe2c62682991c8faa21&s=400"
@@ -518,22 +519,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#路线"><span class="nav-number">1.</span> <span class="nav-text">路线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#酒店"><span class="nav-number">2.</span> <span class="nav-text">酒店</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#山路"><span class="nav-number">3.</span> <span class="nav-text">山路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基湖"><span class="nav-number">4.</span> <span class="nav-text">基湖</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
