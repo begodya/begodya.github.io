@@ -322,49 +322,42 @@
       
         
           
-            <h3 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h3><p><img src="https://images2015.cnblogs.com/blog/347002/201603/347002-20160317004252474-1628947975.png" alt=""></p>
+            <h3 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h3><p><img src="https://s2.ax1x.com/2019/03/25/AtBC1e.png" alt=""></p>
 <p>以<code>&lt;div&gt;&lt;/div&gt;</code>为例，<code>&lt;div&gt;&lt;/div&gt;</code>被浏览器解析后会生成<code>div</code>元素并添加到DOM树中，CSS作用的对象不是DOM树，而是根据DOM树生成的Render树，BFC就是Render树的节点。</p>
-<p>#####方法</p>
-<ul>
+<h5 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h5><ul>
 <li>float：不为none</li>
 <li>position：不为relative、static</li>
 <li>overflow：不为hidden</li>
 <li>display：table-cell、table-caption、inline-block</li>
 </ul>
-<p>#####结构</p>
-<ul>
+<h5 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h5><ul>
 <li>content box（必备）</li>
 <li>padding box</li>
 <li>border box</li>
 <li>margin box</li>
 </ul>
-<p>#####作用</p>
-<ul>
+<h5 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h5><ul>
 <li>清除浮动</li>
 <li>自适应两栏布局</li>
 <li>防止margin合并</li>
 </ul>
-<p>#####注意</p>
-<ul>
+<h5 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h5><ul>
 <li>CSS使用于Box，而不是作用于Element</li>
 <li>JS无法操作Box</li>
 <li>同一个BFC的两个Box，margin会有重叠</li>
 </ul>
-<p>#####误区</p>
-<ul>
+<h5 id="误区"><a href="#误区" class="headerlink" title="误区"></a>误区</h5><ul>
 <li>通过width/height属性设置div元素的宽/高（错误）</li>
 <li>CSS属性width/height作用于div元素所产生的Box，而不是Element本身</li>
 <li>BFC有4个Box组成，那width/height到底作用于哪个Box？</li>
 </ul>
-<h3 id="IFC"><a href="#IFC" class="headerlink" title="IFC"></a>IFC</h3><p>#####因素</p>
-<ul>
+<h3 id="IFC"><a href="#IFC" class="headerlink" title="IFC"></a>IFC</h3><h5 id="因素"><a href="#因素" class="headerlink" title="因素"></a>因素</h5><ul>
 <li>font-size</li>
 <li>line-height</li>
 <li>height</li>
 <li>vertical-aligin</li>
 </ul>
-<p>#####注意</p>
-<ul>
+<h5 id="注意-1"><a href="#注意-1" class="headerlink" title="注意"></a>注意</h5><ul>
 <li>inline-level box的高度是由字体字号大小决定的</li>
 <li>inline-level box的宽度是由content+padding+border+margin决定的</li>
 <li>inline-level box宽度大于父容器的宽度时会被拆分成多个inline-level box</li>
@@ -382,13 +375,11 @@
 <li>display: flex;</li>
 <li>display: inline-flex;</li>
 </ul>
-<p>#####布局实例</p>
-<ul>
+<h5 id="布局实例"><a href="#布局实例" class="headerlink" title="布局实例"></a>布局实例</h5><ul>
 <li><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="external">Flex 布局教程：语法篇</a></li>
 <li><a href="http://static.vgee.cn/static/index.html" target="_blank" rel="external">Flex 布局示例</a></li>
 </ul>
-<p>#####注意</p>
-<ul>
+<h5 id="注意-2"><a href="#注意-2" class="headerlink" title="注意"></a>注意</h5><ul>
 <li>设为 Flex 布局以后，子元素的float、clear和vertical-align属性将失效</li>
 </ul>
 
@@ -571,16 +562,14 @@
 </ul>
 </li>
 </ol>
-<p>####每日一题</p>
-<ol>
+<h4 id="每日一题"><a href="#每日一题" class="headerlink" title="每日一题"></a>每日一题</h4><ol>
 <li>IFC的宽高各是由什么决定的？</li>
 <li>JavaScript到底是不是单线程？</li>
 <li>[“1”, “2”, “3”].map(parseInt)</li>
 <li>何为重绘和回流，如何优化？</li>
 <li>Promise 构造函数是同步执行还是异步执行，那么 then 方法呢？</li>
 </ol>
-<p>####理论知识</p>
-<ol>
+<h4 id="理论知识"><a href="#理论知识" class="headerlink" title="理论知识"></a>理论知识</h4><ol>
 <li>http 标准</li>
 <li><p>W3C 标准</p>
 <ul>
