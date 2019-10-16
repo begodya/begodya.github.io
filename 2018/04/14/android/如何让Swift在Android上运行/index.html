@@ -1,0 +1,762 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Swift标准库可以在armv7的Android机上编译，意味着可以在移动设备执行Swift代码来运行Android。以下为指导方案：  如何在Android设备上运行样例程序“Hello, world”？ 如何在目标Android系统和Android设备上运行Swift测试组件？  FAQ是否意味着可以使用Swift来编写Android应用程序？不是的。虽然Swift编译器可以在Android设">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何让Swift在Android上运行？">
+<meta property="og:url" content="http://begodya.com/2018/04/14/android/如何让Swift在Android上运行/index.html">
+<meta property="og:site_name" content="Begodya">
+<meta property="og:description" content="Swift标准库可以在armv7的Android机上编译，意味着可以在移动设备执行Swift代码来运行Android。以下为指导方案：  如何在Android设备上运行样例程序“Hello, world”？ 如何在目标Android系统和Android设备上运行Swift测试组件？  FAQ是否意味着可以使用Swift来编写Android应用程序？不是的。虽然Swift编译器可以在Android设">
+<meta property="og:updated_time" content="2018-04-14T06:05:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何让Swift在Android上运行？">
+<meta name="twitter:description" content="Swift标准库可以在armv7的Android机上编译，意味着可以在移动设备执行Swift代码来运行Android。以下为指导方案：  如何在Android设备上运行样例程序“Hello, world”？ 如何在目标Android系统和Android设备上运行Swift测试组件？  FAQ是否意味着可以使用Swift来编写Android应用程序？不是的。虽然Swift编译器可以在Android设">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://begodya.com/2018/04/14/android/如何让Swift在Android上运行/"/>
+
+
+
+
+
+  <title>如何让Swift在Android上运行？ | Begodya</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Begodya</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://begodya.com/2018/04/14/android/如何让Swift在Android上运行/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bei Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/4849945?v=3&u=2fc94e38699ed5ca25f46fe2c62682991c8faa21&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Begodya">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">如何让Swift在Android上运行？</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-14T14:05:21+08:00">
+                2018-04-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Swift标准库可以在armv7的Android机上编译，意味着可以在移动设备执行Swift代码来运行Android。以下为指导方案：</p>
+<ol>
+<li>如何在Android设备上运行样例程序“Hello, world”？</li>
+<li>如何在目标Android系统和Android设备上运行Swift测试组件？</li>
+</ol>
+<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><h3 id="是否意味着可以使用Swift来编写Android应用程序？"><a href="#是否意味着可以使用Swift来编写Android应用程序？" class="headerlink" title="是否意味着可以使用Swift来编写Android应用程序？"></a>是否意味着可以使用Swift来编写Android应用程序？</h3><p>不是的。虽然Swift编译器可以在Android设备上编译Swift代码，但编写App要比Swift标准库费事很多。你需要为你的应用编写一系列的图形交互框架，而这些Swift的标准库都没有提供。</p>
+<p>另外，理论上可以通过Swift调用Java接口，但不同于Objective-C，Swift编译器没有Swift到Java的桥接方法。</p>
+<h2 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h2><p>需要以下指导条件：</p>
+<ol>
+<li>一个可以编译Swift源码的Linux环境，特指 Ubuntu 16.04或者 Ubuntu 15.10( Ubuntu 14.04近期没有测试)。目前标准库仅支持在Linux环境上进行编译Android。在试图构建Android之前，请确保可以通过Swift工程中的 <code>README</code> 文件来编译Linux。</li>
+<li>最新版本Android NDK (r14) 可用下载地址：<a href="">http://developer.android.com/ndk/downloads/index.html</a></li>
+<li>一台可供远程调试的Android设备，需要远程调试是为了部署标准库到设备上。可以按照官方指导来打开远程调试：<a href="">https://developer.chrome.com/devtools/docs/remote-debugging</a></li>
+</ol>
+<h2 id="一：Anroid上的”Hello-world”"><a href="#一：Anroid上的”Hello-world”" class="headerlink" title="一：Anroid上的”Hello, world”"></a>一：Anroid上的”Hello, world”</h2><h3 id="1-下载（或编译）Swift-Android标准库依赖"><a href="#1-下载（或编译）Swift-Android标准库依赖" class="headerlink" title="1. 下载（或编译）Swift Android标准库依赖"></a>1. 下载（或编译）Swift Android标准库依赖</h3><p>需要注意的是，为了在Linux上编译Swift标准库，需要<code>apt-get install libicu-dev icu-devtools</code>。同样，为Android编译Swift标准库需要 <code>libiconv</code> 和 <code>libicu</code> 库。</p>
+<p>另外，如果你使用 Ubuntu 16.04，建议自己进行编译，步骤如下：</p>
+<ol>
+<li>确保已安装 <code>curl</code>, <code>autoconf</code>, <code>automake</code>, <code>libtool</code>, 和 <code>git</code>。</li>
+<li>Clone 工程[SwiftAndroid/libiconv-libicu-android]，通过命令 <code>git clone https://github.com/SwiftAndroid/libiconv-libicu-android.git</code>。</li>
+<li>命令行运行 <code>which ndk-build</code>，确保下载的Android NDK可执行，否则在 <code>PATH</code> 中添加Android NDK目录。</li>
+</ol>
+<h4 id="icu库中添加swift后缀"><a href="#icu库中添加swift后缀" class="headerlink" title="icu库中添加swift后缀"></a>icu库中添加<code>swift</code>后缀</h4><p>Android系统拥有自己的 icu 库，不同于我们生成的，并且与之有冲突。为了解决冲突，当Android设备中连接Swift标准库依赖时，我们需要在结尾添加<code>swift</code>后缀来更改icu库名，命令行进入<code>libiconv-libicu-android</code>目录，然后做以下步骤：</p>
+<p>创建<code>armeabi-v7a</code>目录，通过解压<code>icu4c-55_1-src.tgz</code>文件生成<code>icu</code>目录，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ mkdir armeabi-v7a</div><div class="line">$ cd armeabi-v7a</div><div class="line">$ tar xvf ../icu4c-55_1-src.tgz</div></pre></td></tr></table></figure>
+<p><strong>编辑icu配置文件</strong></p>
+<p>为了防止icu配置文件从内部符号中添加<code>swift</code>后缀，编辑文件<code>icu/source/configure</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">if test &quot;$ICULIBSUFFIX&quot; != &quot;&quot;</div><div class="line">then</div><div class="line">    U_HAVE_LIB_SUFFIX=1</div><div class="line">    ICULIBSUFFIXCNAME=`echo _$ICULIBSUFFIX | sed &apos;s/^A-Za-z0-9_/_/g&apos;`</div><div class="line">    UCONFIG_CPPFLAGS=&quot;$&#123;UCONFIG_CPPFLAGS&#125; -DU_HAVE_LIB_SUFFIX=1 -DU_LIB_SUFFIX_C_NAME=$&#123;ICULIBSUFFIXCNAME&#125; &quot;</div><div class="line">else</div><div class="line">    U_HAVE_LIB_SUFFIX=0</div><div class="line">fi</div></pre></td></tr></table></figure>
+<p>更改为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#if test &quot;$ICULIBSUFFIX&quot; != &quot;&quot;</div><div class="line">#then</div><div class="line">#    U_HAVE_LIB_SUFFIX=1</div><div class="line">#    ICULIBSUFFIXCNAME=`echo _$ICULIBSUFFIX | sed &apos;s/^A-Za-z0-9_/_/g&apos;`</div><div class="line">#    UCONFIG_CPPFLAGS=&quot;$&#123;UCONFIG_CPPFLAGS&#125; -DU_HAVE_LIB_SUFFIX=1 -DU_LIB_SUFFIX_C_NAME=$&#123;ICULIBSUFFIXCNAME&#125; &quot;</div><div class="line">#else</div><div class="line">    U_HAVE_LIB_SUFFIX=0</div><div class="line">#fi</div></pre></td></tr></table></figure>
+<p><strong><em>编辑文件build.sh</em></strong></p>
+<p>现在回退到<code>libiconv-libicu-android</code>根目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cd ..</div></pre></td></tr></table></figure>
+<p>为了防止<code>build.sh</code>重新生成icu目录和覆盖刚修改的<code>configure</code>文件，编辑<code>build.sh</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[ -e ../icu4c-55_1-src.tgz ] || exit 1</div><div class="line">tar xvf ../icu4c-55_1-src.tgz</div></pre></td></tr></table></figure>
+<p>更改为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#[ -e ../icu4c-55_1-src.tgz ] || exit 1</div><div class="line">#tar xvf ../icu4c-55_1-src.tgz</div></pre></td></tr></table></figure>
+<p>为了验证<code>libicuucswift.so</code>文件，修改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[ -e libicuuc.so ] || &#123;</div></pre></td></tr></table></figure>
+<p>为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[ -e libicuucswift.so ] || &#123;</div></pre></td></tr></table></figure>
+<p>然后在<code>configure</code>文件中增加<code>swift</code>后缀，修改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">./configure \</div><div class="line">--host=arm-linux-androideabi \</div><div class="line">--prefix=`pwd`/../../ \</div><div class="line">--with-cross-build=`pwd`/cross \</div><div class="line">--enable-static --enable-shared \</div><div class="line">|| exit 1</div></pre></td></tr></table></figure>
+<p>为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">./configure \</div><div class="line">--host=arm-linux-androideabi \</div><div class="line">--prefix=`pwd`/../../ \</div><div class="line">--with-library-suffix=swift \</div><div class="line">--with-cross-build=`pwd`/cross \</div><div class="line">--enable-static --enable-shared \</div><div class="line">|| exit 1</div></pre></td></tr></table></figure>
+<p>最后给每一个库文件名添加<code>swift</code>，修改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">for f in libicudata libicutest libicui18n libicuio libicule libiculx libicutu libicuuc; do</div></pre></td></tr></table></figure>
+<p>为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">for f in libicudataswift libicutestswift libicui18nswift libicuioswift libiculeswift libiculxswift libicutuswift libicuucswift; do</div></pre></td></tr></table></figure>
+<p><strong><em>运行build.sh</em></strong></p>
+<p>准备开始运行<code>build.sh</code>文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ./build.sh</div></pre></td></tr></table></figure>
+<p>确认在<code>libiconv-libicu-android</code>目录中创建<code>armeabi-v7a/icu/source/i18n</code>和<code>armeabi-v7a/icu/source/common</code>目录。</p>
+<h3 id="2-为Android编译Swift标准库"><a href="#2-为Android编译Swift标准库" class="headerlink" title="2. 为Android编译Swift标准库"></a>2. 为Android编译Swift标准库</h3><p>进入Swift目录，然后运行编译脚本，添加Android NDK路径，步骤如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ utils/build-script \</div><div class="line">    -R \                                       # Build in ReleaseAssert mode.</div><div class="line">    --android \                                # Build for Android.</div><div class="line">    --android-ndk /path/to/android-ndk-r14 \   # Path to an Android NDK.</div><div class="line">    --android-api-level 21 \                   # The Android API level to target. Swift only supports 21 or greater.</div><div class="line">    --android-icu-uc /path/to/libicu-android/armeabi-v7a \</div><div class="line">    --android-icu-uc-include /path/to/libicu-android/armeabi-v7a/icu/source/common \</div><div class="line">    --android-icu-i18n /path/to/libicu-android/armeabi-v7a \</div><div class="line">    --android-icu-i18n-include /path/to/libicu-android/armeabi-v7a/icu/source/i18n</div></pre></td></tr></table></figure>
+<h3 id="3-在Android设备上编译并运行hello-swift"><a href="#3-在Android设备上编译并运行hello-swift" class="headerlink" title="3. 在Android设备上编译并运行hello.swift"></a>3. 在Android设备上编译并运行<code>hello.swift</code></h3><p>创建一个名为<code>hello.swift</code>的Swift样例文件：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">print</span>(<span class="string">"Hello, Android"</span>)</div></pre></td></tr></table></figure>
+<p>为了成功编译，需要确保使用正确的链接。在<code>PATH</code>中增加gold链接：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo ln -s \</div><div class="line">    /path/to/android-ndk-r14/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/arm-linux-androideabi/bin/ld.gold \</div><div class="line">    /usr/bin/armv7-none-linux-androideabi-ld.gold</div></pre></td></tr></table></figure>
+<p>然后针对Android使用Swift编译器来编译Swift源码文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ build/Ninja-ReleaseAssert/swift-linux-x86_64/bin/swiftc \                      # The Swift compiler built in the previous step.</div><div class="line">                                                                                 # The location of the tools used to build Android binaries</div><div class="line">    -tools-directory /path/to/android-ndk-r14/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/arm-linux-androideabi/bin</div><div class="line">    -target armv7-none-linux-androideabi \                                       # Targeting android-armv7.</div><div class="line">    -sdk /path/to/android-ndk-r14/platforms/android-21/arch-arm \                # Use the same NDK path and API version as you used to build the stdlib in the previous step.</div><div class="line">    -L /path/to/android-ndk-r14/sources/cxx-stl/llvm-libc++/libs/armeabi-v7a \   # Link the Android NDK&apos;s libc++ and libgcc.</div><div class="line">    -L /path/to/android-ndk-r14/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/lib/gcc/arm-linux-androideabi/4.9.x \</div><div class="line">    hello.swift</div></pre></td></tr></table></figure>
+<p>这会在目录中生成一个<code>hello</code>可执行文件。如果试图使用Linux环境去运行这个可执行文件，会出现下面错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cannot execute binary file: Exec format error</div></pre></td></tr></table></figure>
+<p>这就是我们想要的错误：这是个可以在Android设备上运行的可执行文件，而不是在Linux上，我们可以把它部署在Android设备上去执行它。</p>
+<h3 id="4-在设备上部署构建的产品"><a href="#4-在设备上部署构建的产品" class="headerlink" title="4. 在设备上部署构建的产品"></a>4. 在设备上部署构建的产品</h3><p>可以使用<code>adb push</code>命令从Linux环境中复制一份构建的产品到Android设备上。如果还未安装<code>adb</code>，可以通过<code>apt-get</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install android-tools-adb</div></pre></td></tr></table></figure>
+<p>一旦完成安装<code>adb</code>，即可验证设备已经关联，当运行<code>adb devices</code>命令 - <strong>currently this example works only in devices / emulators with at least Android 7.0, API 24</strong> - 然后运行以下命令来复制Swift Android标准库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ adb push build/Ninja-ReleaseAssert/swift-linux-x86_64/lib/swift/android/libswiftCore.so /data/local/tmp</div><div class="line">$ adb push build/Ninja-ReleaseAssert/swift-linux-x86_64/lib/swift/android/libswiftGlibc.so /data/local/tmp</div><div class="line">$ adb push build/Ninja-ReleaseAssert/swift-linux-x86_64/lib/swift/android/libswiftSwiftOnoneSupport.so /data/local/tmp</div><div class="line">$ adb push build/Ninja-ReleaseAssert/swift-linux-x86_64/lib/swift/android/libswiftRemoteMirror.so /data/local/tmp</div><div class="line">$ adb push build/Ninja-ReleaseAssert/swift-linux-x86_64/lib/swift/android/libswiftSwiftExperimental.so /data/local/tmp</div></pre></td></tr></table></figure>
+<p>同样需要推送icu库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">adb push /path/to/libicu-android/armeabi-v7a/libicudataswift.so /data/local/tmp</div><div class="line">adb push /path/to/libicu-android/armeabi-v7a/libicui18nswift.so /data/local/tmp</div><div class="line">adb push /path/to/libicu-android/armeabi-v7a/libicuucswift.so /data/local/tmp</div></pre></td></tr></table></figure>
+<p>另外，还需要复制Android NDK的libc++：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ adb push /path/to/android-ndk-r14/sources/cxx-stl/llvm-libc++/libs/armeabi-v7a/libc++_shared.so /data/local/tmp</div></pre></td></tr></table></figure>
+<p>最后，需要复制在先前构建的<code>hello</code>可执行文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ adb push hello /data/local/tmp</div></pre></td></tr></table></figure>
+<h3 id="5-在Android设备上运行”Hello-world”"><a href="#5-在Android设备上运行”Hello-world”" class="headerlink" title="5. 在Android设备上运行”Hello, world”"></a>5. 在Android设备上运行”Hello, world”</h3><p>可以在Android设备上使用<code>adb shell</code>命令来执行<code>hello</code>可执行文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ adb shell LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/hello</div></pre></td></tr></table></figure>
+<p>将会看到如下输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Hello, Android</div></pre></td></tr></table></figure>
+<p>恭喜！已经完成在Android上的第一份Swift程序。</p>
+<h2 id="二：在Android设备上运行Swift测试组件"><a href="#二：在Android设备上运行Swift测试组件" class="headerlink" title="二：在Android设备上运行Swift测试组件"></a>二：在Android设备上运行Swift测试组件</h2><p>当运行测试组件的时候，构建的产品会自动推送到设备上。同第一部分一样，需要通过USB来关联Android设备：</p>
+<ol>
+<li>通过USB连接Android设备和电脑。确保按照官方指导打开远程调试：<a href="">https://developer.chrome.com/devtools/docs/remote-debugging</a>。</li>
+<li>运行<code>adb devices</code>确认设备已经连接，应该查看上设备列表。</li>
+<li>使用构建脚本运行测试：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$ utils/build-script \</div><div class="line">  -R \                                           # Build in ReleaseAssert mode.</div><div class="line">  -T \                                           # Run all tests.</div><div class="line">  --android \                                    # Build for Android.</div><div class="line">  --android-ndk ~/android-ndk-r13 \              # Path to an Android NDK.</div><div class="line">  --android-ndk-version 21 \</div><div class="line">  --android-icu-uc ~/libicu-android/armeabi-v7a/libicuuc.so \</div><div class="line">  --android-icu-uc-include ~/libicu-android/armeabi-v7a/icu/source/common \</div><div class="line">  --android-icu-i18n ~/libicu-android/armeabi-v7a/libicui18n.so \</div><div class="line">  --android-icu-i18n-include ~/libicu-android/armeabi-v7a/icu/source/i18n/</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/28/android/Android的进程和线程/" rel="next" title="Android的进程和线程">
+                <i class="fa fa-chevron-left"></i> Android的进程和线程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/04/iOS/Swift标准库源码阅读（一）/" rel="prev" title="Swift标准库源码阅读（一）">
+                Swift标准库源码阅读（一） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars3.githubusercontent.com/u/4849945?v=3&u=2fc94e38699ed5ca25f46fe2c62682991c8faa21&s=400"
+               alt="Bei Wang" />
+          <p class="site-author-name" itemprop="name">Bei Wang</p>
+           
+              <p class="site-description motion-element" itemprop="description">『修身养性，寻找灵感』</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/begodya" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/begodya" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3096695943/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#FAQ"><span class="nav-number">1.</span> <span class="nav-text">FAQ</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#是否意味着可以使用Swift来编写Android应用程序？"><span class="nav-number">1.1.</span> <span class="nav-text">是否意味着可以使用Swift来编写Android应用程序？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前提"><span class="nav-number">2.</span> <span class="nav-text">前提</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一：Anroid上的”Hello-world”"><span class="nav-number">3.</span> <span class="nav-text">一：Anroid上的”Hello, world”</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-下载（或编译）Swift-Android标准库依赖"><span class="nav-number">3.1.</span> <span class="nav-text">1. 下载（或编译）Swift Android标准库依赖</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#icu库中添加swift后缀"><span class="nav-number">3.1.1.</span> <span class="nav-text">icu库中添加swift后缀</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-为Android编译Swift标准库"><span class="nav-number">3.2.</span> <span class="nav-text">2. 为Android编译Swift标准库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-在Android设备上编译并运行hello-swift"><span class="nav-number">3.3.</span> <span class="nav-text">3. 在Android设备上编译并运行hello.swift</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-在设备上部署构建的产品"><span class="nav-number">3.4.</span> <span class="nav-text">4. 在设备上部署构建的产品</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-在Android设备上运行”Hello-world”"><span class="nav-number">3.5.</span> <span class="nav-text">5. 在Android设备上运行”Hello, world”</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二：在Android设备上运行Swift测试组件"><span class="nav-number">4.</span> <span class="nav-text">二：在Android设备上运行Swift测试组件</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bei Wang</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -254,7 +254,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://begodya.com/2018/03/28/iOS/Swift标准库源码阅读（一）/">
+    <link itemprop="mainEntityOfPage" href="http://begodya.com/2018/04/14/android/如何让Swift在Android上运行/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bei Wang">
@@ -273,7 +273,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/28/iOS/Swift标准库源码阅读（一）/" itemprop="url">Swift标准库源码阅读（一）</a></h1>
+                <a class="post-title-link" href="/2018/04/14/android/如何让Swift在Android上运行/" itemprop="url">如何让Swift在Android上运行？</a></h1>
         
 
         <div class="post-meta">
@@ -285,8 +285,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-28T15:24:47+08:00">
-                2018-03-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-14T14:05:21+08:00">
+                2018-04-14
               </time>
             
 
@@ -322,42 +322,90 @@
       
         
           
-            <h3 id="开发环境和项目结构"><a href="#开发环境和项目结构" class="headerlink" title="开发环境和项目结构"></a>开发环境和项目结构</h3><ul>
-<li>编译步骤</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"># 安装 cmake 和 ninja</div><div class="line">brew install cmake ninja</div><div class="line">    </div><div class="line">mkdir swift-source</div><div class="line">cd swift-source</div><div class="line"></div><div class="line"># 将 Swift 主项目 clone 到本地</div><div class="line">git clone https://github.com/apple/swift.git</div><div class="line"></div><div class="line"># 使用 update-checkout 脚本更新所有 repo</div><div class="line">./swift/utils/update-checkout --clone</div><div class="line"></div><div class="line">./swift/utils/build-script --release-debuginfo</div></pre></td></tr></table></figure>
-<ul>
-<li>编译Swift</li>
-</ul>
-<p><img src="http://oqleb1k16.bkt.clouddn.com/18-3-28/53284569.jpg" alt=""></p>
-<p><img src="http://oqleb1k16.bkt.clouddn.com/18-3-28/26935950.jpg" alt=""></p>
-<p><img src="http://oqleb1k16.bkt.clouddn.com/18-3-28/37463335.jpg" alt=""></p>
-<p>以上为机器配置，当前版本下整个全新编译的过程耗时为30分钟。</p>
-<ul>
-<li>编译模式</li>
-</ul>
-<p>编译脚本中的<code>--release-debuginfo</code>选项表示<code>RelWithDebInfo</code>模式来进行编译；</p>
-<p>其他如<code>--release</code>选项表示版本追求了最大的性能优化，抛弃了调试信息；</p>
-<p><code>--debug</code>选项表示版本保留了全部的调试信息，而放弃了速度的优化；</p>
-<p><code>--release-debuginfo</code>选项表示版本结合了两者的优点，为了迅速的执行，代码经过了优化，但同时在编译期间也生成了调试用的数据和部分调试行，这让 debugger 有机会 catch 到出问题的代码空间是哪个部分。</p>
-<p>不过，在实际开发中，这种有限的调试信息往往只能作为参考，如果确实需要寻找问题或加挂 debugger，还是需要使用 Debug 模式来编译。</p>
-<ul>
-<li>项目结构</li>
-</ul>
-<p><img src="http://oqleb1k16.bkt.clouddn.com/18-3-28/25339637.jpg" alt=""></p>
-<p>Swift 标准库的源码大部分存放在<code>swift/stdlib/public</code>中，其中<code>core</code>文件夹下包括标准库中如<code>String</code>，<code>Array</code>等主要类型；<code>SDK</code>文件夹下是针对对应平台的代码、框架相关代码如 UIKit 和 Foundation等。</p>
-<p>在macOS下，用ninja进行编译后的产品会被放在<code>build/Ninja-RelWithDebInfoAssert/swift-macosx-x86_64</code>下，如<br><img src="http://oqleb1k16.bkt.clouddn.com/18-3-29/7578028.jpg" alt=""></p>
-<ul>
-<li>更新项目</li>
-</ul>
-<p>再次使用<code>./swift/utils/update-checkout</code>就可以将包括Swift自身在内的所有项目更新到最新的 master。</p>
-<ul>
-<li>测试</li>
-</ul>
-<p>Swift项目的测试主要位于<code>swift/test</code>和<code>swift/validation-test</code>下，前者是一般性的测试，后者包含了功能验证和回归测试。</p>
-<p>可使用下面命令运行所有测试：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># -r 编译并运行 test</div><div class="line">./swift/utils/build-script -r -t</div><div class="line"></div><div class="line"># -r 编译并运行 validation test</div><div class="line">./swift/utils/build-script -r -T</div></pre></td></tr></table></figure>
-<p>只要运行一过一次测试，测试套件将会被生成并放在编译结果文件夹的对应<code>test</code>或<code>validation-test</code>文件夹下。我们可以通过<code>utils/lit</code>下的<code>lit.py</code>工具来指定只运行某一套或者某一个测试。</p>
+            <p>Swift标准库可以在armv7的Android机上编译，意味着可以在移动设备执行Swift代码来运行Android。以下为指导方案：</p>
+<ol>
+<li>如何在Android设备上运行样例程序“Hello, world”？</li>
+<li>如何在目标Android系统和Android设备上运行Swift测试组件？</li>
+</ol>
+<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><h3 id="是否意味着可以使用Swift来编写Android应用程序？"><a href="#是否意味着可以使用Swift来编写Android应用程序？" class="headerlink" title="是否意味着可以使用Swift来编写Android应用程序？"></a>是否意味着可以使用Swift来编写Android应用程序？</h3><p>不是的。虽然Swift编译器可以在Android设备上编译Swift代码，但编写App要比Swift标准库费事很多。你需要为你的应用编写一系列的图形交互框架，而这些Swift的标准库都没有提供。</p>
+<p>另外，理论上可以通过Swift调用Java接口，但不同于Objective-C，Swift编译器没有Swift到Java的桥接方法。</p>
+<h2 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h2><p>需要以下指导条件：</p>
+<ol>
+<li>一个可以编译Swift源码的Linux环境，特指 Ubuntu 16.04或者 Ubuntu 15.10( Ubuntu 14.04近期没有测试)。目前标准库仅支持在Linux环境上进行编译Android。在试图构建Android之前，请确保可以通过Swift工程中的 <code>README</code> 文件来编译Linux。</li>
+<li>最新版本Android NDK (r14) 可用下载地址：<a href="">http://developer.android.com/ndk/downloads/index.html</a></li>
+<li>一台可供远程调试的Android设备，需要远程调试是为了部署标准库到设备上。可以按照官方指导来打开远程调试：<a href="">https://developer.chrome.com/devtools/docs/remote-debugging</a></li>
+</ol>
+<h2 id="一：Anroid上的”Hello-world”"><a href="#一：Anroid上的”Hello-world”" class="headerlink" title="一：Anroid上的”Hello, world”"></a>一：Anroid上的”Hello, world”</h2><h3 id="1-下载（或编译）Swift-Android标准库依赖"><a href="#1-下载（或编译）Swift-Android标准库依赖" class="headerlink" title="1. 下载（或编译）Swift Android标准库依赖"></a>1. 下载（或编译）Swift Android标准库依赖</h3><p>需要注意的是，为了在Linux上编译Swift标准库，需要<code>apt-get install libicu-dev icu-devtools</code>。同样，为Android编译Swift标准库需要 <code>libiconv</code> 和 <code>libicu</code> 库。</p>
+<p>另外，如果你使用 Ubuntu 16.04，建议自己进行编译，步骤如下：</p>
+<ol>
+<li>确保已安装 <code>curl</code>, <code>autoconf</code>, <code>automake</code>, <code>libtool</code>, 和 <code>git</code>。</li>
+<li>Clone 工程[SwiftAndroid/libiconv-libicu-android]，通过命令 <code>git clone https://github.com/SwiftAndroid/libiconv-libicu-android.git</code>。</li>
+<li>命令行运行 <code>which ndk-build</code>，确保下载的Android NDK可执行，否则在 <code>PATH</code> 中添加Android NDK目录。</li>
+</ol>
+<h4 id="icu库中添加swift后缀"><a href="#icu库中添加swift后缀" class="headerlink" title="icu库中添加swift后缀"></a>icu库中添加<code>swift</code>后缀</h4><p>Android系统拥有自己的 icu 库，不同于我们生成的，并且与之有冲突。为了解决冲突，当Android设备中连接Swift标准库依赖时，我们需要在结尾添加<code>swift</code>后缀来更改icu库名，命令行进入<code>libiconv-libicu-android</code>目录，然后做以下步骤：</p>
+<p>创建<code>armeabi-v7a</code>目录，通过解压<code>icu4c-55_1-src.tgz</code>文件生成<code>icu</code>目录，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ mkdir armeabi-v7a</div><div class="line">$ cd armeabi-v7a</div><div class="line">$ tar xvf ../icu4c-55_1-src.tgz</div></pre></td></tr></table></figure>
+<p><strong>编辑icu配置文件</strong></p>
+<p>为了防止icu配置文件从内部符号中添加<code>swift</code>后缀，编辑文件<code>icu/source/configure</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">if test &quot;$ICULIBSUFFIX&quot; != &quot;&quot;</div><div class="line">then</div><div class="line">    U_HAVE_LIB_SUFFIX=1</div><div class="line">    ICULIBSUFFIXCNAME=`echo _$ICULIBSUFFIX | sed &apos;s/^A-Za-z0-9_/_/g&apos;`</div><div class="line">    UCONFIG_CPPFLAGS=&quot;$&#123;UCONFIG_CPPFLAGS&#125; -DU_HAVE_LIB_SUFFIX=1 -DU_LIB_SUFFIX_C_NAME=$&#123;ICULIBSUFFIXCNAME&#125; &quot;</div><div class="line">else</div><div class="line">    U_HAVE_LIB_SUFFIX=0</div><div class="line">fi</div></pre></td></tr></table></figure>
+<p>更改为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#if test &quot;$ICULIBSUFFIX&quot; != &quot;&quot;</div><div class="line">#then</div><div class="line">#    U_HAVE_LIB_SUFFIX=1</div><div class="line">#    ICULIBSUFFIXCNAME=`echo _$ICULIBSUFFIX | sed &apos;s/^A-Za-z0-9_/_/g&apos;`</div><div class="line">#    UCONFIG_CPPFLAGS=&quot;$&#123;UCONFIG_CPPFLAGS&#125; -DU_HAVE_LIB_SUFFIX=1 -DU_LIB_SUFFIX_C_NAME=$&#123;ICULIBSUFFIXCNAME&#125; &quot;</div><div class="line">#else</div><div class="line">    U_HAVE_LIB_SUFFIX=0</div><div class="line">#fi</div></pre></td></tr></table></figure>
+<p><strong><em>编辑文件build.sh</em></strong></p>
+<p>现在回退到<code>libiconv-libicu-android</code>根目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cd ..</div></pre></td></tr></table></figure>
+<p>为了防止<code>build.sh</code>重新生成icu目录和覆盖刚修改的<code>configure</code>文件，编辑<code>build.sh</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[ -e ../icu4c-55_1-src.tgz ] || exit 1</div><div class="line">tar xvf ../icu4c-55_1-src.tgz</div></pre></td></tr></table></figure>
+<p>更改为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#[ -e ../icu4c-55_1-src.tgz ] || exit 1</div><div class="line">#tar xvf ../icu4c-55_1-src.tgz</div></pre></td></tr></table></figure>
+<p>为了验证<code>libicuucswift.so</code>文件，修改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[ -e libicuuc.so ] || &#123;</div></pre></td></tr></table></figure>
+<p>为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[ -e libicuucswift.so ] || &#123;</div></pre></td></tr></table></figure>
+<p>然后在<code>configure</code>文件中增加<code>swift</code>后缀，修改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">./configure \</div><div class="line">--host=arm-linux-androideabi \</div><div class="line">--prefix=`pwd`/../../ \</div><div class="line">--with-cross-build=`pwd`/cross \</div><div class="line">--enable-static --enable-shared \</div><div class="line">|| exit 1</div></pre></td></tr></table></figure>
+<p>为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">./configure \</div><div class="line">--host=arm-linux-androideabi \</div><div class="line">--prefix=`pwd`/../../ \</div><div class="line">--with-library-suffix=swift \</div><div class="line">--with-cross-build=`pwd`/cross \</div><div class="line">--enable-static --enable-shared \</div><div class="line">|| exit 1</div></pre></td></tr></table></figure>
+<p>最后给每一个库文件名添加<code>swift</code>，修改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">for f in libicudata libicutest libicui18n libicuio libicule libiculx libicutu libicuuc; do</div></pre></td></tr></table></figure>
+<p>为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">for f in libicudataswift libicutestswift libicui18nswift libicuioswift libiculeswift libiculxswift libicutuswift libicuucswift; do</div></pre></td></tr></table></figure>
+<p><strong><em>运行build.sh</em></strong></p>
+<p>准备开始运行<code>build.sh</code>文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ./build.sh</div></pre></td></tr></table></figure>
+<p>确认在<code>libiconv-libicu-android</code>目录中创建<code>armeabi-v7a/icu/source/i18n</code>和<code>armeabi-v7a/icu/source/common</code>目录。</p>
+<h3 id="2-为Android编译Swift标准库"><a href="#2-为Android编译Swift标准库" class="headerlink" title="2. 为Android编译Swift标准库"></a>2. 为Android编译Swift标准库</h3><p>进入Swift目录，然后运行编译脚本，添加Android NDK路径，步骤如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ utils/build-script \</div><div class="line">    -R \                                       # Build in ReleaseAssert mode.</div><div class="line">    --android \                                # Build for Android.</div><div class="line">    --android-ndk /path/to/android-ndk-r14 \   # Path to an Android NDK.</div><div class="line">    --android-api-level 21 \                   # The Android API level to target. Swift only supports 21 or greater.</div><div class="line">    --android-icu-uc /path/to/libicu-android/armeabi-v7a \</div><div class="line">    --android-icu-uc-include /path/to/libicu-android/armeabi-v7a/icu/source/common \</div><div class="line">    --android-icu-i18n /path/to/libicu-android/armeabi-v7a \</div><div class="line">    --android-icu-i18n-include /path/to/libicu-android/armeabi-v7a/icu/source/i18n</div></pre></td></tr></table></figure>
+<h3 id="3-在Android设备上编译并运行hello-swift"><a href="#3-在Android设备上编译并运行hello-swift" class="headerlink" title="3. 在Android设备上编译并运行hello.swift"></a>3. 在Android设备上编译并运行<code>hello.swift</code></h3><p>创建一个名为<code>hello.swift</code>的Swift样例文件：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">print</span>(<span class="string">"Hello, Android"</span>)</div></pre></td></tr></table></figure>
+<p>为了成功编译，需要确保使用正确的链接。在<code>PATH</code>中增加gold链接：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo ln -s \</div><div class="line">    /path/to/android-ndk-r14/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/arm-linux-androideabi/bin/ld.gold \</div><div class="line">    /usr/bin/armv7-none-linux-androideabi-ld.gold</div></pre></td></tr></table></figure>
+<p>然后针对Android使用Swift编译器来编译Swift源码文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ build/Ninja-ReleaseAssert/swift-linux-x86_64/bin/swiftc \                      # The Swift compiler built in the previous step.</div><div class="line">                                                                                 # The location of the tools used to build Android binaries</div><div class="line">    -tools-directory /path/to/android-ndk-r14/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/arm-linux-androideabi/bin</div><div class="line">    -target armv7-none-linux-androideabi \                                       # Targeting android-armv7.</div><div class="line">    -sdk /path/to/android-ndk-r14/platforms/android-21/arch-arm \                # Use the same NDK path and API version as you used to build the stdlib in the previous step.</div><div class="line">    -L /path/to/android-ndk-r14/sources/cxx-stl/llvm-libc++/libs/armeabi-v7a \   # Link the Android NDK&apos;s libc++ and libgcc.</div><div class="line">    -L /path/to/android-ndk-r14/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/lib/gcc/arm-linux-androideabi/4.9.x \</div><div class="line">    hello.swift</div></pre></td></tr></table></figure>
+<p>这会在目录中生成一个<code>hello</code>可执行文件。如果试图使用Linux环境去运行这个可执行文件，会出现下面错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cannot execute binary file: Exec format error</div></pre></td></tr></table></figure>
+<p>这就是我们想要的错误：这是个可以在Android设备上运行的可执行文件，而不是在Linux上，我们可以把它部署在Android设备上去执行它。</p>
+<h3 id="4-在设备上部署构建的产品"><a href="#4-在设备上部署构建的产品" class="headerlink" title="4. 在设备上部署构建的产品"></a>4. 在设备上部署构建的产品</h3><p>可以使用<code>adb push</code>命令从Linux环境中复制一份构建的产品到Android设备上。如果还未安装<code>adb</code>，可以通过<code>apt-get</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install android-tools-adb</div></pre></td></tr></table></figure>
+<p>一旦完成安装<code>adb</code>，即可验证设备已经关联，当运行<code>adb devices</code>命令 - <strong>currently this example works only in devices / emulators with at least Android 7.0, API 24</strong> - 然后运行以下命令来复制Swift Android标准库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ adb push build/Ninja-ReleaseAssert/swift-linux-x86_64/lib/swift/android/libswiftCore.so /data/local/tmp</div><div class="line">$ adb push build/Ninja-ReleaseAssert/swift-linux-x86_64/lib/swift/android/libswiftGlibc.so /data/local/tmp</div><div class="line">$ adb push build/Ninja-ReleaseAssert/swift-linux-x86_64/lib/swift/android/libswiftSwiftOnoneSupport.so /data/local/tmp</div><div class="line">$ adb push build/Ninja-ReleaseAssert/swift-linux-x86_64/lib/swift/android/libswiftRemoteMirror.so /data/local/tmp</div><div class="line">$ adb push build/Ninja-ReleaseAssert/swift-linux-x86_64/lib/swift/android/libswiftSwiftExperimental.so /data/local/tmp</div></pre></td></tr></table></figure>
+<p>同样需要推送icu库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">adb push /path/to/libicu-android/armeabi-v7a/libicudataswift.so /data/local/tmp</div><div class="line">adb push /path/to/libicu-android/armeabi-v7a/libicui18nswift.so /data/local/tmp</div><div class="line">adb push /path/to/libicu-android/armeabi-v7a/libicuucswift.so /data/local/tmp</div></pre></td></tr></table></figure>
+<p>另外，还需要复制Android NDK的libc++：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ adb push /path/to/android-ndk-r14/sources/cxx-stl/llvm-libc++/libs/armeabi-v7a/libc++_shared.so /data/local/tmp</div></pre></td></tr></table></figure>
+<p>最后，需要复制在先前构建的<code>hello</code>可执行文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ adb push hello /data/local/tmp</div></pre></td></tr></table></figure>
+<h3 id="5-在Android设备上运行”Hello-world”"><a href="#5-在Android设备上运行”Hello-world”" class="headerlink" title="5. 在Android设备上运行”Hello, world”"></a>5. 在Android设备上运行”Hello, world”</h3><p>可以在Android设备上使用<code>adb shell</code>命令来执行<code>hello</code>可执行文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ adb shell LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/hello</div></pre></td></tr></table></figure>
+<p>将会看到如下输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Hello, Android</div></pre></td></tr></table></figure>
+<p>恭喜！已经完成在Android上的第一份Swift程序。</p>
+<h2 id="二：在Android设备上运行Swift测试组件"><a href="#二：在Android设备上运行Swift测试组件" class="headerlink" title="二：在Android设备上运行Swift测试组件"></a>二：在Android设备上运行Swift测试组件</h2><p>当运行测试组件的时候，构建的产品会自动推送到设备上。同第一部分一样，需要通过USB来关联Android设备：</p>
+<ol>
+<li>通过USB连接Android设备和电脑。确保按照官方指导打开远程调试：<a href="">https://developer.chrome.com/devtools/docs/remote-debugging</a>。</li>
+<li>运行<code>adb devices</code>确认设备已经连接，应该查看上设备列表。</li>
+<li>使用构建脚本运行测试：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$ utils/build-script \</div><div class="line">  -R \                                           # Build in ReleaseAssert mode.</div><div class="line">  -T \                                           # Run all tests.</div><div class="line">  --android \                                    # Build for Android.</div><div class="line">  --android-ndk ~/android-ndk-r13 \              # Path to an Android NDK.</div><div class="line">  --android-ndk-version 21 \</div><div class="line">  --android-icu-uc ~/libicu-android/armeabi-v7a/libicuuc.so \</div><div class="line">  --android-icu-uc-include ~/libicu-android/armeabi-v7a/icu/source/common \</div><div class="line">  --android-icu-i18n ~/libicu-android/armeabi-v7a/libicui18n.so \</div><div class="line">  --android-icu-i18n-include ~/libicu-android/armeabi-v7a/icu/source/i18n/</div></pre></td></tr></table></figure>
 
           
         
@@ -401,7 +449,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://begodya.com/2018/03/27/android/Android的进程和线程/">
+    <link itemprop="mainEntityOfPage" href="http://begodya.com/2018/03/28/android/Android的进程和线程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bei Wang">
@@ -420,7 +468,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/27/android/Android的进程和线程/" itemprop="url">Android的进程和线程</a></h1>
+                <a class="post-title-link" href="/2018/03/28/android/Android的进程和线程/" itemprop="url">Android的进程和线程</a></h1>
         
 
         <div class="post-meta">
@@ -432,8 +480,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-27T15:35:07+08:00">
-                2018-03-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-28T10:28:44+08:00">
+                2018-03-28
               </time>
             
 
@@ -553,7 +601,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://begodya.com/2018/03/15/architecture/2018个人计划/">
+    <link itemprop="mainEntityOfPage" href="http://begodya.com/2018/03/17/architecture/2018个人计划/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bei Wang">
@@ -572,7 +620,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/15/architecture/2018个人计划/" itemprop="url">2018年个人计划</a></h1>
+                <a class="post-title-link" href="/2018/03/17/architecture/2018个人计划/" itemprop="url">2018年个人计划</a></h1>
         
 
         <div class="post-meta">
@@ -584,8 +632,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-15T12:02:25+08:00">
-                2018-03-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-17T10:09:17+08:00">
+                2018-03-17
               </time>
             
 
@@ -698,7 +746,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://begodya.com/2018/01/24/architecture/微信小程序/">
+    <link itemprop="mainEntityOfPage" href="http://begodya.com/2018/01/27/architecture/微信小程序/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bei Wang">
@@ -717,7 +765,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/24/architecture/微信小程序/" itemprop="url">微信小程序</a></h1>
+                <a class="post-title-link" href="/2018/01/27/architecture/微信小程序/" itemprop="url">微信小程序</a></h1>
         
 
         <div class="post-meta">
@@ -729,8 +777,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-24T11:49:26+08:00">
-                2018-01-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-27T15:45:48+08:00">
+                2018-01-27
               </time>
             
 
@@ -912,7 +960,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://begodya.com/2017/10/09/world/川渝行/">
+    <link itemprop="mainEntityOfPage" href="http://begodya.com/2017/10/10/world/川渝行/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bei Wang">
@@ -931,7 +979,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/09/world/川渝行/" itemprop="url">世界迷雾之十一川渝行</a></h1>
+                <a class="post-title-link" href="/2017/10/10/world/川渝行/" itemprop="url">世界迷雾之十一川渝行</a></h1>
         
 
         <div class="post-meta">
@@ -943,8 +991,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-09T15:54:15+08:00">
-                2017-10-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-10T19:17:31+08:00">
+                2017-10-10
               </time>
             
 
@@ -1279,7 +1327,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-01T10:58:40+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-01T14:50:04+08:00">
                 2017-08-01
               </time>
             
@@ -1463,7 +1511,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T16:19:53+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T17:10:47+08:00">
                 2017-06-28
               </time>
             
@@ -1595,7 +1643,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-01T14:24:56+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-01T15:20:48+08:00">
                 2017-06-01
               </time>
             
@@ -1718,7 +1766,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-27T09:49:35+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-27T11:57:27+08:00">
                 2017-05-27
               </time>
             
@@ -1849,7 +1897,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-25T19:02:40+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-25T19:35:14+08:00">
                 2017-05-25
               </time>
             

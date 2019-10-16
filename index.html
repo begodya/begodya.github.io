@@ -254,7 +254,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://begodya.com/2019/03/21/web/CSS之BFC、IFC、GFC和FFC/">
+    <link itemprop="mainEntityOfPage" href="http://begodya.com/2019/03/25/web/前端知识体系/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bei Wang">
@@ -273,7 +273,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/21/web/CSS之BFC、IFC、GFC和FFC/" itemprop="url">CSS之BFC、IFC、GFC和FFC</a></h1>
+                <a class="post-title-link" href="/2019/03/25/web/前端知识体系/" itemprop="url">前端知识体系</a></h1>
         
 
         <div class="post-meta">
@@ -285,179 +285,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-21T19:58:03+08:00">
-                2019-03-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h3><p><img src="https://s2.ax1x.com/2019/03/25/AtBC1e.png" alt=""></p>
-<p>以<code>&lt;div&gt;&lt;/div&gt;</code>为例，<code>&lt;div&gt;&lt;/div&gt;</code>被浏览器解析后会生成<code>div</code>元素并添加到DOM树中，CSS作用的对象不是DOM树，而是根据DOM树生成的Render树，BFC就是Render树的节点。</p>
-<h5 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h5><ul>
-<li>float：不为none</li>
-<li>position：不为relative、static</li>
-<li>overflow：不为hidden</li>
-<li>display：table-cell、table-caption、inline-block</li>
-</ul>
-<h5 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h5><ul>
-<li>content box（必备）</li>
-<li>padding box</li>
-<li>border box</li>
-<li>margin box</li>
-</ul>
-<h5 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h5><ul>
-<li>清除浮动</li>
-<li>自适应两栏布局</li>
-<li>防止margin合并</li>
-</ul>
-<h5 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h5><ul>
-<li>CSS使用于Box，而不是作用于Element</li>
-<li>JS无法操作Box</li>
-<li>同一个BFC的两个Box，margin会有重叠</li>
-</ul>
-<h5 id="误区"><a href="#误区" class="headerlink" title="误区"></a>误区</h5><ul>
-<li>通过width/height属性设置div元素的宽/高（错误）</li>
-<li>CSS属性width/height作用于div元素所产生的Box，而不是Element本身</li>
-<li>BFC有4个Box组成，那width/height到底作用于哪个Box？</li>
-</ul>
-<h3 id="IFC"><a href="#IFC" class="headerlink" title="IFC"></a>IFC</h3><h5 id="因素"><a href="#因素" class="headerlink" title="因素"></a>因素</h5><ul>
-<li>font-size</li>
-<li>line-height</li>
-<li>height</li>
-<li>vertical-aligin</li>
-</ul>
-<h5 id="注意-1"><a href="#注意-1" class="headerlink" title="注意"></a>注意</h5><ul>
-<li>inline-level box的高度是由字体字号大小决定的</li>
-<li>inline-level box的宽度是由content+padding+border+margin决定的</li>
-<li>inline-level box宽度大于父容器的宽度时会被拆分成多个inline-level box</li>
-<li>当达到拆分条件时，inline-level会被拆分成多个inline-level box并分布到多行中。<ul>
-<li>当direction为ltr时，margin/border/padding-left只会作用于第一行inline-level box；margin/border/padding-right作用于最后一行inline-level box。</li>
-<li>当direction为rtl时，margin/border/padding-right只会作用于第一行inline-level box；margin/border/padding-left作用于最后一行inline-level box。</li>
-</ul>
-</li>
-<li></li>
-</ul>
-<h3 id="GFC"><a href="#GFC" class="headerlink" title="GFC"></a>GFC</h3><ul>
-<li>display: grid;</li>
-</ul>
-<h3 id="FFC"><a href="#FFC" class="headerlink" title="FFC"></a>FFC</h3><ul>
-<li>display: flex;</li>
-<li>display: inline-flex;</li>
-</ul>
-<h5 id="布局实例"><a href="#布局实例" class="headerlink" title="布局实例"></a>布局实例</h5><ul>
-<li><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="external">Flex 布局教程：语法篇</a></li>
-<li><a href="http://static.vgee.cn/static/index.html" target="_blank" rel="external">Flex 布局示例</a></li>
-</ul>
-<h5 id="注意-2"><a href="#注意-2" class="headerlink" title="注意"></a>注意</h5><ul>
-<li>设为 Flex 布局以后，子元素的float、clear和vertical-align属性将失效</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://begodya.com/2019/03/06/web/前端知识体系/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bei Wang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/4849945?v=3&u=2fc94e38699ed5ca25f46fe2c62682991c8faa21&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Begodya">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/06/web/前端知识体系/" itemprop="url">前端知识体系</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-06T13:03:17+08:00">
-                2019-03-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-25T16:21:39+08:00">
+                2019-03-25
               </time>
             
 
@@ -634,7 +463,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://begodya.com/2019/01/29/hybrid/React Navigation 3x开发指南/">
+    <link itemprop="mainEntityOfPage" href="http://begodya.com/2019/03/25/web/CSS之BFC、IFC、GFC和FFC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bei Wang">
@@ -653,7 +482,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/01/29/hybrid/React Navigation 3x开发指南/" itemprop="url">React Navigation 3x开发指南</a></h1>
+                <a class="post-title-link" href="/2019/03/25/web/CSS之BFC、IFC、GFC和FFC/" itemprop="url">CSS之BFC、IFC、GFC和FFC</a></h1>
         
 
         <div class="post-meta">
@@ -665,8 +494,179 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-29T20:56:50+08:00">
-                2019-01-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-25T16:21:25+08:00">
+                2019-03-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h3><p><img src="https://s2.ax1x.com/2019/03/25/AtBC1e.png" alt=""></p>
+<p>以<code>&lt;div&gt;&lt;/div&gt;</code>为例，<code>&lt;div&gt;&lt;/div&gt;</code>被浏览器解析后会生成<code>div</code>元素并添加到DOM树中，CSS作用的对象不是DOM树，而是根据DOM树生成的Render树，BFC就是Render树的节点。</p>
+<h5 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h5><ul>
+<li>float：不为none</li>
+<li>position：不为relative、static</li>
+<li>overflow：不为hidden</li>
+<li>display：table-cell、table-caption、inline-block</li>
+</ul>
+<h5 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h5><ul>
+<li>content box（必备）</li>
+<li>padding box</li>
+<li>border box</li>
+<li>margin box</li>
+</ul>
+<h5 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h5><ul>
+<li>清除浮动</li>
+<li>自适应两栏布局</li>
+<li>防止margin合并</li>
+</ul>
+<h5 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h5><ul>
+<li>CSS使用于Box，而不是作用于Element</li>
+<li>JS无法操作Box</li>
+<li>同一个BFC的两个Box，margin会有重叠</li>
+</ul>
+<h5 id="误区"><a href="#误区" class="headerlink" title="误区"></a>误区</h5><ul>
+<li>通过width/height属性设置div元素的宽/高（错误）</li>
+<li>CSS属性width/height作用于div元素所产生的Box，而不是Element本身</li>
+<li>BFC有4个Box组成，那width/height到底作用于哪个Box？</li>
+</ul>
+<h3 id="IFC"><a href="#IFC" class="headerlink" title="IFC"></a>IFC</h3><h5 id="因素"><a href="#因素" class="headerlink" title="因素"></a>因素</h5><ul>
+<li>font-size</li>
+<li>line-height</li>
+<li>height</li>
+<li>vertical-aligin</li>
+</ul>
+<h5 id="注意-1"><a href="#注意-1" class="headerlink" title="注意"></a>注意</h5><ul>
+<li>inline-level box的高度是由字体字号大小决定的</li>
+<li>inline-level box的宽度是由content+padding+border+margin决定的</li>
+<li>inline-level box宽度大于父容器的宽度时会被拆分成多个inline-level box</li>
+<li>当达到拆分条件时，inline-level会被拆分成多个inline-level box并分布到多行中。<ul>
+<li>当direction为ltr时，margin/border/padding-left只会作用于第一行inline-level box；margin/border/padding-right作用于最后一行inline-level box。</li>
+<li>当direction为rtl时，margin/border/padding-right只会作用于第一行inline-level box；margin/border/padding-left作用于最后一行inline-level box。</li>
+</ul>
+</li>
+<li></li>
+</ul>
+<h3 id="GFC"><a href="#GFC" class="headerlink" title="GFC"></a>GFC</h3><ul>
+<li>display: grid;</li>
+</ul>
+<h3 id="FFC"><a href="#FFC" class="headerlink" title="FFC"></a>FFC</h3><ul>
+<li>display: flex;</li>
+<li>display: inline-flex;</li>
+</ul>
+<h5 id="布局实例"><a href="#布局实例" class="headerlink" title="布局实例"></a>布局实例</h5><ul>
+<li><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="external">Flex 布局教程：语法篇</a></li>
+<li><a href="http://static.vgee.cn/static/index.html" target="_blank" rel="external">Flex 布局示例</a></li>
+</ul>
+<h5 id="注意-2"><a href="#注意-2" class="headerlink" title="注意"></a>注意</h5><ul>
+<li>设为 Flex 布局以后，子元素的float、clear和vertical-align属性将失效</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://begodya.com/2019/01/30/hybrid/React Navigation 3x开发指南/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bei Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/4849945?v=3&u=2fc94e38699ed5ca25f46fe2c62682991c8faa21&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Begodya">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/30/hybrid/React Navigation 3x开发指南/" itemprop="url">React Navigation 3x开发指南</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-30T15:38:10+08:00">
+                2019-01-30
               </time>
             
 
@@ -827,7 +827,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://begodya.com/2019/01/29/summary/2018工作总结/">
+    <link itemprop="mainEntityOfPage" href="http://begodya.com/2019/01/29/hybrid/基于React Native的跨平台应用架构实践/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bei Wang">
@@ -846,7 +846,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/01/29/summary/2018工作总结/" itemprop="url">2018工作总结</a></h1>
+                <a class="post-title-link" href="/2019/01/29/hybrid/基于React Native的跨平台应用架构实践/" itemprop="url">基于React Native的跨平台应用架构实践</a></h1>
         
 
         <div class="post-meta">
@@ -858,154 +858,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-29T10:50:40+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-29T20:44:17+08:00">
                 2019-01-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="总结2018"><a href="#总结2018" class="headerlink" title="总结2018"></a>总结2018</h3><ul>
-<li><p>重构iOS/Android 整体功能  </p>
-<p>整体上做了业务升级，Native化了首页、体检、个人中心、我的订单、登录等页面，从根本上解决了H5登录所导致的登录态频繁失效的问题；Hybrid层从UIWebview替换到WKWebview，解决了频繁打开H5导致内存飙升异常闪退问题，提升了用户体验。</p>
-</li>
-<li><p>iOS/Android 新增问诊功能</p>
-</li>
-</ul>
-<p>问诊功能整体采用Native开发，并对接了推送功能</p>
-<ul>
-<li>iOS/Android 医生中心</li>
-</ul>
-<p>医生报告解读支持一代图片链接、二代H5报告<br>医生报告评估功能，为保险业务提供数据模型<br>下线医生问答、医生推荐定制加项业务</p>
-<ul>
-<li>启动小程序</li>
-</ul>
-<p>研究小程序的技术架构，调研小程序的技术选型与疑难问题，分析小程序矩阵的营销活动玩法<br>负责善诊活动框架小程序、健康贴士小程序、链家孝心回馈小程序等营销活动框架搭建与开发工作</p>
-<ul>
-<li>快应用<br>对快应用做了相应的技术研究与开发，熟悉了整个开发流程与技术框架</li>
-</ul>
-<h3 id="展望2019"><a href="#展望2019" class="headerlink" title="展望2019"></a>展望2019</h3><ul>
-<li>跨平台技术选型（Weex、React Native、Flutter）</li>
-</ul>
-<p>研究三种技术方案，完成各个方案的基础架构与Demo开发，分析目前的三种跨平台方案优缺点，选取合适的技术选型</p>
-<ul>
-<li>跨平台架构设计与开发</li>
-</ul>
-<p>结合目前App架构与功能，设计并开发跨平台架构，至少达到iOS/Android上两端部分功能跨平台能力，减少相应重复工作量，提高开发效率与发版成本</p>
-<ul>
-<li>H5技术</li>
-</ul>
-<p>持续关注并研究Vue、React等前端框架，为跨三端做准备</p>
-<ul>
-<li>小程序与快应用</li>
-</ul>
-<p>持续关注小程序和快应用的发展方向</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://begodya.com/2019/01/03/hybrid/基于React Native的跨平台应用架构实践/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bei Wang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/4849945?v=3&u=2fc94e38699ed5ca25f46fe2c62682991c8faa21&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Begodya">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/03/hybrid/基于React Native的跨平台应用架构实践/" itemprop="url">基于React Native的跨平台应用架构实践</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-03T09:42:05+08:00">
-                2019-01-03
               </time>
             
 
@@ -1146,6 +1000,152 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://begodya.com/2019/01/29/summary/2018工作总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bei Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/4849945?v=3&u=2fc94e38699ed5ca25f46fe2c62682991c8faa21&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Begodya">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/29/summary/2018工作总结/" itemprop="url">2018工作总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-29T11:01:29+08:00">
+                2019-01-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="总结2018"><a href="#总结2018" class="headerlink" title="总结2018"></a>总结2018</h3><ul>
+<li><p>重构iOS/Android 整体功能  </p>
+<p>整体上做了业务升级，Native化了首页、体检、个人中心、我的订单、登录等页面，从根本上解决了H5登录所导致的登录态频繁失效的问题；Hybrid层从UIWebview替换到WKWebview，解决了频繁打开H5导致内存飙升异常闪退问题，提升了用户体验。</p>
+</li>
+<li><p>iOS/Android 新增问诊功能</p>
+</li>
+</ul>
+<p>问诊功能整体采用Native开发，并对接了推送功能</p>
+<ul>
+<li>iOS/Android 医生中心</li>
+</ul>
+<p>医生报告解读支持一代图片链接、二代H5报告<br>医生报告评估功能，为保险业务提供数据模型<br>下线医生问答、医生推荐定制加项业务</p>
+<ul>
+<li>启动小程序</li>
+</ul>
+<p>研究小程序的技术架构，调研小程序的技术选型与疑难问题，分析小程序矩阵的营销活动玩法<br>负责善诊活动框架小程序、健康贴士小程序、链家孝心回馈小程序等营销活动框架搭建与开发工作</p>
+<ul>
+<li>快应用<br>对快应用做了相应的技术研究与开发，熟悉了整个开发流程与技术框架</li>
+</ul>
+<h3 id="展望2019"><a href="#展望2019" class="headerlink" title="展望2019"></a>展望2019</h3><ul>
+<li>跨平台技术选型（Weex、React Native、Flutter）</li>
+</ul>
+<p>研究三种技术方案，完成各个方案的基础架构与Demo开发，分析目前的三种跨平台方案优缺点，选取合适的技术选型</p>
+<ul>
+<li>跨平台架构设计与开发</li>
+</ul>
+<p>结合目前App架构与功能，设计并开发跨平台架构，至少达到iOS/Android上两端部分功能跨平台能力，减少相应重复工作量，提高开发效率与发版成本</p>
+<ul>
+<li>H5技术</li>
+</ul>
+<p>持续关注并研究Vue、React等前端框架，为跨三端做准备</p>
+<ul>
+<li>小程序与快应用</li>
+</ul>
+<p>持续关注小程序和快应用的发展方向</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://begodya.com/2018/12/19/hybrid/mpvue页面回调解决方案/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1177,7 +1177,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-19T11:48:30+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-19T17:10:30+08:00">
                 2018-12-19
               </time>
             
@@ -1290,7 +1290,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://begodya.com/2018/11/28/hybrid/客户端跨平台解决方案/">
+    <link itemprop="mainEntityOfPage" href="http://begodya.com/2018/12/13/hybrid/客户端跨平台解决方案/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bei Wang">
@@ -1309,7 +1309,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/28/hybrid/客户端跨平台解决方案/" itemprop="url">客户端跨平台解决方案</a></h1>
+                <a class="post-title-link" href="/2018/12/13/hybrid/客户端跨平台解决方案/" itemprop="url">客户端跨平台解决方案</a></h1>
         
 
         <div class="post-meta">
@@ -1321,8 +1321,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-28T16:40:34+08:00">
-                2018-11-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-13T18:14:39+08:00">
+                2018-12-13
               </time>
             
 
@@ -1452,7 +1452,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://begodya.com/2018/11/08/iOS/如何获取ipa安装包/">
+    <link itemprop="mainEntityOfPage" href="http://begodya.com/2018/11/09/iOS/如何获取ipa安装包/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bei Wang">
@@ -1471,7 +1471,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/08/iOS/如何获取ipa安装包/" itemprop="url">如何获取ipa安装包</a></h1>
+                <a class="post-title-link" href="/2018/11/09/iOS/如何获取ipa安装包/" itemprop="url">如何获取ipa安装包</a></h1>
         
 
         <div class="post-meta">
@@ -1483,8 +1483,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-08T17:34:04+08:00">
-                2018-11-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-09T09:59:38+08:00">
+                2018-11-09
               </time>
             
 
@@ -1589,7 +1589,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://begodya.com/2018/10/30/web/快应用/">
+    <link itemprop="mainEntityOfPage" href="http://begodya.com/2018/10/31/web/快应用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bei Wang">
@@ -1608,7 +1608,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/10/30/web/快应用/" itemprop="url">快应用</a></h1>
+                <a class="post-title-link" href="/2018/10/31/web/快应用/" itemprop="url">快应用</a></h1>
         
 
         <div class="post-meta">
@@ -1620,8 +1620,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-30T15:59:30+08:00">
-                2018-10-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-31T09:29:47+08:00">
+                2018-10-31
               </time>
             
 
@@ -1765,7 +1765,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://begodya.com/2018/04/12/android/如何让Swift在Android上运行/">
+    <link itemprop="mainEntityOfPage" href="http://begodya.com/2018/07/04/iOS/Swift标准库源码阅读（一）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bei Wang">
@@ -1784,7 +1784,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/12/android/如何让Swift在Android上运行/" itemprop="url">如何让Swift在Android上运行？</a></h1>
+                <a class="post-title-link" href="/2018/07/04/iOS/Swift标准库源码阅读（一）/" itemprop="url">Swift标准库源码阅读（一）</a></h1>
         
 
         <div class="post-meta">
@@ -1796,8 +1796,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-12T09:12:14+08:00">
-                2018-04-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-04T15:52:07+08:00">
+                2018-07-04
               </time>
             
 
@@ -1833,90 +1833,42 @@
       
         
           
-            <p>Swift标准库可以在armv7的Android机上编译，意味着可以在移动设备执行Swift代码来运行Android。以下为指导方案：</p>
-<ol>
-<li>如何在Android设备上运行样例程序“Hello, world”？</li>
-<li>如何在目标Android系统和Android设备上运行Swift测试组件？</li>
-</ol>
-<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><h3 id="是否意味着可以使用Swift来编写Android应用程序？"><a href="#是否意味着可以使用Swift来编写Android应用程序？" class="headerlink" title="是否意味着可以使用Swift来编写Android应用程序？"></a>是否意味着可以使用Swift来编写Android应用程序？</h3><p>不是的。虽然Swift编译器可以在Android设备上编译Swift代码，但编写App要比Swift标准库费事很多。你需要为你的应用编写一系列的图形交互框架，而这些Swift的标准库都没有提供。</p>
-<p>另外，理论上可以通过Swift调用Java接口，但不同于Objective-C，Swift编译器没有Swift到Java的桥接方法。</p>
-<h2 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h2><p>需要以下指导条件：</p>
-<ol>
-<li>一个可以编译Swift源码的Linux环境，特指 Ubuntu 16.04或者 Ubuntu 15.10( Ubuntu 14.04近期没有测试)。目前标准库仅支持在Linux环境上进行编译Android。在试图构建Android之前，请确保可以通过Swift工程中的 <code>README</code> 文件来编译Linux。</li>
-<li>最新版本Android NDK (r14) 可用下载地址：<a href="">http://developer.android.com/ndk/downloads/index.html</a></li>
-<li>一台可供远程调试的Android设备，需要远程调试是为了部署标准库到设备上。可以按照官方指导来打开远程调试：<a href="">https://developer.chrome.com/devtools/docs/remote-debugging</a></li>
-</ol>
-<h2 id="一：Anroid上的”Hello-world”"><a href="#一：Anroid上的”Hello-world”" class="headerlink" title="一：Anroid上的”Hello, world”"></a>一：Anroid上的”Hello, world”</h2><h3 id="1-下载（或编译）Swift-Android标准库依赖"><a href="#1-下载（或编译）Swift-Android标准库依赖" class="headerlink" title="1. 下载（或编译）Swift Android标准库依赖"></a>1. 下载（或编译）Swift Android标准库依赖</h3><p>需要注意的是，为了在Linux上编译Swift标准库，需要<code>apt-get install libicu-dev icu-devtools</code>。同样，为Android编译Swift标准库需要 <code>libiconv</code> 和 <code>libicu</code> 库。</p>
-<p>另外，如果你使用 Ubuntu 16.04，建议自己进行编译，步骤如下：</p>
-<ol>
-<li>确保已安装 <code>curl</code>, <code>autoconf</code>, <code>automake</code>, <code>libtool</code>, 和 <code>git</code>。</li>
-<li>Clone 工程[SwiftAndroid/libiconv-libicu-android]，通过命令 <code>git clone https://github.com/SwiftAndroid/libiconv-libicu-android.git</code>。</li>
-<li>命令行运行 <code>which ndk-build</code>，确保下载的Android NDK可执行，否则在 <code>PATH</code> 中添加Android NDK目录。</li>
-</ol>
-<h4 id="icu库中添加swift后缀"><a href="#icu库中添加swift后缀" class="headerlink" title="icu库中添加swift后缀"></a>icu库中添加<code>swift</code>后缀</h4><p>Android系统拥有自己的 icu 库，不同于我们生成的，并且与之有冲突。为了解决冲突，当Android设备中连接Swift标准库依赖时，我们需要在结尾添加<code>swift</code>后缀来更改icu库名，命令行进入<code>libiconv-libicu-android</code>目录，然后做以下步骤：</p>
-<p>创建<code>armeabi-v7a</code>目录，通过解压<code>icu4c-55_1-src.tgz</code>文件生成<code>icu</code>目录，如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ mkdir armeabi-v7a</div><div class="line">$ cd armeabi-v7a</div><div class="line">$ tar xvf ../icu4c-55_1-src.tgz</div></pre></td></tr></table></figure>
-<p><strong>编辑icu配置文件</strong></p>
-<p>为了防止icu配置文件从内部符号中添加<code>swift</code>后缀，编辑文件<code>icu/source/configure</code>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">if test &quot;$ICULIBSUFFIX&quot; != &quot;&quot;</div><div class="line">then</div><div class="line">    U_HAVE_LIB_SUFFIX=1</div><div class="line">    ICULIBSUFFIXCNAME=`echo _$ICULIBSUFFIX | sed &apos;s/^A-Za-z0-9_/_/g&apos;`</div><div class="line">    UCONFIG_CPPFLAGS=&quot;$&#123;UCONFIG_CPPFLAGS&#125; -DU_HAVE_LIB_SUFFIX=1 -DU_LIB_SUFFIX_C_NAME=$&#123;ICULIBSUFFIXCNAME&#125; &quot;</div><div class="line">else</div><div class="line">    U_HAVE_LIB_SUFFIX=0</div><div class="line">fi</div></pre></td></tr></table></figure>
-<p>更改为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#if test &quot;$ICULIBSUFFIX&quot; != &quot;&quot;</div><div class="line">#then</div><div class="line">#    U_HAVE_LIB_SUFFIX=1</div><div class="line">#    ICULIBSUFFIXCNAME=`echo _$ICULIBSUFFIX | sed &apos;s/^A-Za-z0-9_/_/g&apos;`</div><div class="line">#    UCONFIG_CPPFLAGS=&quot;$&#123;UCONFIG_CPPFLAGS&#125; -DU_HAVE_LIB_SUFFIX=1 -DU_LIB_SUFFIX_C_NAME=$&#123;ICULIBSUFFIXCNAME&#125; &quot;</div><div class="line">#else</div><div class="line">    U_HAVE_LIB_SUFFIX=0</div><div class="line">#fi</div></pre></td></tr></table></figure>
-<p><strong><em>编辑文件build.sh</em></strong></p>
-<p>现在回退到<code>libiconv-libicu-android</code>根目录：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cd ..</div></pre></td></tr></table></figure>
-<p>为了防止<code>build.sh</code>重新生成icu目录和覆盖刚修改的<code>configure</code>文件，编辑<code>build.sh</code>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[ -e ../icu4c-55_1-src.tgz ] || exit 1</div><div class="line">tar xvf ../icu4c-55_1-src.tgz</div></pre></td></tr></table></figure>
-<p>更改为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#[ -e ../icu4c-55_1-src.tgz ] || exit 1</div><div class="line">#tar xvf ../icu4c-55_1-src.tgz</div></pre></td></tr></table></figure>
-<p>为了验证<code>libicuucswift.so</code>文件，修改：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[ -e libicuuc.so ] || &#123;</div></pre></td></tr></table></figure>
-<p>为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[ -e libicuucswift.so ] || &#123;</div></pre></td></tr></table></figure>
-<p>然后在<code>configure</code>文件中增加<code>swift</code>后缀，修改：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">./configure \</div><div class="line">--host=arm-linux-androideabi \</div><div class="line">--prefix=`pwd`/../../ \</div><div class="line">--with-cross-build=`pwd`/cross \</div><div class="line">--enable-static --enable-shared \</div><div class="line">|| exit 1</div></pre></td></tr></table></figure>
-<p>为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">./configure \</div><div class="line">--host=arm-linux-androideabi \</div><div class="line">--prefix=`pwd`/../../ \</div><div class="line">--with-library-suffix=swift \</div><div class="line">--with-cross-build=`pwd`/cross \</div><div class="line">--enable-static --enable-shared \</div><div class="line">|| exit 1</div></pre></td></tr></table></figure>
-<p>最后给每一个库文件名添加<code>swift</code>，修改：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">for f in libicudata libicutest libicui18n libicuio libicule libiculx libicutu libicuuc; do</div></pre></td></tr></table></figure>
-<p>为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">for f in libicudataswift libicutestswift libicui18nswift libicuioswift libiculeswift libiculxswift libicutuswift libicuucswift; do</div></pre></td></tr></table></figure>
-<p><strong><em>运行build.sh</em></strong></p>
-<p>准备开始运行<code>build.sh</code>文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ./build.sh</div></pre></td></tr></table></figure>
-<p>确认在<code>libiconv-libicu-android</code>目录中创建<code>armeabi-v7a/icu/source/i18n</code>和<code>armeabi-v7a/icu/source/common</code>目录。</p>
-<h3 id="2-为Android编译Swift标准库"><a href="#2-为Android编译Swift标准库" class="headerlink" title="2. 为Android编译Swift标准库"></a>2. 为Android编译Swift标准库</h3><p>进入Swift目录，然后运行编译脚本，添加Android NDK路径，步骤如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ utils/build-script \</div><div class="line">    -R \                                       # Build in ReleaseAssert mode.</div><div class="line">    --android \                                # Build for Android.</div><div class="line">    --android-ndk /path/to/android-ndk-r14 \   # Path to an Android NDK.</div><div class="line">    --android-api-level 21 \                   # The Android API level to target. Swift only supports 21 or greater.</div><div class="line">    --android-icu-uc /path/to/libicu-android/armeabi-v7a \</div><div class="line">    --android-icu-uc-include /path/to/libicu-android/armeabi-v7a/icu/source/common \</div><div class="line">    --android-icu-i18n /path/to/libicu-android/armeabi-v7a \</div><div class="line">    --android-icu-i18n-include /path/to/libicu-android/armeabi-v7a/icu/source/i18n</div></pre></td></tr></table></figure>
-<h3 id="3-在Android设备上编译并运行hello-swift"><a href="#3-在Android设备上编译并运行hello-swift" class="headerlink" title="3. 在Android设备上编译并运行hello.swift"></a>3. 在Android设备上编译并运行<code>hello.swift</code></h3><p>创建一个名为<code>hello.swift</code>的Swift样例文件：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">print</span>(<span class="string">"Hello, Android"</span>)</div></pre></td></tr></table></figure>
-<p>为了成功编译，需要确保使用正确的链接。在<code>PATH</code>中增加gold链接：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo ln -s \</div><div class="line">    /path/to/android-ndk-r14/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/arm-linux-androideabi/bin/ld.gold \</div><div class="line">    /usr/bin/armv7-none-linux-androideabi-ld.gold</div></pre></td></tr></table></figure>
-<p>然后针对Android使用Swift编译器来编译Swift源码文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ build/Ninja-ReleaseAssert/swift-linux-x86_64/bin/swiftc \                      # The Swift compiler built in the previous step.</div><div class="line">                                                                                 # The location of the tools used to build Android binaries</div><div class="line">    -tools-directory /path/to/android-ndk-r14/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/arm-linux-androideabi/bin</div><div class="line">    -target armv7-none-linux-androideabi \                                       # Targeting android-armv7.</div><div class="line">    -sdk /path/to/android-ndk-r14/platforms/android-21/arch-arm \                # Use the same NDK path and API version as you used to build the stdlib in the previous step.</div><div class="line">    -L /path/to/android-ndk-r14/sources/cxx-stl/llvm-libc++/libs/armeabi-v7a \   # Link the Android NDK&apos;s libc++ and libgcc.</div><div class="line">    -L /path/to/android-ndk-r14/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/lib/gcc/arm-linux-androideabi/4.9.x \</div><div class="line">    hello.swift</div></pre></td></tr></table></figure>
-<p>这会在目录中生成一个<code>hello</code>可执行文件。如果试图使用Linux环境去运行这个可执行文件，会出现下面错误：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cannot execute binary file: Exec format error</div></pre></td></tr></table></figure>
-<p>这就是我们想要的错误：这是个可以在Android设备上运行的可执行文件，而不是在Linux上，我们可以把它部署在Android设备上去执行它。</p>
-<h3 id="4-在设备上部署构建的产品"><a href="#4-在设备上部署构建的产品" class="headerlink" title="4. 在设备上部署构建的产品"></a>4. 在设备上部署构建的产品</h3><p>可以使用<code>adb push</code>命令从Linux环境中复制一份构建的产品到Android设备上。如果还未安装<code>adb</code>，可以通过<code>apt-get</code>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install android-tools-adb</div></pre></td></tr></table></figure>
-<p>一旦完成安装<code>adb</code>，即可验证设备已经关联，当运行<code>adb devices</code>命令 - <strong>currently this example works only in devices / emulators with at least Android 7.0, API 24</strong> - 然后运行以下命令来复制Swift Android标准库：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ adb push build/Ninja-ReleaseAssert/swift-linux-x86_64/lib/swift/android/libswiftCore.so /data/local/tmp</div><div class="line">$ adb push build/Ninja-ReleaseAssert/swift-linux-x86_64/lib/swift/android/libswiftGlibc.so /data/local/tmp</div><div class="line">$ adb push build/Ninja-ReleaseAssert/swift-linux-x86_64/lib/swift/android/libswiftSwiftOnoneSupport.so /data/local/tmp</div><div class="line">$ adb push build/Ninja-ReleaseAssert/swift-linux-x86_64/lib/swift/android/libswiftRemoteMirror.so /data/local/tmp</div><div class="line">$ adb push build/Ninja-ReleaseAssert/swift-linux-x86_64/lib/swift/android/libswiftSwiftExperimental.so /data/local/tmp</div></pre></td></tr></table></figure>
-<p>同样需要推送icu库：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">adb push /path/to/libicu-android/armeabi-v7a/libicudataswift.so /data/local/tmp</div><div class="line">adb push /path/to/libicu-android/armeabi-v7a/libicui18nswift.so /data/local/tmp</div><div class="line">adb push /path/to/libicu-android/armeabi-v7a/libicuucswift.so /data/local/tmp</div></pre></td></tr></table></figure>
-<p>另外，还需要复制Android NDK的libc++：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ adb push /path/to/android-ndk-r14/sources/cxx-stl/llvm-libc++/libs/armeabi-v7a/libc++_shared.so /data/local/tmp</div></pre></td></tr></table></figure>
-<p>最后，需要复制在先前构建的<code>hello</code>可执行文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ adb push hello /data/local/tmp</div></pre></td></tr></table></figure>
-<h3 id="5-在Android设备上运行”Hello-world”"><a href="#5-在Android设备上运行”Hello-world”" class="headerlink" title="5. 在Android设备上运行”Hello, world”"></a>5. 在Android设备上运行”Hello, world”</h3><p>可以在Android设备上使用<code>adb shell</code>命令来执行<code>hello</code>可执行文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ adb shell LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/hello</div></pre></td></tr></table></figure>
-<p>将会看到如下输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Hello, Android</div></pre></td></tr></table></figure>
-<p>恭喜！已经完成在Android上的第一份Swift程序。</p>
-<h2 id="二：在Android设备上运行Swift测试组件"><a href="#二：在Android设备上运行Swift测试组件" class="headerlink" title="二：在Android设备上运行Swift测试组件"></a>二：在Android设备上运行Swift测试组件</h2><p>当运行测试组件的时候，构建的产品会自动推送到设备上。同第一部分一样，需要通过USB来关联Android设备：</p>
-<ol>
-<li>通过USB连接Android设备和电脑。确保按照官方指导打开远程调试：<a href="">https://developer.chrome.com/devtools/docs/remote-debugging</a>。</li>
-<li>运行<code>adb devices</code>确认设备已经连接，应该查看上设备列表。</li>
-<li>使用构建脚本运行测试：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$ utils/build-script \</div><div class="line">  -R \                                           # Build in ReleaseAssert mode.</div><div class="line">  -T \                                           # Run all tests.</div><div class="line">  --android \                                    # Build for Android.</div><div class="line">  --android-ndk ~/android-ndk-r13 \              # Path to an Android NDK.</div><div class="line">  --android-ndk-version 21 \</div><div class="line">  --android-icu-uc ~/libicu-android/armeabi-v7a/libicuuc.so \</div><div class="line">  --android-icu-uc-include ~/libicu-android/armeabi-v7a/icu/source/common \</div><div class="line">  --android-icu-i18n ~/libicu-android/armeabi-v7a/libicui18n.so \</div><div class="line">  --android-icu-i18n-include ~/libicu-android/armeabi-v7a/icu/source/i18n/</div></pre></td></tr></table></figure>
+            <h3 id="开发环境和项目结构"><a href="#开发环境和项目结构" class="headerlink" title="开发环境和项目结构"></a>开发环境和项目结构</h3><ul>
+<li>编译步骤</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"># 安装 cmake 和 ninja</div><div class="line">brew install cmake ninja</div><div class="line">    </div><div class="line">mkdir swift-source</div><div class="line">cd swift-source</div><div class="line"></div><div class="line"># 将 Swift 主项目 clone 到本地</div><div class="line">git clone https://github.com/apple/swift.git</div><div class="line"></div><div class="line"># 使用 update-checkout 脚本更新所有 repo</div><div class="line">./swift/utils/update-checkout --clone</div><div class="line"></div><div class="line">./swift/utils/build-script --release-debuginfo</div></pre></td></tr></table></figure>
+<ul>
+<li>编译Swift</li>
+</ul>
+<p><img src="http://oqleb1k16.bkt.clouddn.com/18-3-28/53284569.jpg" alt=""></p>
+<p><img src="http://oqleb1k16.bkt.clouddn.com/18-3-28/26935950.jpg" alt=""></p>
+<p><img src="http://oqleb1k16.bkt.clouddn.com/18-3-28/37463335.jpg" alt=""></p>
+<p>以上为机器配置，当前版本下整个全新编译的过程耗时为30分钟。</p>
+<ul>
+<li>编译模式</li>
+</ul>
+<p>编译脚本中的<code>--release-debuginfo</code>选项表示<code>RelWithDebInfo</code>模式来进行编译；</p>
+<p>其他如<code>--release</code>选项表示版本追求了最大的性能优化，抛弃了调试信息；</p>
+<p><code>--debug</code>选项表示版本保留了全部的调试信息，而放弃了速度的优化；</p>
+<p><code>--release-debuginfo</code>选项表示版本结合了两者的优点，为了迅速的执行，代码经过了优化，但同时在编译期间也生成了调试用的数据和部分调试行，这让 debugger 有机会 catch 到出问题的代码空间是哪个部分。</p>
+<p>不过，在实际开发中，这种有限的调试信息往往只能作为参考，如果确实需要寻找问题或加挂 debugger，还是需要使用 Debug 模式来编译。</p>
+<ul>
+<li>项目结构</li>
+</ul>
+<p><img src="http://oqleb1k16.bkt.clouddn.com/18-3-28/25339637.jpg" alt=""></p>
+<p>Swift 标准库的源码大部分存放在<code>swift/stdlib/public</code>中，其中<code>core</code>文件夹下包括标准库中如<code>String</code>，<code>Array</code>等主要类型；<code>SDK</code>文件夹下是针对对应平台的代码、框架相关代码如 UIKit 和 Foundation等。</p>
+<p>在macOS下，用ninja进行编译后的产品会被放在<code>build/Ninja-RelWithDebInfoAssert/swift-macosx-x86_64</code>下，如<br><img src="http://oqleb1k16.bkt.clouddn.com/18-3-29/7578028.jpg" alt=""></p>
+<ul>
+<li>更新项目</li>
+</ul>
+<p>再次使用<code>./swift/utils/update-checkout</code>就可以将包括Swift自身在内的所有项目更新到最新的 master。</p>
+<ul>
+<li>测试</li>
+</ul>
+<p>Swift项目的测试主要位于<code>swift/test</code>和<code>swift/validation-test</code>下，前者是一般性的测试，后者包含了功能验证和回归测试。</p>
+<p>可使用下面命令运行所有测试：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># -r 编译并运行 test</div><div class="line">./swift/utils/build-script -r -t</div><div class="line"></div><div class="line"># -r 编译并运行 validation test</div><div class="line">./swift/utils/build-script -r -T</div></pre></td></tr></table></figure>
+<p>只要运行一过一次测试，测试套件将会被生成并放在编译结果文件夹的对应<code>test</code>或<code>validation-test</code>文件夹下。我们可以通过<code>utils/lit</code>下的<code>lit.py</code>工具来指定只运行某一套或者某一个测试。</p>
 
           
         

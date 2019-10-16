@@ -1,0 +1,774 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="2019年3月6日： 初步构建前端知识体系图谱   2019年3月7日： W3school基础知识之HTML   2019年3月8日： W3school基础知识之JavaScript Javascript/ES6代理Proxy用法 Promise 对象   2019年3月8日： JavaScript 高级教程   2019年3月11日： HTML 5 与HTML 4 的区别   2019年3月">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端知识体系">
+<meta property="og:url" content="http://begodya.com/2019/03/25/web/前端知识体系/index.html">
+<meta property="og:site_name" content="Begodya">
+<meta property="og:description" content="2019年3月6日： 初步构建前端知识体系图谱   2019年3月7日： W3school基础知识之HTML   2019年3月8日： W3school基础知识之JavaScript Javascript/ES6代理Proxy用法 Promise 对象   2019年3月8日： JavaScript 高级教程   2019年3月11日： HTML 5 与HTML 4 的区别   2019年3月">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/21/A1WY8O.png">
+<meta property="og:updated_time" content="2019-03-25T08:21:39.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端知识体系">
+<meta name="twitter:description" content="2019年3月6日： 初步构建前端知识体系图谱   2019年3月7日： W3school基础知识之HTML   2019年3月8日： W3school基础知识之JavaScript Javascript/ES6代理Proxy用法 Promise 对象   2019年3月8日： JavaScript 高级教程   2019年3月11日： HTML 5 与HTML 4 的区别   2019年3月">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/03/21/A1WY8O.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://begodya.com/2019/03/25/web/前端知识体系/"/>
+
+
+
+
+
+  <title>前端知识体系 | Begodya</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Begodya</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://begodya.com/2019/03/25/web/前端知识体系/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bei Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/4849945?v=3&u=2fc94e38699ed5ca25f46fe2c62682991c8faa21&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Begodya">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前端知识体系</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-25T16:21:39+08:00">
+                2019-03-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://s2.ax1x.com/2019/03/21/A1WY8O.png" alt="A1WY8O.png"></p>
+<ol>
+<li>2019年3月6日：<ul>
+<li>初步构建前端知识体系图谱</li>
+</ul>
+</li>
+<li>2019年3月7日：<ul>
+<li><a href="http://www.w3school.com.cn/html/html_quotation_elements.asp" target="_blank" rel="external">W3school基础知识之HTML</a></li>
+</ul>
+</li>
+<li>2019年3月8日：<ul>
+<li><a href="http://www.w3school.com.cn/js/index.asp" target="_blank" rel="external">W3school基础知识之JavaScript</a></li>
+<li><a href="https://www.jdon.com/idea/js/es6-proxies.html" target="_blank" rel="external">Javascript/ES6代理Proxy用法</a></li>
+<li><a href="http://javascript.ruanyifeng.com/advanced/promise.html" target="_blank" rel="external">Promise 对象</a></li>
+</ul>
+</li>
+<li>2019年3月8日：<ul>
+<li><a href="http://www.w3school.com.cn/js/index_pro.asp" target="_blank" rel="external">JavaScript 高级教程</a></li>
+</ul>
+</li>
+<li>2019年3月11日：<ul>
+<li><a href="https://www.jikexueyuan.com/course/700.html" target="_blank" rel="external">HTML 5 与HTML 4 的区别</a></li>
+</ul>
+</li>
+<li>2019年3月12日：<ul>
+<li><a href="https://www.cnblogs.com/wancy86/p/js_threed.html" target="_blank" rel="external">JavaScript到底是不是单线程</a> </li>
+</ul>
+</li>
+<li>2019年3月13日：<ul>
+<li><a href="https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/24" target="_blank" rel="external">介绍下重绘和回流（Repaint &amp; Reflow），以及如何进行优化</a> </li>
+</ul>
+</li>
+<li>2019年3月14日：<ul>
+<li><a href="http://www.devio.org/2018/09/09/ES6-ES7-ES8-Feature/" target="_blank" rel="external">ES6、ES7、ES8特性一锅炖</a></li>
+<li><a href="https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/19" target="_blank" rel="external">Promise 构造函数是同步执行还是异步执行，那么 then 方法呢？</a></li>
+</ul>
+</li>
+<li>2019年3月18日：<ul>
+<li><a href="http://www.runoob.com/js/js-mistakes.html" target="_blank" rel="external">JavaScript 使用误区</a></li>
+<li><a href="http://www.runoob.com/js/js-conventions.html" target="_blank" rel="external">JavaScript 代码规范</a></li>
+<li><a href="https://www.cnblogs.com/liu-wang/p/6005189.html" target="_blank" rel="external">ASP、JSP、PHP 三种技术比较</a></li>
+<li><a href="https://eggjs.org/zh-cn/intro/index.html" target="_blank" rel="external">Egg.js</a></li>
+<li><a href="http://www.runoob.com/js/js-cookies.html" target="_blank" rel="external">JavaScript Cookie</a></li>
+</ul>
+</li>
+<li>2019年3月20日：<ul>
+<li><a href="https://www.jikexueyuan.com/course/877.html" target="_blank" rel="external">HTML5 编辑 API 之 Range 对象（一）</a></li>
+</ul>
+</li>
+<li>2019年3月21日：<ul>
+<li><a href="https://www.jikexueyuan.com/course/894.html" target="_blank" rel="external">HTML5 编辑 API 之 Range 对象（二）</a></li>
+<li><a href="https://uniapp.dcloud.io/README" target="_blank" rel="external">什么是 uni-app</a></li>
+<li><a href="https://www.cnblogs.com/libin-1/p/7098468.html" target="_blank" rel="external">什么是BFC</a></li>
+<li><a href="https://blog.csdn.net/tianxieliuhong/article/details/53375141" target="_blank" rel="external">CSS之BFC、IFC、GFC和FFC</a></li>
+<li><a href="https://blog.csdn.net/qq_22855325/article/details/76153101" target="_blank" rel="external">前端的BFC、IFC、GFC和FFC</a></li>
+<li><a href="https://www.jikexueyuan.com/course/894_2.html?ss=1" target="_blank" rel="external">Range 对象方法之 insertNode、compareBoundaryPoints 方法</a></li>
+</ul>
+</li>
+<li>2019年3月22日：<ul>
+<li><a href="https://www.jikexueyuan.com/course/217.html" target="_blank" rel="external">HTML5 音频视频</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="external">Flex 布局教程：语法篇</a></li>
+</ul>
+</li>
+<li>2019年3月25日：<ul>
+<li><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="external">Flex 布局教程：语法篇</a></li>
+<li><a href="http://static.vgee.cn/static/index.html" target="_blank" rel="external">Flex 布局示例</a></li>
+</ul>
+</li>
+</ol>
+<h4 id="每日一题"><a href="#每日一题" class="headerlink" title="每日一题"></a>每日一题</h4><ol>
+<li>IFC的宽高各是由什么决定的？</li>
+<li>JavaScript到底是不是单线程？</li>
+<li>[“1”, “2”, “3”].map(parseInt)</li>
+<li>何为重绘和回流，如何优化？</li>
+<li>Promise 构造函数是同步执行还是异步执行，那么 then 方法呢？</li>
+</ol>
+<h4 id="理论知识"><a href="#理论知识" class="headerlink" title="理论知识"></a>理论知识</h4><ol>
+<li>http 标准</li>
+<li><p>W3C 标准</p>
+<ul>
+<li>结构 </li>
+<li>表现</li>
+<li>行为</li>
+</ul>
+</li>
+<li><p>ECMAScript</p>
+</li>
+<li>BOM<ul>
+<li>document</li>
+<li>frames</li>
+<li>location</li>
+<li>history</li>
+<li>navigator</li>
+<li>screen </li>
+</ul>
+</li>
+<li>DOM</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/25/web/CSS之BFC、IFC、GFC和FFC/" rel="next" title="CSS之BFC、IFC、GFC和FFC">
+                <i class="fa fa-chevron-left"></i> CSS之BFC、IFC、GFC和FFC
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars3.githubusercontent.com/u/4849945?v=3&u=2fc94e38699ed5ca25f46fe2c62682991c8faa21&s=400"
+               alt="Bei Wang" />
+          <p class="site-author-name" itemprop="name">Bei Wang</p>
+           
+              <p class="site-description motion-element" itemprop="description">『修身养性，寻找灵感』</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/begodya" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/begodya" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3096695943/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#每日一题"><span class="nav-number">1.</span> <span class="nav-text">每日一题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#理论知识"><span class="nav-number">2.</span> <span class="nav-text">理论知识</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bei Wang</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
