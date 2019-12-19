@@ -90,21 +90,21 @@
 
 
 
-<meta name="description" content="作用 webpck 可以看作是模块打包机：分析项目结构，找到 JavaScript 模块以及其它一些浏览器不能直接运行的扩展语言（如 TypeScript, stylus 等），将其转换并打包为合适的格式供浏览器使用。 工作方式把项目当作一个整体，通过一个给定的主文件（如 index.js），webpack 将从这个文件开始查找与项目的所有依赖文件，使用 loader 进行处理，最后打包为一个或多">
+<meta name="description" content="作用 webpack 可以看作是模块打包机：分析项目结构，找到 JavaScript 模块以及其它一些浏览器不能直接运行的扩展语言（如 TypeScript, stylus 等），将其转换并打包为合适的格式供浏览器使用。 工作方式把项目当作一个整体，通过一个给定的主文件（如 index.js），webpack 将从这个文件开始查找与项目的所有依赖文件，使用 loader 进行处理，最后打包为一个或">
 <meta property="og:type" content="article">
 <meta property="og:title" content="webpck 构建工程">
 <meta property="og:url" content="http://begodya.com/2019/12/18/h5/webpack 构建工程/index.html">
 <meta property="og:site_name" content="Begodya">
-<meta property="og:description" content="作用 webpck 可以看作是模块打包机：分析项目结构，找到 JavaScript 模块以及其它一些浏览器不能直接运行的扩展语言（如 TypeScript, stylus 等），将其转换并打包为合适的格式供浏览器使用。 工作方式把项目当作一个整体，通过一个给定的主文件（如 index.js），webpack 将从这个文件开始查找与项目的所有依赖文件，使用 loader 进行处理，最后打包为一个或多">
+<meta property="og:description" content="作用 webpack 可以看作是模块打包机：分析项目结构，找到 JavaScript 模块以及其它一些浏览器不能直接运行的扩展语言（如 TypeScript, stylus 等），将其转换并打包为合适的格式供浏览器使用。 工作方式把项目当作一个整体，通过一个给定的主文件（如 index.js），webpack 将从这个文件开始查找与项目的所有依赖文件，使用 loader 进行处理，最后打包为一个或">
 <meta property="og:image" content="http://webpack.github.io/assets/what-is-webpack.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/12/18/Q75bZj.md.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/12/18/Q7zfxJ.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/12/18/Q7zW24.md.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/12/18/QHPF7n.png">
-<meta property="og:updated_time" content="2019-12-19T07:02:36.474Z">
+<meta property="og:updated_time" content="2019-12-19T07:10:02.340Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpck 构建工程">
-<meta name="twitter:description" content="作用 webpck 可以看作是模块打包机：分析项目结构，找到 JavaScript 模块以及其它一些浏览器不能直接运行的扩展语言（如 TypeScript, stylus 等），将其转换并打包为合适的格式供浏览器使用。 工作方式把项目当作一个整体，通过一个给定的主文件（如 index.js），webpack 将从这个文件开始查找与项目的所有依赖文件，使用 loader 进行处理，最后打包为一个或多">
+<meta name="twitter:description" content="作用 webpack 可以看作是模块打包机：分析项目结构，找到 JavaScript 模块以及其它一些浏览器不能直接运行的扩展语言（如 TypeScript, stylus 等），将其转换并打包为合适的格式供浏览器使用。 工作方式把项目当作一个整体，通过一个给定的主文件（如 index.js），webpack 将从这个文件开始查找与项目的所有依赖文件，使用 loader 进行处理，最后打包为一个或">
 <meta name="twitter:image" content="http://webpack.github.io/assets/what-is-webpack.png">
 
 
@@ -324,7 +324,7 @@
 
       
         <h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p><img src="http://webpack.github.io/assets/what-is-webpack.png" alt="webpack"></p>
-<p>webpck 可以看作是模块打包机：分析项目结构，找到 JavaScript 模块以及其它一些浏览器不能直接运行的扩展语言（如 TypeScript, stylus 等），将其转换并打包为合适的格式供浏览器使用。</p>
+<p>webpack 可以看作是模块打包机：分析项目结构，找到 JavaScript 模块以及其它一些浏览器不能直接运行的扩展语言（如 TypeScript, stylus 等），将其转换并打包为合适的格式供浏览器使用。</p>
 <h3 id="工作方式"><a href="#工作方式" class="headerlink" title="工作方式"></a>工作方式</h3><p>把项目当作一个整体，通过一个给定的主文件（如 index.js），webpack 将从这个文件开始查找与项目的所有依赖文件，使用 loader 进行处理，最后打包为一个或多个浏览器可以识别的 JavaScript 文件。</p>
 <h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><h6 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h6><p>webpack 可通过 npm 进行安装，新建文件夹 <code>webpack-go</code>，在终端中进入该文件夹执行如下指令即可完成安装。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install -g webpack	// 全局安装</div><div class="line">npm install --save-dev webpack // 安装到项目目录</div></pre></td></tr></table></figure>
