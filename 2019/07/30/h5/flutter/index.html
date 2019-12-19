@@ -90,18 +90,21 @@
 
 
 
-<meta name="description" content="BFC 以&amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;为例，&amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;被浏览器解析后会生成div元素并添加到DOM树中，CSS作用的对象不是DOM树，而是根据DOM树生成的Render树，BFC就是Render树的节点。 方法 float：不为none position：不为relative、static overflow：不为hidden display：t">
+<meta name="description" content="Mac安装 下载Flutter SDK  Flutter官网下载最新可用安装包 解压到指定的文件目录下~/Documents/MyLab   配置环境变量 export PUB_HOSTED_URL=https://pub.flutter-io.cn export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn export PATH=">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS之BFC、IFC、GFC和FFC">
-<meta property="og:url" content="http://begodya.com/2019/03/25/web/CSS之BFC、IFC、GFC和FFC/index.html">
+<meta property="og:title" content="Flutter">
+<meta property="og:url" content="http://begodya.com/2019/07/30/h5/flutter/index.html">
 <meta property="og:site_name" content="Begodya">
-<meta property="og:description" content="BFC 以&amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;为例，&amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;被浏览器解析后会生成div元素并添加到DOM树中，CSS作用的对象不是DOM树，而是根据DOM树生成的Render树，BFC就是Render树的节点。 方法 float：不为none position：不为relative、static overflow：不为hidden display：t">
-<meta property="og:image" content="https://s2.ax1x.com/2019/03/25/AtBC1e.png">
-<meta property="og:updated_time" content="2019-03-25T08:21:25.000Z">
+<meta property="og:description" content="Mac安装 下载Flutter SDK  Flutter官网下载最新可用安装包 解压到指定的文件目录下~/Documents/MyLab   配置环境变量 export PUB_HOSTED_URL=https://pub.flutter-io.cn export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn export PATH=">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/24/eAvCct.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/eeeZfs.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/eemig1.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/26/emOVzj.png">
+<meta property="og:updated_time" content="2019-07-30T01:32:01.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS之BFC、IFC、GFC和FFC">
-<meta name="twitter:description" content="BFC 以&amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;为例，&amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;被浏览器解析后会生成div元素并添加到DOM树中，CSS作用的对象不是DOM树，而是根据DOM树生成的Render树，BFC就是Render树的节点。 方法 float：不为none position：不为relative、static overflow：不为hidden display：t">
-<meta name="twitter:image" content="https://s2.ax1x.com/2019/03/25/AtBC1e.png">
+<meta name="twitter:title" content="Flutter">
+<meta name="twitter:description" content="Mac安装 下载Flutter SDK  Flutter官网下载最新可用安装包 解压到指定的文件目录下~/Documents/MyLab   配置环境变量 export PUB_HOSTED_URL=https://pub.flutter-io.cn export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn export PATH=">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/07/24/eAvCct.png">
 
 
 
@@ -129,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://begodya.com/2019/03/25/web/CSS之BFC、IFC、GFC和FFC/"/>
+  <link rel="canonical" href="http://begodya.com/2019/07/30/h5/flutter/"/>
 
 
 
 
 
-  <title>CSS之BFC、IFC、GFC和FFC | Begodya</title>
+  <title>Flutter | Begodya</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -255,7 +258,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://begodya.com/2019/03/25/web/CSS之BFC、IFC、GFC和FFC/">
+    <link itemprop="mainEntityOfPage" href="http://begodya.com/2019/07/30/h5/flutter/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bei Wang">
@@ -272,7 +275,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CSS之BFC、IFC、GFC和FFC</h1>
+          <h1 class="post-title" itemprop="name headline">Flutter</h1>
         
 
         <div class="post-meta">
@@ -284,8 +287,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-25T16:21:25+08:00">
-                2019-03-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-30T09:32:01+08:00">
+                2019-07-30
               </time>
             
 
@@ -319,66 +322,39 @@
       
 
       
-        <h3 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h3><p><img src="https://s2.ax1x.com/2019/03/25/AtBC1e.png" alt=""></p>
-<p>以<code>&lt;div&gt;&lt;/div&gt;</code>为例，<code>&lt;div&gt;&lt;/div&gt;</code>被浏览器解析后会生成<code>div</code>元素并添加到DOM树中，CSS作用的对象不是DOM树，而是根据DOM树生成的Render树，BFC就是Render树的节点。</p>
-<h5 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h5><ul>
-<li>float：不为none</li>
-<li>position：不为relative、static</li>
-<li>overflow：不为hidden</li>
-<li>display：table-cell、table-caption、inline-block</li>
-</ul>
-<h5 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h5><ul>
-<li>content box（必备）</li>
-<li>padding box</li>
-<li>border box</li>
-<li>margin box</li>
-</ul>
-<h5 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h5><ul>
-<li>清除浮动</li>
-<li>自适应两栏布局</li>
-<li>防止margin合并</li>
-</ul>
-<h5 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h5><ul>
-<li>CSS使用于Box，而不是作用于Element</li>
-<li>JS无法操作Box</li>
-<li>同一个BFC的两个Box，margin会有重叠</li>
-</ul>
-<h5 id="误区"><a href="#误区" class="headerlink" title="误区"></a>误区</h5><ul>
-<li>通过width/height属性设置div元素的宽/高（错误）</li>
-<li>CSS属性width/height作用于div元素所产生的Box，而不是Element本身</li>
-<li>BFC有4个Box组成，那width/height到底作用于哪个Box？</li>
-</ul>
-<h3 id="IFC"><a href="#IFC" class="headerlink" title="IFC"></a>IFC</h3><h5 id="因素"><a href="#因素" class="headerlink" title="因素"></a>因素</h5><ul>
-<li>font-size</li>
-<li>line-height</li>
-<li>height</li>
-<li>vertical-aligin</li>
-</ul>
-<h5 id="注意-1"><a href="#注意-1" class="headerlink" title="注意"></a>注意</h5><ul>
-<li>inline-level box的高度是由字体字号大小决定的</li>
-<li>inline-level box的宽度是由content+padding+border+margin决定的</li>
-<li>inline-level box宽度大于父容器的宽度时会被拆分成多个inline-level box</li>
-<li>当达到拆分条件时，inline-level会被拆分成多个inline-level box并分布到多行中。<ul>
-<li>当direction为ltr时，margin/border/padding-left只会作用于第一行inline-level box；margin/border/padding-right作用于最后一行inline-level box。</li>
-<li>当direction为rtl时，margin/border/padding-right只会作用于第一行inline-level box；margin/border/padding-left作用于最后一行inline-level box。</li>
+        <h4 id="Mac安装"><a href="#Mac安装" class="headerlink" title="Mac安装"></a>Mac安装</h4><ol>
+<li><p>下载Flutter SDK</p>
+<ul>
+<li>Flutter官网下载<a href="https://flutter.dev/docs/get-started/install/macos" target="_blank" rel="external">最新可用安装包</a></li>
+<li>解压到指定的文件目录下<code>~/Documents/MyLab</code></li>
 </ul>
 </li>
+<li><p>配置环境变量<br> <code>export PUB_HOSTED_URL=https://pub.flutter-io.cn</code><br> <code>export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn</code><br> <code>export PATH=~/Documents/MyLab/flutter/bin:$PATH</code></p>
+</li>
+<li><p>运行<code>flutter doctor</code>查看是否需要其它依赖来完成安装<br> <img src="https://s2.ax1x.com/2019/07/24/eAvCct.png" alt="eAvCct.png"></p>
+</li>
+<li><p>注意事项</p>
+<ul>
+<li>oh-my-zsh下命令执行会提示 <code>sudo: flutter: command not found</code> 、 <code>zsh: permission denied: flutter</code></li>
+<li>bash下命令正常执行</li>
+<li>Android toolchain、Android Studio均可按命令正常配置</li>
+<li>Xcode、iOS tools命令行配置会产生中断</li>
+<li>Command Line Tools 安装包<a href="https://developer.apple.com/download/more/" target="_blank" rel="external">下载地址</a></li>
+</ul>
+</li>
+</ol>
+<h4 id="工程创建及使用"><a href="#工程创建及使用" class="headerlink" title="工程创建及使用"></a>工程创建及使用</h4><ol>
+<li>创建工程及运行<br> <code>flutter create flutter_go</code><br> <code>flutter run</code><br> <img src="https://s2.ax1x.com/2019/07/25/eeeZfs.png" alt="eeeZfs.png"></li>
+<li>模拟器运行<br> <img src="https://s2.ax1x.com/2019/07/25/eemig1.png" alt="eemig1.png"> </li>
+<li>页面布局<ul>
+<li>Container：创建矩形视觉元素</li>
+<li>Stack：线性布局，允许子元素堆叠</li>
+<li>Row、Column：水平、垂直方向上布局</li>
+</ul>
+</li>
+<li>运行效果<br> <img src="https://s2.ax1x.com/2019/07/26/emOVzj.png" alt="emOVzj.png"></li>
 <li></li>
-</ul>
-<h3 id="GFC"><a href="#GFC" class="headerlink" title="GFC"></a>GFC</h3><ul>
-<li>display: grid;</li>
-</ul>
-<h3 id="FFC"><a href="#FFC" class="headerlink" title="FFC"></a>FFC</h3><ul>
-<li>display: flex;</li>
-<li>display: inline-flex;</li>
-</ul>
-<h5 id="布局实例"><a href="#布局实例" class="headerlink" title="布局实例"></a>布局实例</h5><ul>
-<li><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="external">Flex 布局教程：语法篇</a></li>
-<li><a href="http://static.vgee.cn/static/index.html" target="_blank" rel="external">Flex 布局示例</a></li>
-</ul>
-<h5 id="注意-2"><a href="#注意-2" class="headerlink" title="注意"></a>注意</h5><ul>
-<li>设为 Flex 布局以后，子元素的float、clear和vertical-align属性将失效</li>
-</ul>
+</ol>
 
       
     </div>
@@ -415,8 +391,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/30/hybrid/React Navigation 3x开发指南/" rel="next" title="React Navigation 3x开发指南">
-                <i class="fa fa-chevron-left"></i> React Navigation 3x开发指南
+              <a href="/2019/03/25/h5/CSS之BFC、IFC、GFC和FFC/" rel="next" title="CSS之BFC、IFC、GFC和FFC">
+                <i class="fa fa-chevron-left"></i> CSS之BFC、IFC、GFC和FFC
               </a>
             
           </div>
@@ -425,7 +401,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/08/09/web/前端知识体系/" rel="prev" title="前端知识体系">
+              <a href="/2019/08/09/h5/前端知识体系/" rel="prev" title="前端知识体系">
                 前端知识体系 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -499,7 +475,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -567,7 +543,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#BFC"><span class="nav-number">1.</span> <span class="nav-text">BFC</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#方法"><span class="nav-number">1.0.1.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#结构"><span class="nav-number">1.0.2.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#作用"><span class="nav-number">1.0.3.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#注意"><span class="nav-number">1.0.4.</span> <span class="nav-text">注意</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#误区"><span class="nav-number">1.0.5.</span> <span class="nav-text">误区</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IFC"><span class="nav-number">2.</span> <span class="nav-text">IFC</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#因素"><span class="nav-number">2.0.1.</span> <span class="nav-text">因素</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#注意-1"><span class="nav-number">2.0.2.</span> <span class="nav-text">注意</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GFC"><span class="nav-number">3.</span> <span class="nav-text">GFC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FFC"><span class="nav-number">4.</span> <span class="nav-text">FFC</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#布局实例"><span class="nav-number">4.0.1.</span> <span class="nav-text">布局实例</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#注意-2"><span class="nav-number">4.0.2.</span> <span class="nav-text">注意</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Mac安装"><span class="nav-number">1.</span> <span class="nav-text">Mac安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#工程创建及使用"><span class="nav-number">2.</span> <span class="nav-text">工程创建及使用</span></a></li></ol></div>
             
 
           </div>

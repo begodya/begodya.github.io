@@ -1,0 +1,775 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="准备工作 vue-cli安装 npm install -g vue-cli webpack安装 npm install webpack -g 工程初始化 npm init Node 依赖安装 npm install  package.json 基础信息  name： 项目名称 version：项目版本 Author：项目创建人 private：是否私有   脚本 scripts：代理 webpac">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue-cli 及脚手架扩展">
+<meta property="og:url" content="http://begodya.com/2019/11/27/h5/vue-cli 及脚手架扩展/index.html">
+<meta property="og:site_name" content="Begodya">
+<meta property="og:description" content="准备工作 vue-cli安装 npm install -g vue-cli webpack安装 npm install webpack -g 工程初始化 npm init Node 依赖安装 npm install  package.json 基础信息  name： 项目名称 version：项目版本 Author：项目创建人 private：是否私有   脚本 scripts：代理 webpac">
+<meta property="og:updated_time" content="2019-11-28T09:54:14.357Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue-cli 及脚手架扩展">
+<meta name="twitter:description" content="准备工作 vue-cli安装 npm install -g vue-cli webpack安装 npm install webpack -g 工程初始化 npm init Node 依赖安装 npm install  package.json 基础信息  name： 项目名称 version：项目版本 Author：项目创建人 private：是否私有   脚本 scripts：代理 webpac">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://begodya.com/2019/11/27/h5/vue-cli 及脚手架扩展/"/>
+
+
+
+
+
+  <title>vue-cli 及脚手架扩展 | Begodya</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Begodya</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://begodya.com/2019/11/27/h5/vue-cli 及脚手架扩展/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bei Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/4849945?v=3&u=2fc94e38699ed5ca25f46fe2c62682991c8faa21&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Begodya">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vue-cli 及脚手架扩展</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-27T15:14:12+08:00">
+                2019-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ol>
+<li>vue-cli安装 <code>npm install -g vue-cli</code></li>
+<li>webpack安装 <code>npm install webpack -g</code></li>
+<li>工程初始化 <code>npm init</code></li>
+<li>Node 依赖安装 <code>npm install</code></li>
+</ol>
+<h3 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h3><ol>
+<li><p>基础信息</p>
+<ol>
+<li>name： 项目名称</li>
+<li>version：项目版本</li>
+<li>Author：项目创建人</li>
+<li>private：是否私有</li>
+</ol>
+</li>
+<li><p>脚本 scripts：代理 webpack 原生命令，如函数封装，便于理解与调用</p>
+<ol>
+<li>“serve”: “vue-cli-service serve” = “webpack-dev-serve –inline –hot”</li>
+<li>“build”: “vue-cli-service build” = “webpack –config webpack.config.js -p”</li>
+<li>“lint”: “vue-cli-service lint”</li>
+</ol>
+</li>
+<li><p>项目依赖 dependencies：主要保存<code>npm run build</code>时构建项目的依赖包</p>
+<ol>
+<li>“vue”: “2.6.10”, 表示固定版本，只依赖2.6.10版本，之后有新版本不会更新</li>
+<li>“vue”: “~2.6.10”, 表示只安装2.6.X系列的最新版本</li>
+<li>“vue”: “^2.6.10”, 表示安装当前库的最新版本</li>
+</ol>
+</li>
+<li><p>开发依赖 devDependencies：开发依赖不会添加到生产环境中，只是在开发阶段辅助编译开发等功能</p>
+</li>
+<li><p>目标浏览器配置表 browserslist：表示是否兼容某些浏览器</p>
+<blockquote>
+<p>根据提供的目标浏览器的环境来，智能添加 css 前缀，js 的 polyfill 垫片，来兼容旧版本浏览器，而不是一股脑的添加。避免不必要的兼容代码，以提高代码的编译质量。&gt; 根据提供的目标浏览器的环境来，智能添加css 前缀，js 的 polyfill 垫片，来兼容旧版本浏览器，而不是一股脑的添加。避免不必要的兼容代码，以提高代码的编译质量。</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="Vue-config-js"><a href="#Vue-config-js" class="headerlink" title="Vue.config.js"></a>Vue.config.js</h3><ol>
+<li>configureWebpack：调整 webpack 配置最简单的方式</li>
+<li>chainWebpack：允许更细粒度的控制其内部配置</li>
+</ol>
+<h3 id="vue-cli-service-机制（仍需挖掘）"><a href="#vue-cli-service-机制（仍需挖掘）" class="headerlink" title="vue-cli-service 机制（仍需挖掘）"></a>vue-cli-service 机制（仍需挖掘）</h3><p>使用 vue 创建工程时，默认执行 <code>npm run serve</code> 就是 <code>vue-cli-service serve</code>，因为 vue-cli 3.0 安装时把 vue-cli-service 一并安装了，即执行了 <code>npm install vue-cli-service --save-dev</code></p>
+<blockquote>
+<p>文件入口：/node_modules/@vue/cli-service/bin/vue-cli-service.js</p>
+<p>初始化配置：/node_modules/@vue/cli-service/lib/Service.js</p>
+</blockquote>
+<h3 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h3><ol>
+<li>核心原理<ol>
+<li>一切皆模块：将业务分割成更小的易于管理的片段，从而达到重复利用的目的</li>
+<li>按需加载：使用特性来分割代码然后生成多个 bundle 文件，且异步加载部分代码以实现按需加载</li>
+</ol>
+</li>
+<li>核心概念<ol>
+<li>入口 entry：指示 webpack 应该使用哪个模块，来作为构建其内部依赖图的开始。</li>
+<li>输出 output：告诉 webpack 在哪里输出它所创建的 bundles，以及如何命名这些文件，默认值为 <code>./dist</code>。</li>
+<li>加载器 loader： webpack 自身只理解 JavaScript，loader 可以将所有类型的文件转换为 webpack 能够处理的有效模块，然后就可以利用 webpack 的打包能力，进行处理。</li>
+<li>插件 plugins：处理从打包优化和压缩，一直到重新定义环境中的变量。</li>
+</ol>
+</li>
+</ol>
+<h3 id="命令解析"><a href="#命令解析" class="headerlink" title="命令解析"></a>命令解析</h3><ol>
+<li><p>服务器部分</p>
+<ol>
+<li>webpack CLI tool：默认交互方式（已随 webpack 本身安装到本地）</li>
+<li>webpack-dev-server：node.js 服务器（需要开发者从 npm 自行安装）</li>
+</ol>
+</li>
+<li><p>参数部分</p>
+<ol>
+<li><p><code>webpack-dev-server --inline --hot --config webpack.config.dev.js</code></p>
+<ul>
+<li><p>inline 开启热加载功能</p>
+</li>
+<li><p>hot 开启热替换功能</p>
+</li>
+<li><p>当资源发生改变，以下三种方式都会生成新的 bundle，但是又有区别：</p>
+<blockquote>
+<p>// 1. 不会刷新浏览器</p>
+<p>$ webpack-dev-server</p>
+<p>// 2. 刷新浏览器</p>
+<p>$ webpack-dev-server –inline</p>
+<p>// 3. 重新加载改变的部分，HRM失败则刷新页面</p>
+<p>$ webpack-dev-server –inline –hot</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="https://cli.vuejs.org/zh/guide/webpack.html" target="_blank" rel="external">Vue CLI webpack 相关</a></li>
+<li><a href="https://segmentfault.com/a/1190000005089993" target="_blank" rel="external">Webpack——令人困惑的地方</a></li>
+<li><a href="http://webpack.html.cn/" target="_blank" rel="external">webpack 中文文档(v4.15.1)</a></li>
+<li><a href="https://www.cnblogs.com/hhhyaaon/p/5664002.html" target="_blank" rel="external">webpack-dev-server介绍及配置</a></li>
+<li><a href="https://segmentfault.com/a/1190000020338771" target="_blank" rel="external">vue-cli-service 机制</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/01/h5/JWT/" rel="next" title="Koa2 + mongo">
+                <i class="fa fa-chevron-left"></i> Koa2 + mongo
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/29/h5/自建脚手架/" rel="prev" title="sz-build 自建脚手架">
+                sz-build 自建脚手架 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars3.githubusercontent.com/u/4849945?v=3&u=2fc94e38699ed5ca25f46fe2c62682991c8faa21&s=400"
+               alt="Bei Wang" />
+          <p class="site-author-name" itemprop="name">Bei Wang</p>
+           
+              <p class="site-description motion-element" itemprop="description">『修身养性，寻找灵感』</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/begodya" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/begodya" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3096695943/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备工作"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#package-json"><span class="nav-number">2.</span> <span class="nav-text">package.json</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vue-config-js"><span class="nav-number">3.</span> <span class="nav-text">Vue.config.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-cli-service-机制（仍需挖掘）"><span class="nav-number">4.</span> <span class="nav-text">vue-cli-service 机制（仍需挖掘）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#webpack"><span class="nav-number">5.</span> <span class="nav-text">webpack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令解析"><span class="nav-number">6.</span> <span class="nav-text">命令解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">7.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bei Wang</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

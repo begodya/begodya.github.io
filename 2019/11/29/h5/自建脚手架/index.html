@@ -90,18 +90,16 @@
 
 
 
-<meta name="description" content="一、简介快应用是基于手机硬件平台的新型应用形态，标准是由主流的手机厂商组成的快应用联盟联合制定，包括小米、华为、金立、魅族、vivo、OPPO、一加、中兴、联想、努比亚，来实现10亿部设备上无需安装、即点即用。 二、前置基础1. 需要一些必备的Web基础* HTML5、CSS3、JS基础 * ES6 2. 掌握基本的hap-toolkit的使用* 初始化项目 * 编译 * 调试 * 打包 * ..">
+<meta name="description" content="初始化项目目录创建新的项目名称为 sz-cli，并通过 npm init 生成 package.json 123mkdir sz-build cd sz-buildnpm init 步骤 输入创建工程指令 sz-build create begodya_cli 根据指令判断当前路径是否存在创建的目录 begodya_cli 检测当前脚手架的版本 初始化创建步骤选项列表 写入文件 安装依赖  插件">
 <meta property="og:type" content="article">
-<meta property="og:title" content="快应用">
-<meta property="og:url" content="http://begodya.com/2018/10/31/web/快应用/index.html">
+<meta property="og:title" content="sz-build 自建脚手架">
+<meta property="og:url" content="http://begodya.com/2019/11/29/h5/自建脚手架/index.html">
 <meta property="og:site_name" content="Begodya">
-<meta property="og:description" content="一、简介快应用是基于手机硬件平台的新型应用形态，标准是由主流的手机厂商组成的快应用联盟联合制定，包括小米、华为、金立、魅族、vivo、OPPO、一加、中兴、联想、努比亚，来实现10亿部设备上无需安装、即点即用。 二、前置基础1. 需要一些必备的Web基础* HTML5、CSS3、JS基础 * ES6 2. 掌握基本的hap-toolkit的使用* 初始化项目 * 编译 * 调试 * 打包 * ..">
-<meta property="og:image" content="http://oqleb1k16.bkt.clouddn.com/18-10-30/77353064.jpg">
-<meta property="og:updated_time" content="2018-10-31T01:29:47.000Z">
+<meta property="og:description" content="初始化项目目录创建新的项目名称为 sz-cli，并通过 npm init 生成 package.json 123mkdir sz-build cd sz-buildnpm init 步骤 输入创建工程指令 sz-build create begodya_cli 根据指令判断当前路径是否存在创建的目录 begodya_cli 检测当前脚手架的版本 初始化创建步骤选项列表 写入文件 安装依赖  插件">
+<meta property="og:updated_time" content="2019-12-12T08:10:13.964Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="快应用">
-<meta name="twitter:description" content="一、简介快应用是基于手机硬件平台的新型应用形态，标准是由主流的手机厂商组成的快应用联盟联合制定，包括小米、华为、金立、魅族、vivo、OPPO、一加、中兴、联想、努比亚，来实现10亿部设备上无需安装、即点即用。 二、前置基础1. 需要一些必备的Web基础* HTML5、CSS3、JS基础 * ES6 2. 掌握基本的hap-toolkit的使用* 初始化项目 * 编译 * 调试 * 打包 * ..">
-<meta name="twitter:image" content="http://oqleb1k16.bkt.clouddn.com/18-10-30/77353064.jpg">
+<meta name="twitter:title" content="sz-build 自建脚手架">
+<meta name="twitter:description" content="初始化项目目录创建新的项目名称为 sz-cli，并通过 npm init 生成 package.json 123mkdir sz-build cd sz-buildnpm init 步骤 输入创建工程指令 sz-build create begodya_cli 根据指令判断当前路径是否存在创建的目录 begodya_cli 检测当前脚手架的版本 初始化创建步骤选项列表 写入文件 安装依赖  插件">
 
 
 
@@ -129,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://begodya.com/2018/10/31/web/快应用/"/>
+  <link rel="canonical" href="http://begodya.com/2019/11/29/h5/自建脚手架/"/>
 
 
 
 
 
-  <title>快应用 | Begodya</title>
+  <title>sz-build 自建脚手架 | Begodya</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -255,7 +253,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://begodya.com/2018/10/31/web/快应用/">
+    <link itemprop="mainEntityOfPage" href="http://begodya.com/2019/11/29/h5/自建脚手架/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bei Wang">
@@ -272,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">快应用</h1>
+          <h1 class="post-title" itemprop="name headline">sz-build 自建脚手架</h1>
         
 
         <div class="post-meta">
@@ -284,8 +282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-31T09:29:47+08:00">
-                2018-10-31
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-29T09:43:32+08:00">
+                2019-11-29
               </time>
             
 
@@ -319,71 +317,30 @@
       
 
       
-        <h4 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h4><p>快应用是基于手机硬件平台的新型应用形态，标准是由主流的手机厂商组成的快应用联盟联合制定，包括小米、华为、金立、魅族、vivo、OPPO、一加、中兴、联想、努比亚，来实现10亿部设备上无需安装、即点即用。</p>
-<h4 id="二、前置基础"><a href="#二、前置基础" class="headerlink" title="二、前置基础"></a>二、前置基础</h4><h5 id="1-需要一些必备的Web基础"><a href="#1-需要一些必备的Web基础" class="headerlink" title="1. 需要一些必备的Web基础"></a>1. 需要一些必备的Web基础</h5><pre><code>* HTML5、CSS3、JS基础
-* ES6
-</code></pre><h5 id="2-掌握基本的hap-toolkit的使用"><a href="#2-掌握基本的hap-toolkit的使用" class="headerlink" title="2. 掌握基本的hap-toolkit的使用"></a>2. 掌握基本的hap-toolkit的使用</h5><pre><code>* 初始化项目
-* 编译
-* 调试
-* 打包
-* ...
-</code></pre><h5 id="3-掌握快应用IDE的使用"><a href="#3-掌握快应用IDE的使用" class="headerlink" title="3. 掌握快应用IDE的使用"></a>3. 掌握快应用IDE的使用</h5><h4 id="三、主要内容"><a href="#三、主要内容" class="headerlink" title="三、主要内容"></a>三、主要内容</h4><h5 id="1-快应用与前端技术的异同点"><a href="#1-快应用与前端技术的异同点" class="headerlink" title="1. 快应用与前端技术的异同点"></a>1. 快应用与前端技术的异同点</h5><pre><code>1. 类似HTML语法，样式对CSS进行了一些裁剪和扩充，
-2. 不支持浮动`float`、绝对定位`absolute`、相对定位`relative`等
-3. 快应用的标签与HTML5标签含义不同    
-    * 显示文本放置于`text`组件，不能放置于`div`组件
-    * 基础组件中`a`和`text`组件支持内部嵌套组件，其它不支持
-    * `a`的子组件`span`
-    * `text`的子组件`a`和`span`
-</code></pre><h5 id="2-样式书写"><a href="#2-样式书写" class="headerlink" title="2. 样式书写"></a>2. 样式书写</h5><pre><code>1. 盒模型：默认使用border-box模型，暂不支持content-box模型与box-sizing属性
-    * `width`包括`padding`和`border`
-    * `height`包括`padding`和`border`
-
-2. 长度单位
-    * px：与Web不一样，px是参考项目基准宽度，默认是750
-    * %：参考父级
-    * 计算公式：设计稿1px / 设计稿基准宽度 = 框架样式1px / 项目配置基准宽度
-
-3. 选择器支持
-    * id
-    * class
-    * tag
-    * 并列
-    * 后代
-
-4. 样式引入
-    * 内部
-    * 外部
-</code></pre><h5 id="3-快应用Flex布局"><a href="#3-快应用Flex布局" class="headerlink" title="3. 快应用Flex布局"></a>3. 快应用Flex布局</h5><pre><code>1. 主轴和交叉轴、容器和项目
-2. 快应用容器标签仅为`div`、`list-item`、`tabs`
-3. 容器和项目各自支持的属性(截止1020版本)
-4. 容器属性
-    * `flex-direction`（不支持 `*-reverse`）
-    * `flex-wrap`
-    * `flex-flow`（不支持）
-    * `justify-content`（不支持`space-around`）
-    * `aline-items`（不支持`baseline`）
-    * `align-content`
-
-5. 项目属性    
-    * `order`（不支持）
-    * `flex-gorw`
-    * `flex-shrink`
-    * `flex-basis`（和HTML5特性不一致）
-    * `flex`（和HTML5特性不一致）
-    * `align-self`
-
-6. 快应用Flex布局与HTML5对比总结
-</code></pre><p><img src="http://oqleb1k16.bkt.clouddn.com/18-10-30/77353064.jpg" alt=""></p>
-<h4 id="四、展示入口"><a href="#四、展示入口" class="headerlink" title="四、展示入口"></a>四、展示入口</h4><ul>
-<li>vivo：应用商店、浏览器搜索、全局搜索、智慧桌面、桌面图标</li>
-<li>华为：应用市场、桌面图标、负一屏、全局搜索、网页跳转</li>
-<li>OPPO：桌面图标、软件商店、网页跳转、智慧识屏、负一屏、全局搜索、浏览器搜索、智能短信</li>
-<li>金立：软件商店、负一屏、智能推送、桌面图标</li>
-<li>魅族：全局搜索、应用商店、桌面图标</li>
-<li>努比亚：应用中心、全局搜索、浏览器搜索、桌面图标</li>
-<li>联想：应用中心、负一屏、桌面图标</li>
-<li>小米：全局搜索、网页跳转、小爱同学、应用商店、桌面图标、场景化入口</li>
-</ul>
+        <h3 id="初始化项目目录"><a href="#初始化项目目录" class="headerlink" title="初始化项目目录"></a>初始化项目目录</h3><p>创建新的项目名称为 sz-cli，并通过 <code>npm init</code> 生成 <code>package.json</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir sz-build </div><div class="line">cd sz-build</div><div class="line">npm init</div></pre></td></tr></table></figure>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li>输入创建工程指令 <code>sz-build create begodya_cli</code></li>
+<li>根据指令判断当前路径是否存在创建的目录 <code>begodya_cli</code></li>
+<li>检测当前脚手架的版本</li>
+<li>初始化创建步骤选项列表</li>
+<li>写入文件</li>
+<li>安装依赖</li>
+</ol>
+<h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><ol>
+<li><a href="https://www.npmjs.com/package/chalk" target="_blank" rel="external">chalk</a>：文本高亮</li>
+<li><a href="https://www.npmjs.com/package/commander" target="_blank" rel="external">commander</a>：命令行接口</li>
+<li><a href="https://www.npmjs.com/package/inquirer" target="_blank" rel="external">inquirer</a>：交互式命令行</li>
+<li><a href="https://www.npmjs.com/package/semver" target="_blank" rel="external">semver</a>：语义化版本规范</li>
+<li><a href="https://www.npmjs.com/package/request" target="_blank" rel="external">request</a>：服务请求</li>
+<li><a href="https://www.npmjs.com/package/ora" target="_blank" rel="external">ora</a>：加载效果</li>
+<li><a href="https://www.npmjs.com/package/readline" target="_blank" rel="external">readline</a>：逐行处理信息</li>
+<li><a href="https://www.npmjs.com/package/fs" target="_blank" rel="external">fs</a>：文件检测</li>
+<li><a href="https://www.npmjs.com/package/child_process" target="_blank" rel="external">child_process</a>：异步创建子进程</li>
+<li><a href="https://www.npmjs.com/package/fs-extra" target="_blank" rel="external">fs-extra</a>：文件操作</li>
+<li><a href="https://www.npmjs.com/package/path" target="_blank" rel="external">path</a></li>
+<li><a href="https://www.npmjs.com/package/autoprefixer" target="_blank" rel="external">autoprefixer</a></li>
+</ol>
 
       
     </div>
@@ -420,8 +377,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/04/iOS/Swift标准库源码阅读（一）/" rel="next" title="Swift标准库源码阅读（一）">
-                <i class="fa fa-chevron-left"></i> Swift标准库源码阅读（一）
+              <a href="/2019/11/27/h5/vue-cli 及脚手架扩展/" rel="next" title="vue-cli 及脚手架扩展">
+                <i class="fa fa-chevron-left"></i> vue-cli 及脚手架扩展
               </a>
             
           </div>
@@ -430,8 +387,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/09/iOS/如何获取ipa安装包/" rel="prev" title="如何获取ipa安装包">
-                如何获取ipa安装包 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/12/18/h5/webpack 构建工程/" rel="prev" title="webpck 构建工程">
+                webpck 构建工程 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -504,7 +461,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -572,7 +529,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、简介"><span class="nav-number">1.</span> <span class="nav-text">一、简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、前置基础"><span class="nav-number">2.</span> <span class="nav-text">二、前置基础</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-需要一些必备的Web基础"><span class="nav-number">2.1.</span> <span class="nav-text">1. 需要一些必备的Web基础</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-掌握基本的hap-toolkit的使用"><span class="nav-number">2.2.</span> <span class="nav-text">2. 掌握基本的hap-toolkit的使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-掌握快应用IDE的使用"><span class="nav-number">2.3.</span> <span class="nav-text">3. 掌握快应用IDE的使用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、主要内容"><span class="nav-number">3.</span> <span class="nav-text">三、主要内容</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-快应用与前端技术的异同点"><span class="nav-number">3.1.</span> <span class="nav-text">1. 快应用与前端技术的异同点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-样式书写"><span class="nav-number">3.2.</span> <span class="nav-text">2. 样式书写</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-快应用Flex布局"><span class="nav-number">3.3.</span> <span class="nav-text">3. 快应用Flex布局</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、展示入口"><span class="nav-number">4.</span> <span class="nav-text">四、展示入口</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化项目目录"><span class="nav-number">1.</span> <span class="nav-text">初始化项目目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤"><span class="nav-number">2.</span> <span class="nav-text">步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插件"><span class="nav-number">3.</span> <span class="nav-text">插件</span></a></li></ol></div>
             
 
           </div>
