@@ -254,6 +254,372 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://begodya.com/2019/01/30/hybrid/React Navigation 3x开发指南/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bei Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/4849945?v=3&u=2fc94e38699ed5ca25f46fe2c62682991c8faa21&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Begodya">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/30/hybrid/React Navigation 3x开发指南/" itemprop="url">React Navigation 3x开发指南</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-30T15:38:10+08:00">
+                2019-01-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="什么是导航器？"><a href="#什么是导航器？" class="headerlink" title="什么是导航器？"></a>什么是导航器？</h4><p>App基本不会只由一个页面组成，管理多个页面的呈现、跳转的组件就是导航器。</p>
+<h4 id="React-Navigation-3x中6种类型的导航器"><a href="#React-Navigation-3x中6种类型的导航器" class="headerlink" title="React Navigation 3x中6种类型的导航器"></a>React Navigation 3x中6种类型的导航器</h4><ol>
+<li><code>createStackNavigator</code>：屏幕上方导航栏，iOS右侧滑入（可配置底部滑入），Android底部淡入；</li>
+<li><code>createBottomTabNavigator</code>：屏幕下方标签栏；</li>
+<li><code>createMaterialBottomTabNavigator</code>：屏幕底部的材料设计主题标签栏；</li>
+<li><code>createMaterialTopTabNavigator</code>：屏幕顶部的材料设计主题标签栏，可通过点击或水平滑动来切换；</li>
+<li><code>createDrawerNavigator</code>：抽屉效果，侧边滑出；</li>
+<li><code>createSwitchNavigator</code>：一次只显示一个页面；</li>
+</ol>
+<blockquote>
+<p>可以通过以上6种导航器来创建App，根据应用场景来使用其中一个或是多个组合</p>
+</blockquote>
+<h4 id="Navigation-prop-reference"><a href="#Navigation-prop-reference" class="headerlink" title="Navigation prop reference"></a>Navigation prop reference</h4><p>应用中每个页面组件都会自动提供<code>navigation prop</code>，包含以下方法用于触发导航操作：</p>
+<ul>
+<li><code>navigate</code>：跳转到另一个页面</li>
+<li><code>goBack</code>：关闭当前页面</li>
+<li><code>dispatch</code>：向路由发送 action</li>
+<li><code>state</code>：当前的状态或路由</li>
+<li><code>setParams</code>：对路由参数进行更改</li>
+<li><code>getParam</code>：获取具有回退的特定参数</li>
+<li><code>addListener</code>：订阅导航生命周期的更新</li>
+<li><code>isFocused</code>：屏幕是否有焦点</li>
+<li><code>dangerouslyGetParent</code>：返回父级导航器</li>
+</ul>
+<h5 id="StactNavigator中附加方法"><a href="#StactNavigator中附加方法" class="headerlink" title="StactNavigator中附加方法"></a>StactNavigator中附加方法</h5><ul>
+<li><code>this.props.navigation</code><ul>
+<li><code>push</code>：推一个新的路由到堆栈</li>
+<li><code>pop</code>：返回到堆栈中的上一个页面</li>
+<li><code>popToTop</code>：返回到堆栈中最顶层的页面</li>
+<li><code>replace</code>：用新路由替换当前路由</li>
+<li><code>reset</code>：清除整个导航状态，并将其替换为多个操作的结果</li>
+<li><code>dismiss</code>：关闭当前堆栈</li>
+</ul>
+</li>
+</ul>
+<h5 id="DrawerNavigator中附加方法"><a href="#DrawerNavigator中附加方法" class="headerlink" title="DrawerNavigator中附加方法"></a>DrawerNavigator中附加方法</h5><ul>
+<li><code>this.props.navigation</code><ul>
+<li><code>openDrawer</code>：打开</li>
+<li><code>closeDrawer</code>：关闭</li>
+<li><code>toggleDrawer</code>：切换</li>
+</ul>
+</li>
+</ul>
+<h4 id="通用API使用方法"><a href="#通用API使用方法" class="headerlink" title="通用API使用方法"></a>通用API使用方法</h4><h5 id="使用navigate进行页面跳转"><a href="#使用navigate进行页面跳转" class="headerlink" title="使用navigate进行页面跳转"></a>使用<code>navigate</code>进行页面跳转</h5><ul>
+<li><code>navigation.navigate({ routeName, params, action, key})</code></li>
+<li><code>navigation.navigate( routeName, params, action)</code><ul>
+<li><code>routeName</code>：要跳转到的页面的路由名，即导航中配置的路由名</li>
+<li><code>params</code>：传递给下一个页面的参数</li>
+<li><code>action</code>：如果页面是navigator，则是子路由中运行的子操作</li>
+<li><code>key</code>：要导航到的路由的可选标识符。如果已存在，将后退到此路由</li>
+</ul>
+</li>
+</ul>
+<h5 id="使用goBack进行关闭当前页面并返回上一个页面"><a href="#使用goBack进行关闭当前页面并返回上一个页面" class="headerlink" title="使用goBack进行关闭当前页面并返回上一个页面"></a>使用<code>goBack</code>进行关闭当前页面并返回上一个页面</h5><ul>
+<li><code>goBack(key)</code><ul>
+<li><code>key</code>：表示要返回到的页面标识，而不是routeName</li>
+<li>可以通过<code>navigation.state.key</code>来获取页面标识</li>
+<li><code>key</code>非必传，也可为null</li>
+</ul>
+</li>
+</ul>
+<h5 id="使用dispatch进行向路由发送action"><a href="#使用dispatch进行向路由发送action" class="headerlink" title="使用dispatch进行向路由发送action"></a>使用<code>dispatch</code>进行向路由发送<code>action</code></h5><ul>
+<li><code>dispatch(action)</code>：给当前界面设置<code>action</code>，会替换原来的跳转，回退等事件</li>
+</ul>
+<h5 id="使用state获取当前的state或route"><a href="#使用state获取当前的state或route" class="headerlink" title="使用state获取当前的state或route"></a>使用<code>state</code>获取当前的<code>state</code>或<code>route</code></h5><ul>
+<li>页面可以通过<code>this.props.navigation.state</code>访问其路由</li>
+</ul>
+<h5 id="使用setParams对路由的参数进行更改"><a href="#使用setParams对路由的参数进行更改" class="headerlink" title="使用setParams对路由的参数进行更改"></a>使用<code>setParams</code>对路由的参数进行更改</h5><ul>
+<li><code>setParams(params)</code>：触发<code>setParams</code>方法允许页面更改路由中的参数，可以更新当前页面的标签和按钮</li>
+</ul>
+<h5 id="使用getParam获取指定的参数，可设置获取失败的返回值"><a href="#使用getParam获取指定的参数，可设置获取失败的返回值" class="headerlink" title="使用getParam获取指定的参数，可设置获取失败的返回值"></a>使用<code>getParam</code>获取指定的参数，可设置获取失败的返回值</h5><h5 id="使用addListener订阅导航生命周期的更新"><a href="#使用addListener订阅导航生命周期的更新" class="headerlink" title="使用addListener订阅导航生命周期的更新"></a>使用<code>addListener</code>订阅导航生命周期的更新</h5><ul>
+<li>React Navigation将事件发送到订阅了它们的页面组件：<ul>
+<li><code>onWillFocus</code>：页面将获取焦点</li>
+<li><code>onDidFocus</code>：页面已获取焦点</li>
+<li><code>onWillBlur</code>：页面将失去焦点</li>
+<li><code>onDidBlur</code>：页面已失去焦点</li>
+</ul>
+</li>
+</ul>
+<h5 id="使用isFocused进行查询页面是否获取到焦点"><a href="#使用isFocused进行查询页面是否获取到焦点" class="headerlink" title="使用isFocused进行查询页面是否获取到焦点"></a>使用<code>isFocused</code>进行查询页面是否获取到焦点</h5><ul>
+<li><code>let isFocused = this.props.navigation.isFocused()</code>    * 如果页面已获取焦点，返回<code>true</code>，否则返回<code>false</code></li>
+</ul>
+<h5 id="使用dangerouslyGetParent进行获取父级导航"><a href="#使用dangerouslyGetParent进行获取父级导航" class="headerlink" title="使用dangerouslyGetParent进行获取父级导航"></a>使用<code>dangerouslyGetParent</code>进行获取父级导航</h5>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://begodya.com/2019/01/29/hybrid/基于React Native的跨平台应用架构实践/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bei Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/4849945?v=3&u=2fc94e38699ed5ca25f46fe2c62682991c8faa21&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Begodya">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/29/hybrid/基于React Native的跨平台应用架构实践/" itemprop="url">基于React Native的跨平台应用架构实践</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-29T20:44:17+08:00">
+                2019-01-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p>###环境搭建</p>
+<ul>
+<li>react-native-cli: 2.0.1 </li>
+<li>react-native: 0.57.8</li>
+<li>react: 16.7.0</li>
+<li>node: v10.2.1</li>
+</ul>
+</li>
+<li><p>###开发工具（VS Code）</p>
+<ul>
+<li>React Native Tools：微软出口RN插件</li>
+<li>Reactjs code snippets：代码提示工具</li>
+<li>Auto Close Tag：自动闭合标签</li>
+<li>Auto Rename Tag：自动重命名标签</li>
+<li>Path Intellisense：文件路径提示补全</li>
+</ul>
+</li>
+<li><p>###页面交互</p>
+<ol>
+<li>React-Navigation</li>
+<li>createBottomTabNavigator</li>
+<li>createStackNavigator</li>
+<li>createAppContainer</li>
+</ol>
+</li>
+<li><p>###数据存储</p>
+</li>
+<li><p>###消息传递</p>
+</li>
+<li><p>###服务请求</p>
+</li>
+<li><p>###问题处理</p>
+</li>
+</ul>
+<p>1、Print: Entry, “:CFBundleIdentifier”, Does Not Exist</p>
+<blockquote>
+<p><a href="http://bbs.reactnative.cn/topic/4301/ios-rn-0-45%E4%BB%A5%E4%B8%8A%E7%89%88%E6%9C%AC%E6%89%80%E9%9C%80%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E7%BC%96%E8%AF%91%E5%BA%93-boost%E7%AD%89" target="_blank" rel="external">解决方案</a> 后重启电脑</p>
+</blockquote>
+<p>2、Android 第一次在真机或模拟器中运行，需要先挂 VPN 进行依赖包下载</p>
+<p>3、Unable to load script from assets ‘index.android.bundle’ </p>
+<blockquote>
+<pre><code>第一步（创建缺失的目录）：mkdir android\app\src\main\asset    
+第二步（在创建好的目录添加程序需要的文件）：react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res    
+第三步：react-native run-android    
+</code></pre></blockquote>
+<p>4、Text设置圆角背景在iOS下无法显示</p>
+<blockquote>
+<p>   ios中的Text组件不支持borderRadius，可在Text组件外层套加View组件进行设置</p>
+</blockquote>
+<p>5、工程迁移导致<code>error: PCH was compiled with module cache path &#39;/Users/BeiWang/Documents/MyLab/ReactNative/ShanZhen/ios/build/ModuleCache.noindex/147FY0L6K85ZP&#39;, but the path is currently &#39;/Users/BeiWang/Documents/MyLab/Github/ReactNativeGo/ShanZhen/ios/build/ModuleCache.noindex/147FY0L6K85ZP&#39;</code></p>
+<blockquote>
+<p>找到iOS工程下的Build目录，删除ModuleCache.noindex，并执行react-native run-ios</p>
+</blockquote>
+<p>6、undefined is not an object (evaluating RNGestureHandlerModule.State’)</p>
+<blockquote>
+<p>npm install –save react-native-gesture-handler</p>
+</blockquote>
+<p>7、动态显示/隐藏底部导航栏</p>
+<blockquote>
+<p>保证TabBar与下层页面平级即可</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://begodya.com/2019/01/29/summary/2018工作总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1504,365 +1870,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://begodya.com/2018/03/17/architecture/2018个人计划/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bei Wang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/4849945?v=3&u=2fc94e38699ed5ca25f46fe2c62682991c8faa21&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Begodya">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/17/architecture/2018个人计划/" itemprop="url">2018年个人计划</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-17T10:09:17+08:00">
-                2018-03-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="iOS"><a href="#iOS" class="headerlink" title="iOS"></a>iOS</h4><ol>
-<li>Swift技术精进</li>
-<li>面向协议编程</li>
-<li>AR技术研究</li>
-<li>熟悉当前常用框架</li>
-<li>关注行业技术发展</li>
-</ol>
-<h4 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h4><ol>
-<li>Kotlin技术精进</li>
-<li>函数响应式编程</li>
-<li>熟悉当前常用框架</li>
-<li>关注行业技术发展</li>
-</ol>
-<h4 id="小程序"><a href="#小程序" class="headerlink" title="小程序"></a>小程序</h4><ol>
-<li>时刻关注开放功能</li>
-<li>了解小程序各种营销方法</li>
-</ol>
-<h4 id="其他技术"><a href="#其他技术" class="headerlink" title="其他技术"></a>其他技术</h4><ol>
-<li>了解机器学习各算法</li>
-<li>关注区块链技术发展</li>
-<li>关注前端技术发展</li>
-<li>TCP/IP、UDP详解</li>
-<li>设计模式</li>
-</ol>
-<h4 id="管理"><a href="#管理" class="headerlink" title="管理"></a>管理</h4><ol>
-<li>上半年主要精力在小程序矩阵化的开发及管理上</li>
-<li>下半年主要精力在App平台化的开发及管理上</li>
-</ol>
-<h4 id="阅读"><a href="#阅读" class="headerlink" title="阅读"></a>阅读</h4><ol>
-<li>读书笔记</li>
-<li>坚持写博客</li>
-</ol>
-<h4 id="健康"><a href="#健康" class="headerlink" title="健康"></a>健康</h4><p>坚持锻炼</p>
-<h4 id="格局"><a href="#格局" class="headerlink" title="格局"></a>格局</h4><p>行万里路</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://begodya.com/2018/01/27/architecture/微信小程序/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bei Wang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/4849945?v=3&u=2fc94e38699ed5ca25f46fe2c62682991c8faa21&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Begodya">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/27/architecture/微信小程序/" itemprop="url">微信小程序</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-27T15:45:48+08:00">
-                2018-01-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="小程序推广方式"><a href="#小程序推广方式" class="headerlink" title="小程序推广方式"></a>小程序推广方式</h4><ol>
-<li>关联公众号：同一主体可关联10个小程序，不同主体可关联3个小程序，小程序可关联500个公众号</li>
-<li>非关联公众号：二维码（数量10万、永久有效）、小程序码（数量无限制、永久有效）</li>
-</ol>
-<h4 id="小程序进入场景（五十）"><a href="#小程序进入场景（五十）" class="headerlink" title="小程序进入场景（五十）"></a>小程序进入场景（五十）</h4><blockquote>
-<ul>
-<li>1001: 发现栏小程序主入口</li>
-<li>1005: 顶部搜索框的搜索结果页</li>
-<li>1006: 发现栏小程序入口搜索框的搜索结果页</li>
-<li>1007: 单人聊天会话中的小程序消息卡片</li>
-<li>1008: 群聊会话中的小程序消息卡片</li>
-<li>1011: 扫描二维码</li>
-<li>1012: 长按图片识别二维码</li>
-<li>1013: 手机相册选取二维码</li>
-<li>1014: 小程序模版消息</li>
-<li>1017: 前往体验版的入口页</li>
-<li>1019: 微信钱包</li>
-<li>1020: 公众号profile页相关小程序列表</li>
-<li>1022: 聊天顶部置顶小程序入口</li>
-<li>1023: 安卓系统桌面图标</li>
-<li>1024: 小程序profile页</li>
-<li>1025: 扫描一维码</li>
-<li>1026: 附近小程序列表</li>
-<li>1027: 顶部搜索框搜索结果页“使用过的小程序”列表</li>
-<li>1028: 我的卡包</li>
-<li>1029: 卡券详情页</li>
-<li>1031: 长按图片识别一维码</li>
-<li>1032: 手机相册选取一维码</li>
-<li>1034: 微信支付完成页</li>
-<li>1035: 公众号自定义菜单</li>
-<li>1036: App分享消息卡片</li>
-<li>1037: 从小程序进入</li>
-<li>1038: 从小程序返回</li>
-<li>1039: 摇电视</li>
-<li>1042: 添加好友搜索框的搜索结果页</li>
-<li>1043: 公众号模板消息</li>
-<li>1044: 带shareTicket的小程序消息卡片</li>
-<li>1047: 扫描小程序码</li>
-<li>1048: 长按图片识别小程序码</li>
-<li>1049: 手机相册选取小程序码</li>
-<li>1052: 卡券的适用门店列表</li>
-<li>1053: 搜一搜的结果页</li>
-<li>1054: 顶部搜索框小程序快捷入口</li>
-<li>1056: 音乐播放器菜单</li>
-<li>1058: 公众号文章</li>
-<li>1059: 体验版小程序绑定邀请页</li>
-<li>1064: 微信连Wifi状态栏</li>
-<li>1067: 公众号文章广告</li>
-<li>1068: 附近小程序列表广告</li>
-<li>1072: 二维码收款页面</li>
-<li>1073: 客服消息列表下发的小程序消息卡片</li>
-<li>1074: 公众号会话下发的小程序消息卡片</li>
-<li>1078: 连wifi成功页</li>
-<li>1089: 微信聊天主界面下拉</li>
-<li>1090: 长按小程序右上角菜单唤出最近使用历史</li>
-<li>1092: 城市服务入口</li>
-</ul>
-</blockquote>
-<h4 id="小程序消息推送"><a href="#小程序消息推送" class="headerlink" title="小程序消息推送"></a>小程序消息推送</h4><blockquote>
-<p>下发条件说明</p>
-</blockquote>
-<pre><code>支付
-
-当用户在小程序内完成过支付行为，可允许开发者向用户在7天内推送有限条数的模板消息（1次支付可下发3条，多次支付下发条数独立，互相不影响）
-
-提交表单
-
-当用户在小程序内发生过提交表单行为且该表单声明为要发模板消息的，开发者需要向用户提供服务时，可允许开发者向用户在7天内推送有限条数的模板消息（1次提交表单可下发1条，多次提交下发条数独立，相互不影响）
-</code></pre><p>突破小程序推送限制做法：</p>
-<p><img src="http://img.mp.itc.cn/upload/20170726/7eeeb27b5ab64cb0b2da399d006556e6.jpg" alt=""></p>
-<h4 id="小程序与公众号、APP之跳转"><a href="#小程序与公众号、APP之跳转" class="headerlink" title="小程序与公众号、APP之跳转"></a>小程序与公众号、APP之跳转</h4><p><img src="http://oqleb1k16.bkt.clouddn.com/18-1-27/63671553.jpg" alt=""></p>
-<ul>
-<li>官方支持公众号关联小程序进行跳转：</li>
-</ul>
-<ol>
-<li>公众号介绍页：相关小程序</li>
-<li>公众号自定义菜单：可设置一级菜单或二级菜单</li>
-<li>公众号模板消息：    关联时下发</li>
-<li>公众号图文消息：小程序卡片、文字链接、图片链接</li>
-</ol>
-<ul>
-<li>官方暂不支持小程序跳转公众号操作，可通过小程序内客服进行自动推送公众号推文，文内有公众号二维码信息，可引导用户长按扫描后，即可跳转到对应公众号进行关注操作；但目前因小程序页面路径控制（限制五层），iOS在第二层页面之后进行跳转客服引导关注，会导致下次从小程序快捷入口进来后，当前页面会冻结，无法进行交互。</li>
-</ul>
-<p><img src="https://mp.weixin.qq.com/debug/wxadoc/dev/image/launch-app.png?t=2018125" alt=""></p>
-<ul>
-<li><p>APP可通过分享方式，在微信内打开小程序。</p>
-</li>
-<li><p>小程序在从APP分享至微信的小程序页面，用户访问时支持打开来源应用。在一个小程序的生命周期内，只有在特定条件下，才具有打开 APP 的能力。<code>打开 APP 的能力</code>可以理解为由小程序框架在内部管理的一个状态，为 true 则可以打开 APP，为 false 则不可以打开 APP。 </p>
-</li>
-</ul>
-<blockquote>
-<pre><code> 在小程序的生命周期内，这个状态的初始值为 false，之后会随着小程序的每次打开（无论是启动还是切到前台）而改变：  
-
-当小程序从 1036（App 分享消息卡片） 打开时，该状态置为 true。
-当小程序从 1089（微信聊天主界面下拉）或 1090（长按小程序右上角菜单唤出最近使用历史）的场景打开时，该状态不变，即保持上一次打开小程序时该状态的值。
-当小程序从非 1036/1089/1090 的场景打开，该状态置为 false。
-</code></pre></blockquote>
-<h4 id="手机操作系统、APP、小程序、H5之关系"><a href="#手机操作系统、APP、小程序、H5之关系" class="headerlink" title="手机操作系统、APP、小程序、H5之关系"></a>手机操作系统、APP、小程序、H5之关系</h4><p>手机操作系统 = S座</p>
-<p>APP = 公司</p>
-<p>小程序 = 小e微店</p>
-<p>H5 = 海报</p>
-<p>手机操作系统就相当于S座楼，楼内的每家公司就相当于各个APP，善诊公司相当于微信APP，公司内的小e微店就相当于小程序，零食区所拥有的空间相当于小程序的2M空间，后面又扩展出咖啡售卖区就相当于小程序分包机制，可扩展到4M；H5相当于海报，理论上可张贴于公司的各个位置。</p>
-<p>目前，小程序所属于微信，未来大一统的形态，可能是小程序形成SDK，各家APP均可按需嵌入自己需要关联的小程序，形成更大的关系网。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1912,7 +1919,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1987,7 +1994,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
